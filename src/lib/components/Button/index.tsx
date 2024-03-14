@@ -1,7 +1,11 @@
+import style from "./style.module.scss";
+
 const Button = () => {
   return (
     <>
-      <h1>Button</h1>
+      <button type="button" class={style.button}>
+        Button
+      </button>
     </>
   );
 };

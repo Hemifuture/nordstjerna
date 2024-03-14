@@ -5,12 +5,6 @@ const registerButton = () => {
   customElement("ns-button", Button);
 };
 
-const getInitialProps = () => {
-  return {
-    // type: "primary",
-  };
-};
-
 export default registerButton;
 
 // Component

@@ -1,14 +1,13 @@
 import { defineConfig } from "vite";
 import solid from "vite-plugin-solid";
-import UnoCSS from "unocss/vite";
 
 export default defineConfig({
-  plugins: [solid(), UnoCSS()],
+  plugins: [solid()],
   build: {
     lib: {
       entry: "src/lib/index.ts",
-      name: "solidComponentLibrary",
-      fileName: (format) => `solid-component-library.${format}.js`,
+      name: "nordstjerna",
+      fileName: (format) => `nordstjerna.${format}.js`,
     },
   },
 });
