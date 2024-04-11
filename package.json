@@ -1,27 +1,15 @@
 {
   "name": "nordstjerna",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "docs:dev": "astro dev",
-    "docs:build": "astro build",
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@astrojs/solid-js": "^4.0.1",
-    "astro": "^4.5.3",
-    "babel-preset-solid": "^1.8.15",
-    "solid-element": "^1.8.0",
-    "solid-js": "^1.8.15"
+    "build": "turbo build",
+    "dev": "turbo dev"
   },
   "devDependencies": {
-    "@unocss/transformer-directives": "^0.58.5",
-    "sass": "^1.72.0",
-    "typescript": "^5.2.2",
-    "vite": "^5.1.4",
-    "vite-plugin-solid": "^2.10.1"
+    "turbo": "latest"
+  },
+  "packageManager": "pnpm@8.9.0",
+  "engines": {
+    "node": ">=18"
   }
 }
