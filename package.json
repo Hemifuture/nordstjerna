@@ -2,8 +2,8 @@
   "name": "nordstjerna",
   "private": true,
   "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev"
+    "dev": "turbo dev",
+    "build": "turbo build"
   },
   "devDependencies": {
     "turbo": "latest"
