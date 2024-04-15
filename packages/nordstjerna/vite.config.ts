@@ -10,6 +10,11 @@ export default defineConfig({
     }),
   ],
   build: {
+    // https://rollupjs.org/configuration-options/#watch
+    // watch: {
+    //   exclude: 'node_modules/**',
+    //   include: 'src/**',
+    // },
     lib: {
       entry: path.resolve(__dirname, 'src/index.tsx'),
       name: 'nordstjerna',
@@ -19,7 +24,4 @@ export default defineConfig({
     minify: true,
     sourcemap: true,
   },
-  optimizeDeps: {
-    exclude: ['nordstjerna']
-  }
 });

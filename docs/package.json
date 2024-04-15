@@ -4,15 +4,15 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build:docs": "astro check && astro build",
+    "build": "astro check && astro build",
     "preview": "astro preview"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",
     "@astrojs/solid-js": "^4.0.1",
     "astro": "^4.5.18",
-    "nordstjerna": "workspace:*",
     "solid-js": "^1.8.16",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "nordstjerna": "workspace:*"
   }
 }

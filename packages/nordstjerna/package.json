@@ -2,22 +2,14 @@
   "name": "nordstjerna",
   "version": "0.0.0",
   "description": "A glassmorphism style kit in CSS and JS.",
-  "types": "./dist/index.d.ts",
+  "main": "dist/nordstjerna.mjs",
+  "module": "dist/nordstjerna.umd.js",
   "exports": {
-    ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/nordstjerna.mjs"
-      },
-      "require": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/nordstjerna.js"
-      }
-    },
-    "./*": "./*"
+    ".": "./src/index.tsx"
   },
   "homepage": "https://github.com/Hemifuture/nordstjerna",
   "scripts": {
+    "ui": " vite build",
     "build": " vite build"
   },
   "keywords": [
