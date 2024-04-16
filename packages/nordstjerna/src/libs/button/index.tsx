@@ -9,7 +9,7 @@ function NButton() {
   return (
     <>
       <button onClick={() => setCount(c => c + 1)}>
-        {doubleCount()} {123}
+        {doubleCount()} {33323123}
       </button>
     </>
   );
