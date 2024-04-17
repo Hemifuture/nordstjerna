@@ -13,6 +13,6 @@
     "astro": "^4.5.18",
     "solid-js": "^1.8.16",
     "typescript": "^5.4.5",
-    "nordstjerna": "workspace:*"
+    "@nordstjerna/ui": "workspace:*"
   }
 }

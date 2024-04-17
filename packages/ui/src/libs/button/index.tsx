@@ -1,4 +1,5 @@
 import { createSignal } from "solid-js";
+import style from "./style.module.scss";
 
 function NButton() {
   const [count, setCount] = createSignal(0);
@@ -8,7 +9,7 @@ function NButton() {
 
   return (
     <>
-      <button onClick={() => setCount(c => c + 1)}>
+      <button class={style.button} onClick={() => setCount((c) => c + 1)}>
         {doubleCount()} {33323123}
       </button>
     </>
