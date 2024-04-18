@@ -1,8 +1,121 @@
+@use "../../styles/mixins" as *;
+
+@mixin button_indicator($color) {
+  &::before {
+    @apply drop-shadow-none;
+    background-color: var(#{$color});
+  }
+
+  &:hover::before {
+    filter: drop-shadow(0 0 0.5rem var(#{$color}));
+  }
+
+  // Disabled styles
+  &.disabled::before {
+    background-color: var(--secondary-color);
+  }
+
+  &.disabled:hover::before {
+    filter: none;
+  }
+}
+
+@mixin button_typed($type_var) {
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, filter 0.2s ease,
+    background-color 0.2s ease;
+
+  &:hover {
+    box-shadow: inset 0 0 0 1px var(#{$type_var});
+    border-color: var(#{$type_var});
+  }
+
+  &.disabled:hover {
+    box-shadow: none;
+    border-color: var(--secondary-color);
+  }
+}
+
+@mixin button_transition() {
+  $duration: 0.2s;
+
+  transition: box-shadow $duration ease, border-color $duration ease,
+    filter $duration ease, background-color $duration ease;
+
+  &:hover::before {
+    transition: box-shadow $duration ease, border-color $duration ease,
+      filter $duration ease, background-color $duration ease;
+  }
+}
+
 .button {
-  background-color: #f00;
-  color: #fff;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  @include border(
+    --border-color,
+    --border-color-dark,
+    --primary-color,
+    --secondary-color
+  );
+  // @apply border-[var(--border-color)];
+  @apply shadow-sm rounded-lg px4 py2 bg-white bg-opacity-5 box-border relative;
+
+  @apply transition-border-color duration-300 ease-in-out;
+
+  &::before {
+    content: " ";
+    position: absolute;
+    left: 50%;
+    right: 0;
+    bottom: 6px;
+    width: 20px;
+    transform: translate(-50%, 50%);
+    height: 3px;
+    border-radius: 100px;
+  }
+
+  &.icon {
+    @apply p0;
+    @apply backdrop-blur-none bg-transparent;
+    @apply hover:text-[var(--primary-color)] transition-colors;
+
+    @apply border-none shadow-none hover:(border-none shadow-none);
+
+    &:global(.level-high) {
+      @apply drop-shadow-lg;
+    }
+  }
+
+  &.warning {
+    // @apply hover:border-[var(--border-color-warning)];
+    @include button_transition();
+    @include button_indicator(--border-color-warning);
+
+    @include button_typed(--border-color-warning);
+  }
+
+  &.success {
+    // @apply hover:border-[var(--border-color-success)];
+    // transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    @include button_transition();
+    @include button_indicator(--border-color-success);
+
+    @include button_typed(--border-color-success);
+  }
+
+  &.danger {
+    // @apply hover:border-[var(--border-color-danger)];
+    // transition: box-shadow 0.2s ease, border-color 0.2s ease, filter 0.2s ease,
+    //   background-color 0.2s ease;
+    @include button_transition();
+    @include button_indicator(--border-color-danger);
+
+    @include button_typed(--border-color-danger);
+  }
+
+  &.disabled {
+    @apply cursor-not-allowed;
+    @apply text-[var(--secondary-color)];
+  }
+}
+
+a.button {
+  @apply no-underline;
 }

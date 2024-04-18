@@ -4,7 +4,7 @@
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "paths": {
-      "nordstjerna": ["packages/nordstjerna"]
+      "@nordstjerna/ui": ["../packages/ui"]
     }
   }
 }

@@ -1,0 +1,15 @@
+.level-none {
+  @apply shadow-none;
+}
+
+.level-low {
+  @apply shadow-sm;
+}
+
+.level-medium {
+  @apply shadow-md;
+}
+
+.level-high {
+  @apply shadow-lg;
+}
