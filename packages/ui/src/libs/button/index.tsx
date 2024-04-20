@@ -8,9 +8,9 @@ import {
   ParentComponent,
 } from "solid-js";
 import style from "./style.module.scss";
+import { CommonProps } from "../../common/types";
 
 type CustomButtonProps = {
-  class?: string;
   type?: "success" | "danger" | "warning" | "primary";
   href?: string;
   icon?: JSXElement;
@@ -18,7 +18,7 @@ type CustomButtonProps = {
   onClick?: () => void;
 };
 
-type ButtonProps = ParentProps & CustomButtonProps;
+type ButtonProps = ParentProps & CustomButtonProps & CommonProps;
 
 const Button: ParentComponent<ButtonProps> = (props: ButtonProps) => {
   const defaults = {
@@ -34,6 +34,7 @@ const Button: ParentComponent<ButtonProps> = (props: ButtonProps) => {
       <Switch
         fallback={
           <button
+            id={props.id}
             type="button"
             class={`${style.button} glass ${style[merged.type as string]} ${
               merged.class
@@ -49,6 +50,7 @@ const Button: ParentComponent<ButtonProps> = (props: ButtonProps) => {
       >
         <Match when={merged.href}>
           <a
+            id={props.id}
             href={merged.href as string}
             target="_blank"
             class={`${style.button} glass  ${style[merged.type as string]} ${
@@ -68,6 +70,7 @@ const Button: ParentComponent<ButtonProps> = (props: ButtonProps) => {
         </Match>
         <Match when={merged.icon}>
           <button
+            id={props.id}
             type="button"
             class={`${style.button} ${style.icon} ${
               style[merged.type as string]
