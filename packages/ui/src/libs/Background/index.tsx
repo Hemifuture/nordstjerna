@@ -2,7 +2,7 @@ import { createEffect, createSignal, onMount } from "solid-js";
 import style from "./style.module.scss";
 
 const Background = () => {
-  const [width, setWidth] = createSignal(window.innerWidth);
+  const [width, setWidth] = createSignal(0);
   let bgRef: HTMLDivElement | undefined;
   let starsRef: HTMLDivElement | undefined;
   let stars2Ref: HTMLDivElement | undefined;
@@ -14,6 +14,8 @@ const Background = () => {
   });
 
   onMount(() => {
+    setWidth(window.innerWidth);
+
     window.onresize = () => {
       if (width() === window.innerWidth) return;
 

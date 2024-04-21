@@ -4,4 +4,8 @@ interface CommonProps {
   style?: string;
 }
 
+enum ColorType {
+  
+}
+
 export type { CommonProps };

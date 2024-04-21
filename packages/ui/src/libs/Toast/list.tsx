@@ -10,7 +10,7 @@ enum ToastType {
 interface ToastProps {
   id: string;
   type: keyof typeof ToastType;
-  message?: string;
+  content?: JSXElement;
   duration?: number;
   autoClose?: boolean;
 }

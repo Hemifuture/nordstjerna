@@ -1,14 +1,7 @@
 ---
 import { toAttributeString } from "astro/runtime/server/render/util.js";
 import Layout from "../layouts/Layout.astro";
-import { NButton, NToast } from "@nordstjerna/ui";
-
-const handleClick = () => {
-  console.log("Hello, world");
-  const content = "Hello";
-
-  NToast.info(content);
-};
+import Button from "../components/Button.astro";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -48,7 +41,7 @@ const handleClick = () => {
       <strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
     </p>
     <ul role="list" class="link-card-grid">
-      <NButton id="btn">Hello, world</NButton>
+      <Button />
     </ul>
   </main>
 </Layout>
@@ -116,17 +109,17 @@ const handleClick = () => {
 </style>
 
 <script>
-  import { NToast } from "@nordstjerna/ui";
-  console.log(NToast);
+  // import { NToast } from "@nordstjerna/ui";
+  // console.log(NToast);
 
-  window.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById("btn");
-    console.log(btn);
-    btn!.onclick = () => {
-      console.log("Hello, world");
-      const content = "Hello";
+  // window.addEventListener("DOMContentLoaded", () => {
+  //   const btn = document.getElementById("btn");
+  //   console.log(btn);
+  //   btn!.onclick = () => {
+  //     console.log("Hello, world");
+  //     const content = "Hello";
 
-      NToast.info(content);
-    };
-  });
+  //     NToast.info(content);
+  //   };
+  // });
 </script>

@@ -18,7 +18,11 @@ type CustomButtonProps = {
   onClick?: () => void;
 };
 
-type ButtonProps = ParentProps & CustomButtonProps & CommonProps;
+interface ButtonProps extends ParentProps, CustomButtonProps, CommonProps {
+
+}
+
+// type ButtonProps = ParentProps & CustomButtonProps & CommonProps;
 
 const Button: ParentComponent<ButtonProps> = (props: ButtonProps) => {
   const defaults = {

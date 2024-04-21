@@ -52,7 +52,7 @@ body {
 }
 
 .glass {
-  @apply backdrop-blur-sm border border-solid border-[var(--border-color)] dark:border-[var(--border-color-dark)] bg-white bg-opacity-3;
+  @apply backdrop-blur-sm border border-solid border-[var(--border-color)] dark:border-[var(--border-color-dark)] bg-white bg-opacity-35;
 
   /* transition: border-color 0.2s ease, color 0.2s ease; */
 }

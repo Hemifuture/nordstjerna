@@ -1,0 +1,31 @@
+$transition: 0.2s ease-in-out;
+
+.toast-enter-active,
+.toast-exit-active {
+  transition: opacity $transition;
+}
+
+.toast-enter-from,
+.toast-exit-to {
+  opacity: 0;
+}
+
+.toast-enter-to,
+.toast-exit-from {
+  opacity: 1;
+}
+
+.toast-mount-enter-active,
+.toast-mount-exit-active {
+  transition: opacity $transition;
+}
+
+.toast-mount-enter-from,
+.toast-mount-exit-to {
+  opacity: 0;
+}
+
+.toast-mount-enter-to,
+.toast-mount-exit-from {
+  opacity: 1;
+}
