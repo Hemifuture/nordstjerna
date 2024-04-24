@@ -1,14 +1,13 @@
 import {
   For,
   JSXElement,
-  Show,
-  createEffect,
+  // Show,
+  // createEffect,
   // createRoot,
   createUniqueId,
 } from "solid-js";
 import { TransitionGroup } from "solid-transition-group";
 import { render } from "solid-js/web";
-import { IoClose } from "solid-icons/io";
 import useList, { ToastType } from "./list";
 import Button from "../Button";
 import style from "./style.module.scss";
@@ -44,46 +43,46 @@ const toast = (
 
     document.body.appendChild(mountPoint);
 
-    const unmount = render(() => {
-      createEffect(() => {
-        if (list().length === 0) {
-          setTimeout(() => {
-            unmount();
-            mountPoint?.remove();
-          }, 500);
-        }
-      });
+    render(() => {
+      // createEffect(() => {
+      //   if (list().length === 0) {
+      //     setTimeout(() => {
+      //       unmount();
+      //       mountPoint?.remove();
+      //     }, 500);
+      //   }
+      // });
 
       return (
-        <Show when={list().length}>
-          <TransitionGroup
-            name="toast"
-            enterActiveClass={style["toast-enter-active"]}
-            exitActiveClass={style["toast-exit-active"]}
-            enterClass={style["toast-enter-from"]}
-            exitClass={style["toast-exit-from"]}
-            enterToClass={style["toast-enter-to"]}
-            exitToClass={style["toast-exit-to"]}
-          >
-            <For each={list()}>
-              {(item) => {
-                return (
-                  <div class="glass backdrop-blur-sm! px3 py2 my2 rounded-lg shadow-2xl flex gap4">
-                    {/* <Show when={item.icon}>{item.icon}</Show> */}
-                    <div>{item.content}</div>
-                    {/* <Show when={item.autoClose}> */}
-                    <Button
-                      icon={<IoClose />}
-                      onClick={() => remove(item.id)}
-                    />
-                    {/* <span class="close" onClick={() => remove(item.id)} /> */}
-                    {/* </Show> */}
-                  </div>
-                );
-              }}
-            </For>
-          </TransitionGroup>
-        </Show>
+        // <Show when={list().length}>
+        <TransitionGroup
+          name="toast"
+          enterActiveClass={style["toast-enter-active"]}
+          exitActiveClass={style["toast-exit-active"]}
+          enterClass={style["toast-enter-from"]}
+          exitClass={style["toast-exit-from"]}
+          enterToClass={style["toast-enter-to"]}
+          exitToClass={style["toast-exit-to"]}
+        >
+          <For each={list()}>
+            {(item) => {
+              return (
+                <div class="glass backdrop-blur-sm! px3 py2 my2 rounded-lg shadow-2xl flex gap4">
+                  {/* <Show when={item.icon}>{item.icon}</Show> */}
+                  <div>{item.content}</div>
+                  {/* <Show when={item.autoClose}> */}
+                  <Button
+                    icon={<div class="i-ion-close w6 h6"></div>}
+                    onClick={() => remove(item.id)}
+                  />
+                  {/* <span class="close" onClick={() => remove(item.id)} /> */}
+                  {/* </Show> */}
+                </div>
+              );
+            }}
+          </For>
+        </TransitionGroup>
+        // </Show>
       );
     }, mountPoint!);
   }

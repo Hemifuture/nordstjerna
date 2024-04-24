@@ -1,0 +1,16 @@
+.navbar {
+    // @apply fixed left-0 right-0 top-0 z-100;
+    @apply px10 py4 w-auto flex justify-between items-center;
+  
+    & ul {
+      @apply flex gap-6 justify-center items-center;
+  
+      & li {
+        @apply font-bold;
+
+        & a[aria-current="page"] {
+          @apply text-[var(--primary-color)];
+        }
+      }
+    }
+  }

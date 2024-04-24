@@ -10,7 +10,7 @@
     "allowJs": true,
     "noEmit": true,
     "strict": true,
-    "types": ["vinxi/client", "vite/client"],
+    "types": ["vite/client"],
     "isolatedModules": true,
     "paths": {
       "@nordstjerna/ui": ["../packages/ui"],

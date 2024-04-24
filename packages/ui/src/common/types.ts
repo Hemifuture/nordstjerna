@@ -5,7 +5,10 @@ interface CommonProps {
 }
 
 enum ColorType {
-  
+  success = "success",
+  danger = "danger",
+  warning = "warning",
+  info = "info",
 }
 
-export type { CommonProps };
+export type { CommonProps, ColorType };
