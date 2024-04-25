@@ -3,88 +3,59 @@ import {
   type ParentProps,
   mergeProps,
   type JSXElement,
-  Switch,
-  Match,
   ParentComponent,
 } from "solid-js";
 import style from "./style.module.scss";
 import { CommonProps } from "../../common/types";
+import { Dynamic } from "solid-js/web";
 
 type CustomButtonProps = {
   type?: "success" | "danger" | "warning" | "primary";
+  level?: "low" | "medium" | "high";
+  size?: "small" | "default" | "large";
   href?: string;
   icon?: JSXElement;
   disabled?: boolean;
   onClick?: () => void;
 };
 
-interface ButtonProps extends ParentProps, CustomButtonProps, CommonProps {
-
-}
-
-// type ButtonProps = ParentProps & CustomButtonProps & CommonProps;
+interface ButtonProps extends ParentProps, CustomButtonProps, CommonProps {}
 
 const Button: ParentComponent<ButtonProps> = (props: ButtonProps) => {
   const defaults = {
     type: "primary",
+    size: "default",
+    level: "low",
     disabled: false,
   };
 
   const merged = mergeProps(defaults, props);
-  // console.log(merged);
+
+  const Tag = merged.href ? "a" : "button";
 
   return (
     <>
-      <Switch
-        fallback={
-          <button
-            id={props.id}
-            type="button"
-            class={`${style.button} glass ${style[merged.type as string]} ${
-              merged.class
-            }`}
-            classList={{
-              [style.disabled]: merged.disabled,
-            }}
-            onclick={merged.disabled ? undefined : merged.onClick}
-          >
-            {merged.children}
-          </button>
-        }
+      <Dynamic
+        component={Tag}
+        id={props.id}
+        type="button"
+        class={`relative ${style.button} ${style[merged.type as string]} ${
+          merged.class
+        } level-${props.level}`}
+        href={merged.href}
+        target={merged.href ? "_blank" : undefined}
+        classList={{
+          [style.disabled]: merged.disabled,
+          glass: merged.icon === undefined,
+          [style.icon]: merged.icon !== undefined,
+          "px3 py1": merged.size === "small",
+          "px5 py2": merged.size === "default",
+          "px8 py3": merged.size === "large",
+        }}
+        onclick={merged.disabled ? undefined : merged.onClick}
       >
-        <Match when={merged.href}>
-          <a
-            id={props.id}
-            href={merged.href as string}
-            target="_blank"
-            class={`${style.button} glass  ${style[merged.type as string]} ${
-              merged.class
-            }`}
-            classList={{
-              [style.icon]: merged.icon !== undefined,
-              disabled: merged.disabled,
-            }}
-          >
-            <Switch>
-              <Match when={merged.icon}>{merged.icon}</Match>
-              <Match when={merged.children}>{merged.children}</Match>
-            </Switch>
-            {/* {merged.children} */}
-          </a>
-        </Match>
-        <Match when={merged.icon}>
-          <button
-            id={props.id}
-            type="button"
-            class={`${style.button} ${style.icon} ${
-              style[merged.type as string]
-            } ${merged.class}`}
-            onclick={merged.onClick}
-          >
-            {merged.icon}
-          </button>
-        </Match>
-      </Switch>
+        {merged.icon ? merged.icon : merged.children}
+      </Dynamic>
     </>
   );
 };

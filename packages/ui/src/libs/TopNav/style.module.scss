@@ -9,7 +9,7 @@
         @apply font-bold;
 
         & a[aria-current="page"] {
-          @apply text-[var(--primary-color)];
+          @apply text-[var(--color-primary)];
         }
       }
     }

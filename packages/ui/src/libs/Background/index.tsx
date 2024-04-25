@@ -45,6 +45,15 @@ const Background = () => {
 
     const spaceBig = 20;
     const countBig = Math.floor(range / spaceBig);
+    
+    const starsShadowSmall = starShadow(countSmall, false);
+    const starsShadowSmallDark = starShadow(countSmall, true);
+
+    const starsShadowMedium = starShadow(countMedium, false);
+    const starsShadowMediumDark = starShadow(countMedium, true);
+
+    const starsShadowBig = starShadow(countBig, false);
+    const starsShadowBigDark = starShadow(countBig, true);
 
     // const starsShadowSmall = [...Array(countSmall).keys()]
     //   .reduce((acc) => {
@@ -53,31 +62,30 @@ const Background = () => {
     //     )}px var(--star-color),`;
     //   }, "")
     //   .slice(0, -1);
-    const starsShadowSmall = starShadow(countSmall, false);
 
-    const starsShadowSmallDark = [...Array(countSmall).keys()]
-      .reduce((acc) => {
-        return `${acc} ${Math.floor(Math.random() * width)}px ${Math.floor(
-          Math.random() * range
-        )}px var(--star-color-dark),`;
-      }, "")
-      .slice(0, -1);
+    // const starsShadowSmallDark = [...Array(countSmall).keys()]
+    //   .reduce((acc) => {
+    //     return `${acc} ${Math.floor(Math.random() * width)}px ${Math.floor(
+    //       Math.random() * range
+    //     )}px var(--star-color-dark),`;
+    //   }, "")
+    //   .slice(0, -1);
 
-    const starsShadowMedium = [...Array(countMedium)]
-      .reduce((acc) => {
-        return `${acc} ${Math.floor(Math.random() * width)}px ${Math.floor(
-          Math.random() * range
-        )}px var(--star-color),`;
-      }, "")
-      .slice(0, -1);
+    // const starsShadowMedium = [...Array(countMedium)]
+    //   .reduce((acc) => {
+    //     return `${acc} ${Math.floor(Math.random() * width)}px ${Math.floor(
+    //       Math.random() * range
+    //     )}px var(--star-color),`;
+    //   }, "")
+    //   .slice(0, -1);
 
-    const starsShadowMediumDark = [...Array(countMedium)]
-      .reduce((acc) => {
-        return `${acc} ${Math.floor(Math.random() * width)}px ${Math.floor(
-          Math.random() * range
-        )}px var(--star-color-dark),`;
-      }, "")
-      .slice(0, -1);
+    // const starsShadowMediumDark = [...Array(countMedium)]
+    //   .reduce((acc) => {
+    //     return `${acc} ${Math.floor(Math.random() * width)}px ${Math.floor(
+    //       Math.random() * range
+    //     )}px var(--star-color-dark),`;
+    //   }, "")
+    //   .slice(0, -1);
 
     // const starsShadowBig = [...Array(countBig)]
     //   .reduce((acc) => {
@@ -87,7 +95,7 @@ const Background = () => {
     //   }, "")
     //   .slice(0, -1);
 
-    const starsShadowBig = starShadow(countBig, false);
+    // const starsShadowBig = starShadow(countBig, false);
 
     // const starsShadowBigDark = [...Array(countBig)]
     //   .reduce((acc) => {
@@ -97,7 +105,7 @@ const Background = () => {
     //   }, "")
     //   .slice(0, -1);
 
-    const starsShadowBigDark = starShadow(countBig, true);
+    // const starsShadowBigDark = starShadow(countBig, true);
 
     // Apply the box-shadow to the stars
     starsRef?.style.setProperty("--star-shadow-small", starsShadowSmall);

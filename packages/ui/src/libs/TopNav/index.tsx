@@ -27,7 +27,7 @@ const TopNav = (props: NavBarProps) => {
           </div>
         </Show>
 
-        <div class="glass rounded-full! px4 py2 shadow-lg border-[var(--border-color)] dark:border-[var(--border-color-dark)] mx-auto">
+        <div class="glass rounded-full! px4 py2 shadow-lg border-[var(--color-border)] dark:border-[var(--color-border-dark)] mx-auto">
           <ul>
             <Switch
               fallback={

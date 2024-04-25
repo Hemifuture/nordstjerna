@@ -23,30 +23,22 @@ const Nav = () => {
     app.toggleTheme();
   };
 
+  const icon = () => (app.theme === Theme.Dark ? "sunny" : "moon");
+
   const tail = (
     <>
-      <Switch>
-        <Match when={app.theme === Theme.Dark}>
-          <Button
-            class="level-high"
-            icon={<div class="i-ion:sunny w6 h6"></div>}
-            onClick={handleThemeChange}
-          />
-        </Match>
-        <Match when={app.theme === Theme.Light}>
-          <Button
-            class="level-high"
-            icon={<div class="i-ion:moon w6 h6"></div>}
-            onClick={handleThemeChange}
-          />
-        </Match>
-      </Switch>
+      <Button
+        level="high"
+        icon={<div class={`i-ion:${icon()} w6 h6`}></div>}
+        onClick={handleThemeChange}
+      />
     </>
   );
 
   return (
     <>
       <TopNav
+        logo="/logo.jpeg"
         items={items}
         itemsWrapper={(title, path) => (
           <A class="link" href={path}>

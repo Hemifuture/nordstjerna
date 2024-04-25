@@ -1,9 +1,82 @@
 @use "../../styles/mixins" as *;
 
-@mixin button_indicator($color) {
+@function shadow_level($level) {
+  @if $level == "none" {
+    @return none;
+  }
+
+  @if $level == "low" {
+    // @apply shadow-sm hover:(shadow-sm);
+    @return 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  @if $level == "medium" {
+    // @apply shadow-md hover:(shadow-md);
+    @return 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  @if $level == "high" {
+    // @apply shadow-lg hover:(shadow-lg);
+    @return 0 4px 8px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  @return none;
+}
+
+@mixin border_hover($color) {
+  &:hover {
+    border-color: var(#{$color});
+    box-shadow:
+      inset 0 0 0 1px var(#{$color}),
+      var(--un-shadow);
+    // shadow_level("high");
+  }
+
+  $duration: 0.2s;
+
+  transition:
+    box-shadow $duration ease,
+    border-color $duration ease,
+    filter $duration ease,
+    background-color $duration ease;
+}
+
+@mixin icon_hover($color) {
+  &:hover {
+    color: var(#{$color});
+  }
+
+  $duration: 0.2s;
+  transition: color $duration ease;
+}
+
+@mixin border_none() {
+  border: none;
+
+  &:hover {
+    border: none;
+    box-shadow: none;
+  }
+}
+
+@mixin indicator($color, $is_icon: false) {
   &::before {
-    @apply drop-shadow-none;
+    content: " ";
+    position: absolute;
+    left: 50%;
+    right: 0;
+    bottom: 6px;
+    @if $is_icon {
+      width: 10px;
+    } @else {
+      width: 20px;
+    }
+    transform: translate(-50%, 50%);
+    height: 3px;
+    border-radius: 100px;
     background-color: var(#{$color});
+
+    transition: filter 0.2s ease;
   }
 
   &:hover::before {
@@ -12,7 +85,7 @@
 
   // Disabled styles
   &.disabled::before {
-    background-color: var(--secondary-color);
+    background-color: var(--color-secondary);
   }
 
   &.disabled:hover::before {
@@ -20,102 +93,80 @@
   }
 }
 
-@mixin button_typed($type_var) {
-  transition: box-shadow 0.2s ease, border-color 0.2s ease, filter 0.2s ease,
-    background-color 0.2s ease;
-
-  &:hover {
-    box-shadow: inset 0 0 0 1px var(#{$type_var});
-    border-color: var(#{$type_var});
-  }
-
-  &.disabled:hover {
-    box-shadow: none;
-    border-color: var(--secondary-color);
-  }
-}
-
-@mixin button_transition() {
-  $duration: 0.2s;
-
-  transition: box-shadow $duration ease, border-color $duration ease,
-    filter $duration ease, background-color $duration ease;
-
-  &:hover::before {
-    transition: box-shadow $duration ease, border-color $duration ease,
-      filter $duration ease, background-color $duration ease;
-  }
-}
-
 .button {
-  @include border(
-    --border-color,
-    --border-color-dark,
-    --primary-color,
-    --secondary-color
-  );
-  // @apply border-[var(--border-color)];
-  @apply shadow-sm rounded-lg px4 py2 bg-white bg-opacity-5 box-border relative;
+  @include border_default();
 
-  @apply transition-border-color duration-300 ease-in-out;
+  @apply rounded-lg;
 
-  &::before {
-    content: " ";
-    position: absolute;
-    left: 50%;
-    right: 0;
-    bottom: 6px;
-    width: 20px;
-    transform: translate(-50%, 50%);
-    height: 3px;
-    border-radius: 100px;
-  }
-
-  &.icon {
-    @apply p0;
-    @apply backdrop-blur-none bg-transparent;
-    @apply hover:text-[var(--primary-color)] transition-colors;
-
-    @apply border-none shadow-none hover:(border-none shadow-none);
-
-    &:global(.level-high) {
-      @apply drop-shadow-lg;
-    }
-  }
-
-  &.warning {
-    // @apply hover:border-[var(--border-color-warning)];
-    @include button_transition();
-    @include button_indicator(--border-color-warning);
-
-    @include button_typed(--border-color-warning);
-  }
+  @include border_hover(--color-primary);
 
   &.success {
-    // @apply hover:border-[var(--border-color-success)];
-    // transition: box-shadow 0.2s ease, border-color 0.2s ease;
-    @include button_transition();
-    @include button_indicator(--border-color-success);
-
-    @include button_typed(--border-color-success);
+    $color: --color-success;
+    @include border_hover($color);
+    @include indicator($color);
   }
 
   &.danger {
-    // @apply hover:border-[var(--border-color-danger)];
-    // transition: box-shadow 0.2s ease, border-color 0.2s ease, filter 0.2s ease,
-    //   background-color 0.2s ease;
-    @include button_transition();
-    @include button_indicator(--border-color-danger);
-
-    @include button_typed(--border-color-danger);
+    $color: --color-danger;
+    @include border_hover($color);
+    @include indicator($color);
   }
 
-  &.disabled {
-    @apply cursor-not-allowed;
-    @apply text-[var(--secondary-color)];
+  &.warning {
+    $color: --color-warning;
+    @include border_hover($color);
+    @include indicator($color);
   }
 }
 
-a.button {
-  @apply no-underline;
+.button.icon {
+  @include border_none();
+  @include icon_hover(--color-primary);
+
+  box-shadow: none;
+
+  &.success {
+    $color: --color-success;
+    @include indicator($color, true);
+    @include icon_hover($color);
+  }
+
+  &.danger {
+    $color: --color-danger;
+    @include indicator($color, true);
+    @include icon_hover($color);
+  }
+
+  &.warning {
+    $color: --color-warning;
+    @include indicator($color, true);
+    @include icon_hover($color);
+  }
+
+  &:global(.level-low) {
+    @apply drop-shadow-sm;
+    box-shadow: none;
+
+    [data-theme="dark"] & {
+      @apply drop-shadow-sm drop-shadow-color-white drop-shadow-color-opacity-10;
+    }
+  }
+
+  &:global(.level-medium) {
+    @apply drop-shadow-md;
+    box-shadow: none;
+
+    [data-theme="dark"] & {
+      @apply drop-shadow-md drop-shadow-color-white drop-shadow-color-opacity-15;
+    }
+  }
+
+  &:global(.level-high) {
+    @apply drop-shadow-lg;
+    box-shadow: none;
+
+    [data-theme="dark"] & {
+      @apply drop-shadow-lg drop-shadow-color-white drop-shadow-color-opacity-15;
+    }
+  }
 }

@@ -2,17 +2,17 @@
 @import url(./_glass.scss);
 
 :root {
-  --primary-color: rgb(167 139 250);
-  --secondary-color: rgb(136, 136, 136);
-  /* --primary-color: hsla(0, 82%, 30%, 0.5); */
+  --color-primary: rgb(167 139 250);
+  --color-secondary: rgb(136, 136, 136);
+  /* --color-primary: hsla(0, 82%, 30%, 0.5); */
 
   --line: hsl(0 0% 5% / 0.25);
-  --border-color: hsla(0, 0%, 67%, 0.5);
-  --border-color-dark: hsla(0, 0%, 53%, 0.5);
+  --color-border: hsla(0, 0%, 67%, 0.5);
+  --color-border-dark: hsla(0, 0%, 53%, 0.5);
 
-  --border-color-warning: rgb(255, 177, 89);
-  --border-color-success: rgb(59, 179, 70);
-  --border-color-danger: rgb(249, 57, 32);
+  --color-warning: rgb(255, 177, 89);
+  --color-success: rgb(59, 179, 70);
+  --color-danger: rgb(249, 57, 32);
 
   --title-1-size: 2.5rem;
   --title-2-size: 2rem;
@@ -20,39 +20,39 @@
 
   --transition-duration: 0.2s;
 
-  /* @apply dark:(text-white  border-[var(--border-color-dark)]); */
+  /* @apply dark:(text-white  border-[var(--color-border-dark)]); */
 }
 
 /* *:not(svg):not(svg *) {
-  @apply text-gray-700 border-[var(--border-color)];
+  @apply text-gray-700 border-[var(--color-border)];
   font-family: "DMMono", monospace;
 }
 
 .dark *:not(svg):not(svg *) {
-  @apply text-white  border-[var(--border-color-dark)];
+  @apply text-white  border-[var(--color-border-dark)];
 } */
 
 body {
-  @apply text-gray-700 border-[var(--border-color)];
+  @apply text-gray-700 border-[var(--color-border)];
   font-family: "RobotoMono", monospace;
   font-weight: 400;
 
   @apply hscreen wfull;
 
   &[data-theme="dark"] {
-    @apply text-white  border-[var(--border-color-dark)];
+    @apply text-white  border-[var(--color-border-dark)];
   }
 }
 
 .link {
   @apply transition-colors duration-300 ease-in-out;
-  @apply hover:(text-[var(--primary-color)] underline);
+  @apply hover:(text-[var(--color-primary)] underline);
   transition: color var(--transition-duration) ease,
     text-decoration-line var(--transition-duration) ease;
 }
 
 .glass {
-  @apply backdrop-blur-sm border border-solid border-[var(--border-color)] dark:border-[var(--border-color-dark)] bg-white bg-opacity-5;
+  @apply backdrop-blur-sm border border-solid border-[var(--color-border)] dark:border-[var(--color-border-dark)] bg-white bg-opacity-5;
 
   /* transition: border-color 0.2s ease, color 0.2s ease; */
 }
@@ -65,12 +65,12 @@ body {
 .brand {
   font-family: "Anta-Regular";
   /* @apply text-6xl; */
-  color: var(--primary-color);
+  color: var(--color-primary);
 }
 
 footer {
-  @apply backdrop-blur-sm border border-solid border-t-1 border-t-[var(--border-color)] border-l-0 border-r-0 border-b-0 bg-white bg-opacity-5;
-  @apply dark:(bg-black bg-opacity-5 border-t-[var(--border-color-dark)]);
+  @apply backdrop-blur-sm border border-solid border-t-1 border-t-[var(--color-border)] border-l-0 border-r-0 border-b-0 bg-white bg-opacity-5;
+  @apply dark:(bg-black bg-opacity-5 border-t-[var(--color-border-dark)]);
 
   @apply text-[var(--secondary-color)] text-sm;
   /* transition: border-color 0.2s ease, color 0.2s ease; */
