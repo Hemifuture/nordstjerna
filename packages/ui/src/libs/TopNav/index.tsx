@@ -1,6 +1,5 @@
-import { For, JSXElement } from "solid-js";
+import { For, JSXElement, Match, Show, Switch } from "solid-js";
 import style from "./style.module.scss";
-import { A } from "@solidjs/router";
 
 interface NavItem {
   title: string;
@@ -11,34 +10,49 @@ interface NavBarProps {
   logo?: string;
   items: NavItem[];
   tail?: JSXElement;
+  itemsWrapper?: (title: string, path: string) => JSXElement;
 }
 
 const TopNav = (props: NavBarProps) => {
   return (
     <>
       <nav class={style.navbar}>
-        <div>
-          <img
-            class="w-10 h-10 rounded-full! level-high"
-            src={props.logo}
-            alt="logo"
-          />
-        </div>
+        <Show when={props.logo}>
+          <div>
+            <img
+              class="w-10 h-10 rounded-full! level-high"
+              src={props.logo}
+              alt="logo"
+            />
+          </div>
+        </Show>
 
-        <div class="glass rounded-full! px4 py2 shadow-lg border-[var(--border-color)] dark:border-[var(--border-color-dark)]">
+        <div class="glass rounded-full! px4 py2 shadow-lg border-[var(--border-color)] dark:border-[var(--border-color-dark)] mx-auto">
           <ul>
-            <For each={props.items}>
-              {(item) => (
-                <li>
-                  <A class="link" href={item.path}>
-                    {item.title}
-                  </A>
-                </li>
-              )}
-            </For>
+            <Switch
+              fallback={
+                <For each={props.items}>
+                  {(item) => (
+                    <li>
+                      <a class="link" href={item.path}>
+                        {item.title}
+                      </a>
+                    </li>
+                  )}
+                </For>
+              }
+            >
+              <Match when={props.itemsWrapper}>
+                <For each={props.items}>
+                  {(item) => (
+                    <li>{props.itemsWrapper!(item.title, item.path)}</li>
+                  )}
+                </For>
+              </Match>
+            </Switch>
           </ul>
         </div>
-        <div class="actions">{props.tail}</div>
+        <Show when={props.tail}>{props.tail}</Show>
       </nav>
     </>
   );

@@ -1,14 +1,31 @@
-import type { Component } from "solid-js";
+import { createEffect, onMount, type Component } from "solid-js";
 
-// import { NBackground, NButton } from "@nordstjerna/ui";
+import { Route, Router } from "@solidjs/router";
+import Nav from "./components/Nav";
+import HomeView from "./views/home";
+import RootLayout from "./layouts/Root";
+import AboutView from "./views/about";
+import { Theme, app } from "./models/app";
 
 const App: Component = () => {
+  createEffect(() => {
+    if (app.theme === Theme.Dark) {
+      // document.body.classList.add("dark");
+      document.body.dataset.theme = "dark";
+    } else {
+      // document.body.classList.remove("dark");
+      document.body.dataset.theme = "light";
+    }
+  });
+
   return (
     <>
-      <div class="i-ion:close w6 h6"></div>
-      <h1 class="text-2xl">Hello</h1>
-      {/* <NBackground /> */}
-      {/* <NButton>Click</NButton> */}
+      <Router>
+        <Route path="/" component={RootLayout}>
+          <Route path="/" component={HomeView} />
+          <Route path="/about" component={AboutView} />
+        </Route>
+      </Router>
     </>
   );
 };
