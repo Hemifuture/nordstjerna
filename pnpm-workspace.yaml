@@ -1,5 +1,3 @@
 packages:
   - "packages/*"
-  - "docs"
-  - "docs-start"
-  - "docs-solid"
+  - "example"

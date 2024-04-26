@@ -1,35 +1,35 @@
-import { Button } from "@nordstjerna/ui";
+import { NButton } from "~/nordstjerna";
 
 const HomeView = () => {
   return (
     <>
       <div class="mx-auto mt10">
         <h1 class="text-[var(--color-primary)] text-xl mb8 text-center">
-          Buttons
+          NButtons
         </h1>
         <section>
           <h2 class="text-[var(--color-primary)] text-lg mt4 mb4 text-center">
             Level
           </h2>
           <div class="flex gap2 justify-center items-center">
-            <Button>None</Button>
-            <Button level="low">Low</Button>
-            <Button level="medium">Medium</Button>
-            <Button level="high">High</Button>
+            <NButton>None</NButton>
+            <NButton level="low">Low</NButton>
+            <NButton level="medium">Medium</NButton>
+            <NButton level="high">High</NButton>
           </div>
           <div class="flex gap2 justify-center items-center mt4">
-            <Button
+            <NButton
               level="low"
               icon={<div class="i-ion:information-circle w8 h8"></div>}
-            ></Button>
-            <Button
+            ></NButton>
+            <NButton
               level="medium"
               icon={<div class="i-ion:information-circle w8 h8"></div>}
-            ></Button>
-            <Button
+            ></NButton>
+            <NButton
               level="high"
               icon={<div class="i-ion:information-circle w8 h8"></div>}
-            ></Button>
+            ></NButton>
           </div>
         </section>
         <section class="mt8">
@@ -37,9 +37,9 @@ const HomeView = () => {
             Size
           </h2>
           <div class="flex gap2 justify-center items-center">
-            <Button size="small">Small</Button>
-            <Button size="default">Default</Button>
-            <Button size="large">Large</Button>
+            <NButton size="small">Small</NButton>
+            <NButton size="default">Default</NButton>
+            <NButton size="large">Large</NButton>
           </div>
         </section>
         <section class="mt8">
@@ -47,35 +47,35 @@ const HomeView = () => {
             Type
           </h2>
           <div class="flex gap2 justify-center items-center">
-            <Button>Normal</Button>
-            <Button type="success">Success</Button>
-            <Button type="warning">Warning</Button>
-            <Button type="danger">Danger</Button>
-            <Button
+            <NButton>Normal</NButton>
+            <NButton type="success">Success</NButton>
+            <NButton type="warning">Warning</NButton>
+            <NButton type="danger">Danger</NButton>
+            <NButton
               level="high"
               icon={<div class="i-ion:camera w8 h8"></div>}
-            ></Button>
-            <Button>
+            ></NButton>
+            <NButton>
               <div class="i-ion:information-circle w8 h8"></div>
-            </Button>
-            <Button href="https://baidu.com">Link</Button>
+            </NButton>
+            <NButton href="https://baidu.com">Link</NButton>
           </div>
           <div class="flex gap2 justify-center items-center mt4">
-            <Button
+            <NButton
               icon={<div class="i-ion:information-circle w8 h8"></div>}
-            ></Button>
-            <Button
+            ></NButton>
+            <NButton
               icon={<div class="i-ion:information-circle w8 h8"></div>}
               type="success"
-            ></Button>
-            <Button
+            ></NButton>
+            <NButton
               icon={<div class="i-ion:information-circle w8 h8"></div>}
               type="warning"
-            ></Button>
-            <Button
+            ></NButton>
+            <NButton
               icon={<div class="i-ion:information-circle w8 h8"></div>}
               type="danger"
-            ></Button>
+            ></NButton>
           </div>
         </section>
       </div>
