@@ -1,16 +1,50 @@
-.navbar {
-    // @apply fixed left-0 right-0 top-0 z-100;
-    @apply px10 py4 w-auto flex justify-between items-center;
-  
-    & ul {
-      @apply flex gap-6 justify-center items-center;
-  
-      & li {
-        @apply font-bold;
+@mixin navbar_common() {
+  @apply w-auto flex justify-between items-center;
 
-        & a[aria-current="page"] {
-          @apply text-[var(--color-primary)];
-        }
+  & ul {
+    @apply flex gap-6 justify-center items-center;
+
+    & li {
+      @apply font-bold;
+
+      & a[aria-current="page"] {
+        @apply text-[var(--color-primary)];
       }
     }
   }
+}
+
+// .navbar {
+//   // @apply fixed left-0 right-0 top-0 z-100;
+//   @apply px10 py4 w-auto flex justify-between items-center;
+
+//   & ul {
+//     @apply flex gap-6 justify-center items-center;
+
+//     & li {
+//       @apply font-bold;
+
+//       & a[aria-current="page"] {
+//         @apply text-[var(--color-primary)];
+//       }
+//     }
+//   }
+// }
+
+.navbar,
+.navbar-full {
+  @include navbar_common();
+}
+
+.navbar {
+  @apply px10 py4;
+}
+
+.actions {
+  @apply flex items-center;
+}
+
+.navbar-full {
+  @apply px10 py3;
+  @apply border-0 border-b-1;
+}

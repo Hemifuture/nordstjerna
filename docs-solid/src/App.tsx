@@ -3,9 +3,10 @@ import { createEffect, onMount, type Component } from "solid-js";
 import { Route, Router } from "@solidjs/router";
 import Nav from "./components/Nav";
 import HomeView from "./views/home";
-import RootLayout from "./layouts/Root";
+import RootLayout from "../Root";
 import AboutView from "./views/about";
 import { Theme, app } from "./models/app";
+import DemoLayout from "./layouts/Demo";
 
 const App: Component = () => {
   createEffect(() => {
@@ -22,7 +23,9 @@ const App: Component = () => {
     <>
       <Router>
         <Route path="/" component={RootLayout}>
-          <Route path="/" component={HomeView} />
+          <Route path="/" component={DemoLayout}>
+            <Route path="/" component={HomeView} />
+          </Route>
           <Route path="/about" component={AboutView} />
         </Route>
       </Router>

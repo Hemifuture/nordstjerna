@@ -5,44 +5,35 @@ import {
   // createEffect,
   // createRoot,
   createUniqueId,
+  mergeProps,
 } from "solid-js";
 import { TransitionGroup } from "solid-transition-group";
 import { render } from "solid-js/web";
-import useList, { ToastType } from "./list";
-import Button from "../Button";
+import useList from "./data";
 import style from "./style.module.scss";
+import { ColorType } from "../../common/types";
+import ToastItem from "./ToastItem";
 
 const mountId = "n-toast-mount";
 
-const toast = (
-  type: keyof typeof ToastType,
-  content: JSXElement,
-  duration = 3000,
-  autoClose = true
-) => {
-  const id = createUniqueId();
-  const { list, add, remove } = useList();
-  let mountPoint = document.getElementById(mountId);
+interface ToastParams {
+  duration?: number;
+  autoClose?: boolean;
+}
 
-  add({ id, type, content, duration, autoClose });
+const { list, add, remove } = useList();
+let mountPoint = document.getElementById(mountId);
 
-  console.log(list());
+if (!mountPoint) {
+  console.log("mountPoint not found");
+  mountPoint = document.createElement("div");
+  mountPoint.id = mountId;
+  // mountPoint.className = "fixed top-4 right-4 z-50 flex flex-col items-end";
+  mountPoint.className = style["mount-point"];
 
-  if (duration && duration > 0 && autoClose) {
-    const timer = setTimeout(() => {
-      remove(id);
-      clearTimeout(timer);
-    }, duration);
-  }
+  document.body.appendChild(mountPoint);
 
-  if (!mountPoint) {
-    console.log("mountPoint not found");
-    mountPoint = document.createElement("div");
-    mountPoint.id = mountId;
-    mountPoint.className = "fixed top-4 right-4 z-50 flex flex-col items-end";
-
-    document.body.appendChild(mountPoint);
-
+  setTimeout(() => {
     render(() => {
       // createEffect(() => {
       //   if (list().length === 0) {
@@ -66,25 +57,41 @@ const toast = (
         >
           <For each={list()}>
             {(item) => {
-              return (
-                <div class="glass backdrop-blur-sm! px3 py2 my2 rounded-lg shadow-2xl flex gap4">
-                  {/* <Show when={item.icon}>{item.icon}</Show> */}
-                  <div>{item.content}</div>
-                  {/* <Show when={item.autoClose}> */}
-                  <Button
-                    icon={<div class="i-ion-close w6 h6"></div>}
-                    onClick={() => remove(item.id)}
-                  />
-                  {/* <span class="close" onClick={() => remove(item.id)} /> */}
-                  {/* </Show> */}
-                </div>
-              );
+              return <ToastItem item={item} />;
             }}
           </For>
         </TransitionGroup>
         // </Show>
       );
     }, mountPoint!);
+  }, 500);
+}
+
+const toast = (
+  type: keyof typeof ColorType,
+  content: JSXElement,
+  props?: ToastParams
+) => {
+  const defaultProps = { duration: 3000, autoClose: true };
+  const { duration, autoClose } = mergeProps(defaultProps, props);
+
+  const id = createUniqueId();
+  // const { list, add, remove } = useList();
+  // let mountPoint = document.getElementById(mountId);
+
+  add({
+    id,
+    type,
+    content,
+    duration,
+    autoClose,
+  });
+
+  if (duration && duration > 0 && autoClose) {
+    const timer = setTimeout(() => {
+      remove(id);
+      clearTimeout(timer);
+    }, duration);
   }
 };
 

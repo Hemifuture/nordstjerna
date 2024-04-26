@@ -12,6 +12,7 @@ const HomeView = () => {
             Level
           </h2>
           <div class="flex gap2 justify-center items-center">
+            <Button>None</Button>
             <Button level="low">Low</Button>
             <Button level="medium">Medium</Button>
             <Button level="high">High</Button>

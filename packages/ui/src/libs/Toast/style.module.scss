@@ -1,8 +1,28 @@
 $transition: 0.2s ease-in-out;
 
+@mixin indicator($color) {
+  &::before {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    bottom: 0;
+    left: 6px;
+    width: 3px;
+    height: 15px;
+    transform: translate(50%, -50%);
+    border-radius: 100px;
+    background-color: var(#{$color});
+  }
+}
+
+.mount-point {
+  @apply fixed top-4 right-4 z-50 flex flex-col items-end;
+}
+
 .toast-enter-active,
 .toast-exit-active {
-  transition: opacity $transition;
+  transition:
+    opacity $transition;
 }
 
 .toast-enter-from,
@@ -17,7 +37,9 @@ $transition: 0.2s ease-in-out;
 
 .toast-mount-enter-active,
 .toast-mount-exit-active {
-  transition: opacity $transition;
+  transition:
+    opacity $transition,
+    transform $transition;
 }
 
 .toast-mount-enter-from,
@@ -28,4 +50,20 @@ $transition: 0.2s ease-in-out;
 .toast-mount-enter-to,
 .toast-mount-exit-from {
   opacity: 1;
+}
+
+.toast {
+  @apply relative pl4 pr2 py2 my2 rounded-lg shadow-lg flex gap2 items-start justify-between;
+
+  &.success {
+    @include indicator(--color-success);
+  }
+
+  &.warning {
+    @include indicator(--color-warning);
+  }
+
+  &.danger {
+    @include indicator(--color-danger);
+  }
 }

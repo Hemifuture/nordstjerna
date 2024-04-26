@@ -1,4 +1,4 @@
-import { Background } from "@nordstjerna/ui";
+import { Background, Card } from "@nordstjerna/ui";
 import { ParentProps } from "solid-js";
 import Nav from "~/components/Nav";
 
@@ -8,7 +8,7 @@ const RootLayout = (props: ParentProps) => {
       <Background />
       <div class="flex flex-col w-screen h-screen">
         <Nav />
-        {props.children}
+        <div class="flex-1">{props.children}</div>
       </div>
     </>
   );

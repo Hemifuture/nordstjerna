@@ -8,10 +8,12 @@ const Nav = () => {
     {
       title: "Home",
       path: "/",
+      icon: <div class="i-ion:home w4 h4"></div>,
     },
     {
       title: "About",
       path: "/about",
+      icon: <div class="i-ion:information-circle w5 h5"></div>,
     },
     {
       title: "Contact",
@@ -37,11 +39,24 @@ const Nav = () => {
 
   return (
     <>
-      <TopNav
+      {/* <TopNav.Pill
         logo="/logo.jpeg"
         items={items}
-        itemsWrapper={(title, path) => (
-          <A class="link" href={path}>
+        itemsWrapper={(title, path, icon) => (
+          <A class="link flex gap1 items-center" href={path}>
+            {icon}
+            {title}
+          </A>
+        )}
+        tail={tail}
+      /> */}
+      <TopNav.Block
+        level="low"
+        logo="/logo.jpeg"
+        items={items}
+        itemsWrapper={(title, path, icon) => (
+          <A class="link flex gap1 items-center" href={path}>
+            <span>{icon}</span>
             {title}
           </A>
         )}

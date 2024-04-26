@@ -1,0 +1,7 @@
+.sidenav {
+  @apply border-r-1 border-0 border-solid border-[var(--color-border)] py4 px8 w64 overflow-scroll;
+
+  [data-theme="dark"] & {
+    @apply border-[var(--color-border-dark)];
+  }
+}

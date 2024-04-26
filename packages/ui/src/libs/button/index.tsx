@@ -48,9 +48,9 @@ const Button: ParentComponent<ButtonProps> = (props: ButtonProps) => {
           [style.disabled]: merged.disabled,
           glass: merged.icon === undefined,
           [style.icon]: merged.icon !== undefined,
-          "px3 py1": merged.size === "small",
-          "px5 py2": merged.size === "default",
-          "px8 py3": merged.size === "large",
+          "px3 py1": merged.size === "small" && merged.icon === undefined,
+          "px5 py2": merged.size === "default" && merged.icon === undefined,
+          "px8 py3": merged.size === "large" && merged.icon === undefined,
         }}
         onclick={merged.disabled ? undefined : merged.onClick}
       >
