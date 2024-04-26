@@ -9,15 +9,7 @@
         "^build"
       ]
     },
-    "ui": {
-      "dependsOn": [
-        "^ui"
-      ]
-    },
     "dev": {
-      "dependsOn": [
-        "ui"
-      ],
       "cache": false
     }
   }

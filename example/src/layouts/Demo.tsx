@@ -1,14 +1,14 @@
-import { Card, Footer, SideNav } from "@nordstjerna/ui";
+import { NCard, NFooter, NSideNav } from "~/nordstjerna";
 import { ParentProps } from "solid-js";
 
 const DemoLayout = (props: ParentProps) => {
   return (
     <>
       <div class="flex hfull">
-        <SideNav>alskgjd</SideNav>
+        <NSideNav>alskgjd</NSideNav>
         <div class="flex-1 flex flex-col overflow-scroll">
           <div class="flex-1">{props.children}</div>
-          <Footer>
+          <NFooter>
             <div class="px20 flex justify-between items-center">
               <div class="flex flex-col justify-center items-center">
                 <p>Copyright © 2024 | Stjernestøv</p>
@@ -63,7 +63,7 @@ const DemoLayout = (props: ParentProps) => {
             </a> */}
               </div>
             </div>
-          </Footer>
+          </NFooter>
         </div>
       </div>
     </>
