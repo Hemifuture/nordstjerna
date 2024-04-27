@@ -6,12 +6,13 @@
   "main": "dist/nordstjerna.mjs",
   "module": "dist/nordstjerna.umd.js",
   "exports": {
-    ".": "./src/index.tsx"
+    ".": {
+      "import": "./dist/nordstjerna.mjs",
+      "require": "./dist/nordstjerna.umd.js"
+    }
   },
   "homepage": "https://github.com/Hemifuture/nordstjerna",
   "scripts": {
-    "clean": "farm clean",
-    "ui": "vite build",
     "build": "vite build"
   },
   "keywords": [
@@ -19,8 +20,6 @@
   ],
   "license": "ISC",
   "devDependencies": {
-    "@farmfe/cli": "^1.0.0",
-    "@farmfe/core": "^1.0.16",
     "@iconify-json/ion": "^1.1.17",
     "@types/node": "^20.12.5",
     "@types/node-sass": "^4.11.7",

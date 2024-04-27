@@ -4,16 +4,14 @@
   "type": "module",
   "description": "",
   "scripts": {
-    "start": "vite",
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview"
+    "dev": "vite"
   },
   "license": "MIT",
   "devDependencies": {
     "@iconify-json/fa6-brands": "^1.1.19",
     "@iconify-json/fa6-solid": "^1.1.21",
     "@iconify-json/ion": "^1.1.17",
+    "@types/node": "^20.12.5",
     "@unocss/preset-icons": "^0.59.4",
     "@unocss/preset-uno": "^0.59.4",
     "@unocss/transformer-directives": "^0.59.4",

@@ -1,4 +1,4 @@
-import { Button, TopNav, NavItem } from "@nordstjerna/ui";
+import { NButton, NTopNav, NavItem } from "~/nordstjerna";
 import { A } from "@solidjs/router";
 import { Switch, Match } from "solid-js";
 import { Theme, app } from "~/models/app";
@@ -29,7 +29,7 @@ const Nav = () => {
 
   const tail = (
     <>
-      <Button
+      <NButton
         level="high"
         icon={<div class={`i-ion:${icon()} w6 h6`}></div>}
         onClick={handleThemeChange}
@@ -50,7 +50,7 @@ const Nav = () => {
         )}
         tail={tail}
       /> */}
-      <TopNav.Block
+      <NTopNav.Block
         level="low"
         logo="/logo.jpeg"
         items={items}

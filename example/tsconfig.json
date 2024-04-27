@@ -15,6 +15,7 @@
     "paths": {
       "@nordstjerna/ui": ["../packages/ui"],
       "~/*": ["./src/*"]
-    }
-  }
+    },
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.js"],
 }
