@@ -16,7 +16,7 @@ import ToastItem from "./ToastItem";
 
 const mountId = "n-toast-mount";
 
-interface ToastParams {
+export interface ToastParams {
   duration?: number;
   autoClose?: boolean;
 }

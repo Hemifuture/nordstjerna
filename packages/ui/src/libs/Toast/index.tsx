@@ -1,4 +1,4 @@
-import ToastItem from "./ToastItem";
+import ToastItem, { ToastItemProps } from "./ToastItem";
 import toast from "./toast";
 
 const Toast = {
@@ -10,3 +10,4 @@ const Toast = {
 };
 
 export default Toast;
+export type { ToastItemProps };

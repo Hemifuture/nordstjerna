@@ -6,7 +6,7 @@ const DemoLayout = (props: ParentProps) => {
     <>
       <div class="flex hfull">
         <SideNav>alskgjd</SideNav>
-        <div class="flex-1 flex flex-col overflow-scroll">
+        <div class="flex-1 flex flex-col overflow-auto">
           <div class="flex-1">{props.children}</div>
           <Footer>
             <div class="px20 flex justify-between items-center">
@@ -43,24 +43,15 @@ const DemoLayout = (props: ParentProps) => {
                 </a>
               </div>
               <div class="flex gap-6">
-                {/* <a href="/"> */}
-                <div class="i-fa6-brands:github w6 h6 text-amber"></div>
-                {/* </a> */}
                 <a href="/">
+                  <div class="i-fa6-brands:github w6 h6 text-amber"></div>
+                </a>
+                <a href="/" class="link">
                   <div class="i-fa6-brands:bilibili w6 h6"></div>
                 </a>
                 <a href="/">
                   <div class="i-fa6-brands:x-twitter w6 h6"></div>
                 </a>
-                {/* <a href="/">
-              <FaBrandsGithub class="w6 h6" />
-            </a>
-            <a href="/">
-              <FaBrandsBilibili class="w6 h6" />
-            </a>
-            <a href="/">
-              <FaBrandsTwitter class="w6 h6" />
-            </a> */}
               </div>
             </div>
           </Footer>

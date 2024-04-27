@@ -10,7 +10,7 @@ import "./styles/global.scss";
 
 export { default as Button } from "./libs/Button";
 export { default as Background } from "./libs/Background";
-export { default as Toast } from "./libs/Toast";
+export { default as Toast, type ToastItemProps } from "./libs/Toast";
 export {
   default as TopNav,
   type NavItem,

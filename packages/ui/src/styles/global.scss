@@ -1,4 +1,4 @@
-@import url(./font.scss);
+// @import url(./font.scss);
 @import url(./_glass.scss);
 
 :root {
@@ -34,7 +34,7 @@
 
 body {
   @apply text-gray-700 border-[var(--color-border)];
-  font-family: "RobotoMono", monospace;
+  // font-family: "RobotoMono", monospace;
   font-weight: 400;
 
   @apply hscreen wfull;

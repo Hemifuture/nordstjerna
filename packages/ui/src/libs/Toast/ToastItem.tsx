@@ -24,3 +24,4 @@ const ToastItem = ({ item }: ToastItemProps) => {
 };
 
 export default ToastItem;
+export type { ToastItemProps };

@@ -6,7 +6,7 @@ const RootLayout = (props: ParentProps) => {
   return (
     <>
       <Background />
-      <div class="flex flex-col w-screen h-screen">
+      <div class="flex flex-col wfull hfull">
         <Nav />
         <div class="flex-1">{props.children}</div>
       </div>

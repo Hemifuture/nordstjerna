@@ -8,9 +8,9 @@ interface SideNavProps extends ParentProps {
 const SideNav = (props: SideNavProps) => {
   return (
     <>
-      <div class={`glass hfull level-${props.level} ${style.sidenav}`}>
+      <aside class={`glass hfull level-${props.level} ${style.sidenav}`}>
         {props.children}
-      </div>
+      </aside>
     </>
   );
 };

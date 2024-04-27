@@ -3,7 +3,7 @@ import { createEffect, onMount, type Component } from "solid-js";
 import { Route, Router } from "@solidjs/router";
 import Nav from "./components/Nav";
 import HomeView from "./views/home";
-import RootLayout from "../Root";
+import RootLayout from "./layouts/Root";
 import AboutView from "./views/about";
 import { Theme, app } from "./models/app";
 import DemoLayout from "./layouts/Demo";
