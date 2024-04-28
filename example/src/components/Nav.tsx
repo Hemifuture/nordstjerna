@@ -1,7 +1,7 @@
 import { NButton, NTopNav, NavItem } from "~/nordstjerna";
 import { A } from "@solidjs/router";
-import { Switch, Match } from "solid-js";
 import { Theme, app } from "~/models/app";
+import { Match, Switch } from "solid-js";
 
 const Nav = () => {
   const items: NavItem[] = [
@@ -29,11 +29,20 @@ const Nav = () => {
 
   const tail = (
     <>
-      <NButton
-        level="high"
-        icon={<div class={`i-ion:${icon()} w6 h6`}></div>}
-        onClick={handleThemeChange}
-      />
+      <Switch>
+        <Match when={app.theme === Theme.Dark}>
+          <NButton
+            onClick={handleThemeChange}
+            icon={<div class="i-ion:moon w6 h6"></div>}
+          />
+        </Match>
+        <Match when={app.theme === Theme.Light}>
+          <NButton
+            onClick={handleThemeChange}
+            icon={<div class="i-ion:sunny w6 h6"></div>}
+          />
+        </Match>
+      </Switch>
     </>
   );
 
