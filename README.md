@@ -1,4 +1,4 @@
-![nordstjerna](https://assets.solidjs.com/banner?type=nordstjerna&background=tiles&project=%20)
+![nordstjerna](https://assets.solidjs.com/banner?type=Nordstjerna&background=tiles&project=%20)
 
 # nordstjerna
 
