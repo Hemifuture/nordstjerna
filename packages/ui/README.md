@@ -1,3 +1,5 @@
+![nordstjerna](https://assets.solidjs.com/banner?type=Nordstjerna&background=tiles&project=UI)
+
 # Farm + Vue
 
 This template should help you start developing using Vue and TypeScript in Farm.
