@@ -38,7 +38,7 @@ const DemoLayout = (props: ParentProps) => {
                 </a>
               </div>
               <div class="flex gap-6">
-                <a href="/" class="link">
+                <a href="https://github.com/Hemifuture/nordstjerna" class="link">
                   <div class="i-fa6-brands:github w6 h6"></div>
                 </a>
                 <a href="/" class="link">
