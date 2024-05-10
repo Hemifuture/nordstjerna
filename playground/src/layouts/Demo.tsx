@@ -34,11 +34,6 @@ const DemoLayout = (props: ParentProps) => {
                   target="_blank"
                   class="flex items-center gap-1 link"
                 >
-                  <img
-                    src="/gaba.png"
-                    alt="gaba"
-                    class="w-4 h-4 inline-block"
-                  />
                   某公网安备xxxxxxxxxxxxxx
                 </a>
               </div>
