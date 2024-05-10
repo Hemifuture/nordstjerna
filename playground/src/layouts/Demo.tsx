@@ -34,16 +34,11 @@ const DemoLayout = (props: ParentProps) => {
                   target="_blank"
                   class="flex items-center gap-1 link"
                 >
-                  <img
-                    src="/gaba.png"
-                    alt="gaba"
-                    class="w-4 h-4 inline-block"
-                  />
                   某公网安备xxxxxxxxxxxxxx
                 </a>
               </div>
               <div class="flex gap-6">
-                <a href="/" class="link">
+                <a href="https://github.com/Hemifuture/nordstjerna" class="link">
                   <div class="i-fa6-brands:github w6 h6"></div>
                 </a>
                 <a href="/" class="link">
