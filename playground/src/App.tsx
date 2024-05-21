@@ -25,8 +25,8 @@ const App: Component = () => {
         <Route path="/" component={RootLayout}>
           <Route path="/" component={DemoLayout}>
             <Route path="/" component={HomeView} />
+            <Route path="/about" component={AboutView} />
           </Route>
-          <Route path="/about" component={AboutView} />
         </Route>
       </Router>
     </>

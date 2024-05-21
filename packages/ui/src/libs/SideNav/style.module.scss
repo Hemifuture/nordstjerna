@@ -1,15 +1,28 @@
 $transition: 0.2s ease 0ms;
 
 .sidenav {
-  @apply border-r-1 border-0 border-solid border-[var(--color-border)] py4 px8 overflow-auto hfull;
+  @apply border-r-1 border-0 border-solid border-[var(--color-border)] py4 px4 overflow-auto hfull;
 
   [data-theme="dark"] & {
     @apply border-[var(--color-border-dark)];
   }
+
+  & a[aria-current="page"] {
+    @apply text-[var(--color-primary)];
+  }
 }
 
 .subnav-panel {
-  @apply flex flex-col pl6;
+  @apply flex flex-col;
+}
+
+.subnav-item {
+  @apply flex gap-0 items-center px2 py2 select-none;
+}
+
+.subnav-item.active,
+.subnav-item .active {
+  @apply text-[var(--color-primary)];
 }
 
 .arrow-rotate-0 {
@@ -30,7 +43,7 @@ $transition: 0.2s ease 0ms;
 .subnav-enter-to,
 .subnav-exit-from {
   opacity: 1;
-  max-height: 500px;
+  max-height: 300px;
 }
 
 .subnav-enter-active,

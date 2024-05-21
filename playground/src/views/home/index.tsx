@@ -1,3 +1,4 @@
+import { A } from "@solidjs/router";
 import { NButton } from "~/nordstjerna";
 
 const HomeView = () => {
@@ -7,6 +8,9 @@ const HomeView = () => {
         <h1 class="text-[var(--color-primary)] text-xl mb8 text-center">
           NButtons
         </h1>
+        <A href="/" class="link">
+          <div>lkasdjgf</div>
+        </A>
         <section>
           <h2 class="text-[var(--color-primary)] text-lg mt4 mb4 text-center">
             Level
