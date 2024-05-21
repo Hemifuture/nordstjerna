@@ -3,7 +3,7 @@ import { A } from "@solidjs/router";
 import { Theme, app } from "~/models/app";
 import { Match, Switch } from "solid-js";
 
-const Nav = () => {
+const TopNav = () => {
   const items: NavItem[] = [
     {
       title: "Home",
@@ -33,13 +33,13 @@ const Nav = () => {
         <Match when={app.theme === Theme.Dark}>
           <NButton
             onClick={handleThemeChange}
-            icon={<div class="i-ion:moon w6 h6"></div>}
+            icon={<div class="i-ion:sunny w6 h6"></div>}
           />
         </Match>
         <Match when={app.theme === Theme.Light}>
           <NButton
             onClick={handleThemeChange}
-            icon={<div class="i-ion:sunny w6 h6"></div>}
+            icon={<div class="i-ion:moon w6 h6"></div>}
           />
         </Match>
       </Switch>
@@ -75,4 +75,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default TopNav;

@@ -46,7 +46,7 @@ body {
 
 .link {
   @apply transition-colors duration-300 ease-in-out;
-  @apply hover:(text-[var(--color-primary)] underline);
+  @apply hover:(text-[var(--color-primary)] underline cursor-pointer);
   transition: color var(--transition-duration) ease,
     text-decoration-line var(--transition-duration) ease;
 }

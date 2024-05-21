@@ -1,11 +1,12 @@
 import { NCard, NFooter, NSideNav } from "~/nordstjerna";
 import { ParentProps } from "solid-js";
+import SideNav from "~/components/SideNav";
 
 const DemoLayout = (props: ParentProps) => {
   return (
     <>
       <div class="flex hfull">
-        <NSideNav>alskgjd</NSideNav>
+        <SideNav />
         <div class="flex-1 flex flex-col overflow-auto">
           <div class="flex-1">{props.children}</div>
           <NFooter>
@@ -38,7 +39,10 @@ const DemoLayout = (props: ParentProps) => {
                 </a>
               </div>
               <div class="flex gap-6">
-                <a href="https://github.com/Hemifuture/nordstjerna" class="link">
+                <a
+                  href="https://github.com/Hemifuture/nordstjerna"
+                  class="link"
+                >
                   <div class="i-fa6-brands:github w6 h6"></div>
                 </a>
                 <a href="/" class="link">

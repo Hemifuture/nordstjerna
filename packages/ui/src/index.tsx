@@ -16,4 +16,6 @@ export { default as NCard } from "./libs/Card";
 export { default as NSideNav } from "./libs/SideNav";
 export { default as NFooter } from "./libs/Footer";
 
+// Types
 export { type ColorType } from "./common/types";
+export type { SideNavListItem } from "./libs/SideNav";

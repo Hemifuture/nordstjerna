@@ -1,7 +1,39 @@
+$transition: 0.2s ease 0ms;
+
 .sidenav {
-  @apply border-r-1 border-0 border-solid border-[var(--color-border)] py4 px8 w64 overflow-auto;
+  @apply border-r-1 border-0 border-solid border-[var(--color-border)] py4 px8 overflow-auto hfull;
 
   [data-theme="dark"] & {
     @apply border-[var(--color-border-dark)];
   }
+}
+
+.subnav-panel {
+  @apply flex flex-col pl6;
+}
+
+.arrow-rotate-0 {
+  transition: transform $transition;
+  transform: rotate(0deg);
+}
+.arrow-rotate-180 {
+  transition: transform $transition;
+  transform: rotate(-180deg);
+}
+
+.subnav-enter-from,
+.subnav-exit-to {
+  opacity: 0;
+  max-height: 0;
+}
+
+.subnav-enter-to,
+.subnav-exit-from {
+  opacity: 1;
+  max-height: 500px;
+}
+
+.subnav-enter-active,
+.subnav-exit-active {
+  transition: max-height $transition, opacity $transition;
 }
