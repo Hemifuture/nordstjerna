@@ -7,9 +7,9 @@ $transition: 0.2s ease 0ms;
     @apply border-[var(--color-border-dark)];
   }
 
-  & a[aria-current="page"] {
-    @apply text-[var(--color-primary)];
-  }
+  // & a[aria-current="page"] {
+  //   @apply text-[var(--color-primary)];
+  // }
 }
 
 .subnav-panel {

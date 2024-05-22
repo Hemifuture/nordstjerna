@@ -1,15 +1,24 @@
 @mixin navbar_common() {
-  @apply w-auto flex justify-between items-center;
+  width: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // @apply w-auto flex justify-between items-center;
 
   & ul {
-    @apply flex gap-6 justify-center items-center;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    // @apply flex gap-6 justify-center items-center;
 
     & li {
-      @apply font-bold;
+      font-weight: 700;
+      // @apply font-bold;
 
-      & a[aria-current="page"] {
-        @apply text-[var(--color-primary)];
-      }
+      // & a[aria-current="page"] {
+      //   @apply text-[var(--color-primary)];
+      // }
     }
   }
 }
