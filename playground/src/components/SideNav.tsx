@@ -46,8 +46,19 @@ const SideNav = () => {
       title: "Team",
       icon: <div class="i-fa6-solid:users"></div>,
       children: [
-        { key: "Members", title: "Members" },
         { key: "Roles", title: "Roles" },
+        {
+          key: "Members",
+          title: "Members",
+          icon: <div class="i-fa6-solid:users"></div>,
+          children: [
+            {
+              key: "All Members",
+              title: "All Members",
+              icon: <div class="i-fa6-solid:users"></div>,
+            },
+          ],
+        },
         { key: "Groups", title: "Groups" },
       ],
     },
