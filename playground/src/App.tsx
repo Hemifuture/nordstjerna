@@ -7,6 +7,7 @@ import RootLayout from "./layouts/Root";
 import AboutView from "./views/about";
 import { Theme, app } from "./models/app";
 import DemoLayout from "./layouts/Demo";
+import TooltipView from "./views/tooltip";
 
 const App: Component = () => {
   createEffect(() => {
@@ -26,6 +27,7 @@ const App: Component = () => {
           <Route path="/" component={DemoLayout}>
             <Route path="/" component={HomeView} />
             <Route path="/about" component={AboutView} />
+            <Route path="/tooltip" component={TooltipView} />
           </Route>
         </Route>
       </Router>

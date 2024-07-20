@@ -21,6 +21,10 @@ const SideNav = () => {
           key: "Toast",
           title: "Toast",
         },
+        {
+          key: "Tooltip",
+          title: "Tooltip",
+        },
       ],
     },
     {
@@ -44,7 +48,7 @@ const SideNav = () => {
     {
       key: "Team",
       title: "Team",
-      // icon: <div class="i-fa6-solid:users"></div>,
+      icon: <div class="i-fa6-solid:users"></div>,
       children: [
         { key: "Roles", title: "Roles" },
         {
@@ -53,9 +57,13 @@ const SideNav = () => {
           icon: <div class="i-fa6-solid:users"></div>,
           children: [
             {
+              key: "Invite Members",
+              title: "Invite Members",
+              // icon: <div class="i-fa6-solid:users"></div>,
+            },
+            {
               key: "All Members",
               title: "All Members",
-              icon: <div class="i-fa6-solid:users"></div>,
             },
           ],
         },
@@ -84,6 +92,7 @@ const SideNav = () => {
             Introduction: "/",
             Button: "/",
             Toast: "/about",
+            Tooltip: "/tooltip",
           };
           const route = routeMap[item.key] ? routeMap[item.key] : "/";
 

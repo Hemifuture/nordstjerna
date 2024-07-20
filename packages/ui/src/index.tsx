@@ -10,7 +10,9 @@ export {
 
 export { default as NButton } from "./libs/Button";
 export { default as NBackground } from "./libs/Background";
+export { default as NStarfieldBackground } from "./libs/StarfieldBackground";
 export { default as NToast } from "./libs/Toast";
+export { default as NTooltip } from "./libs/Tooltip";
 
 export { default as NCard } from "./libs/Card";
 export { default as NSideNav } from "./libs/SideNav";

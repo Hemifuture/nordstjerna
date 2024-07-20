@@ -7,9 +7,20 @@ interface SideNavListItem {
   children?: SideNavListItem[];
 }
 
+interface SideNavListItemSub {
+  key: string;
+  title: string;
+  op?: SubNavListItemSubOp;
+}
+
+interface SubNavListItemSubOp {
+  icon: JSXElement;
+  children: SideNavListItemSub[];
+}
+
 type SubNavRenderFunction = (
   ele: JSXElement,
   item: SideNavListItem
 ) => JSXElement;
 
-export type { SideNavListItem, SubNavRenderFunction };
+export type { SideNavListItem, SideNavListItemSub, SubNavRenderFunction };

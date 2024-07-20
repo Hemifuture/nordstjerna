@@ -1,5 +1,5 @@
 import { A } from "@solidjs/router";
-import { NButton } from "~/nordstjerna";
+import { NButton, NCard } from "~/nordstjerna";
 
 const HomeView = () => {
   return (
@@ -78,6 +78,18 @@ const HomeView = () => {
               type="danger"
             ></NButton>
           </div>
+        </section>
+        <section class="px8">
+          <NCard level="high" class="p4">
+            <h1>alksdjf</h1>
+            <NButton>None</NButton>
+            <div>
+              <NCard level="high" class="p4">
+                <h1>alksdjf</h1>
+                <NButton>None</NButton>
+              </NCard>
+            </div>
+          </NCard>
         </section>
       </div>
     </>

@@ -18,10 +18,6 @@ const MenuItem = (props: MenuItemProps) => {
   };
   const merged = mergeProps(defaultProps, props);
 
-  const indentUnit = 0.25;
-  const indent = merged.level * indentUnit;
-  const indentClass = `pl-[${indent}rem]`;
-
   const [activeKey, setActiveKey] = currentActiveKey;
 
   console.log(activeKey());
@@ -38,7 +34,7 @@ const MenuItem = (props: MenuItemProps) => {
   };
 
   const iconPlaceholderCount = merged.item.icon
-    ? Math.max(merged.level - 1, 0)
+    ? Math.max(merged.level, 0)
     : merged.level;
 
   const item = (
@@ -94,7 +90,7 @@ const MenuItem = (props: MenuItemProps) => {
         exitToClass={style["subnav-exit-to"]}
       >
         <Show when={merged.item.children && open()}>
-          <div class={`${style["subnav-panel"]} ${indentClass}`}>
+          <div class={`${style["subnav-panel"]}`}>
             <For each={merged.item.children}>
               {(item) => (
                 <MenuItem
