@@ -29,21 +29,30 @@
 
   [data-theme="dark"] & {
     @apply shadow-white shadow-opacity-5;
+    --shadow-color: rgb(255 255 255 / 0.05);
   }
 }
 
-.level-medium {
+.ns-level-medium {
   @apply shadow-md hover:(shadow-md);
+  --shadow-color: rgb(0 0 0 / 0.1);
+  box-shadow: 0 0 rgb(0 0 0 / 0), 0 0 rgb(0 0 0 / 0),
+    0 4px 6px -1px var(--shadow-color), 0 2px 4px -1px var(--shadow-color);
 
   [data-theme="dark"] & {
     @apply shadow-white shadow-opacity-10;
+    --shadow-color: rgb(255 255 255 / 0.1);
   }
 }
 
-.level-high {
+.ns-level-high {
   @apply shadow-lg hover:(shadow-lg);
+  --shadow-color: rgb(0 0 0 / 0.1);
+  box-shadow: 0 0 rgb(0 0 0 / 0), 0 0 rgb(0 0 0 / 0),
+    0 10px 15px -3px var(--shadow-color), 0 4px 6px -4px var(--shadow-color);
 
   [data-theme="dark"] & {
     @apply shadow-white shadow-opacity-10;
+    --shadow-color: rgb(255 255 255 / 0.05);
   }
 }

@@ -5,7 +5,10 @@ const StyleView = () => {
   return (
     <>
       <div class=" p12 m4 flex flex-row gap-2">
-        <div class="ns-glass ns-level-low rounded-md">asdf</div>
+      <div class="ns-glass ns-level-none rounded-md p4">asdf</div>
+      <div class="ns-glass ns-level-low rounded-md p4">asdf</div>
+        <div class="ns-glass ns-level-medium rounded-md p4">asdf</div>
+        <div class="ns-glass ns-level-high rounded-md p4">asdf</div>
         <NButton level="low">Button</NButton>
       </div>
     </>
