@@ -1,0 +1,16 @@
+{
+  "name": "@nordstjerna/style",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/style.css",
+  "scripts": {
+    "build": "sass src/style.scss dist/style.css --output-style compressed",
+    "dev": "sass src/style.scss dist/style.css --watch"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "sass": "^1.77.8"
+  },
+  "author": "",
+  "license": "ISC"
+}

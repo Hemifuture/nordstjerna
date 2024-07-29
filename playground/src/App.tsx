@@ -8,6 +8,7 @@ import AboutView from "./views/about";
 import { Theme, app } from "./models/app";
 import DemoLayout from "./layouts/Demo";
 import TooltipView from "./views/tooltip";
+import StyleView from "./views/style";
 
 const App: Component = () => {
   createEffect(() => {
@@ -28,6 +29,7 @@ const App: Component = () => {
             <Route path="/" component={HomeView} />
             <Route path="/about" component={AboutView} />
             <Route path="/tooltip" component={TooltipView} />
+            <Route path="/style" component={StyleView} />
           </Route>
         </Route>
       </Router>

@@ -9,6 +9,11 @@ const SideNav = () => {
       icon: <div class="i-ion:book"></div>,
     },
     {
+      key: "Style",
+      title: "Style",
+      icon: <div class="i-ion:book"></div>,
+    },
+    {
       key: "Components",
       title: "Components",
       icon: <div class="i-fa6-solid:clone"></div>,
@@ -90,6 +95,7 @@ const SideNav = () => {
         renderWrapper={(ele, item) => {
           const routeMap: { [key: string]: string } = {
             Introduction: "/",
+            Style: "/style",
             Button: "/",
             Toast: "/about",
             Tooltip: "/tooltip",
