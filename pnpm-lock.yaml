@@ -103,6 +103,9 @@ importers:
 
   playground:
     dependencies:
+      '@nordstjerna/style':
+        specifier: workspace:*
+        version: link:../packages/style
       '@nordstjerna/ui':
         specifier: workspace:*
         version: link:../packages/ui
