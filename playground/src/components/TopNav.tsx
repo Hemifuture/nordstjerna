@@ -1,4 +1,4 @@
-import { NButton, NTopNav, NavItem } from "~/nordstjerna";
+import { NButton, NTopNav, NavItem } from "@nordstjerna/ui";
 import { A } from "@solidjs/router";
 import { Theme, app } from "~/models/app";
 import { Match, Switch } from "solid-js";

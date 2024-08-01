@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/style.css",
   "scripts": {
-    "build": "sass src/style.scss dist/style.css --output-style compressed",
+    "build": "sass src/style.scss dist/style.css --style compressed",
     "dev": "sass src/style.scss dist/style.css --watch"
   },
   "keywords": [],

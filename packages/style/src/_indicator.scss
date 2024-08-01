@@ -1,0 +1,102 @@
+@import "./mixins";
+
+.ns-indicator {
+  --indicator-color: var(--color-primary);
+  --indicator-left: 50%;
+  --indicator-right: 0;
+  --indicator-top: none;
+  --indicator-bottom: 6px;
+  --indicator-transform: translate(-50%, 50%);
+
+  --indicator-width: 20px;
+  --indicator-height: 3px;
+  --indicator-drop-shadow: drop-shadow(0 0 0.5rem var(--indicator-color));
+
+  position: relative;
+
+  &::before {
+    content: " ";
+    position: absolute;
+    left: var(--indicator-left);
+    right: var(--indicator-right);
+    top: var(--indicator-top);
+    bottom: var(--indicator-bottom);
+
+    width: var(--indicator-width);
+
+    transform: var(--indicator-transform);
+    height: var(--indicator-height);
+    // height: 3px;
+    border-radius: 100px;
+    background-color: var(--indicator-color);
+
+    transition: filter 0.2s ease;
+  }
+
+  &:hover::before {
+    filter: var(--indicator-drop-shadow);
+  }
+
+  &.left {
+    --indicator-left: 3px;
+    --indicator-top: 50%;
+    --indicator-right: none;
+    --indicator-bottom: 0;
+    --indicator-transform: translateY(-50%);
+
+    --indicator-width: 3px;
+    --indicator-height: 15px;
+  }
+
+  &.right {
+    --indicator-right: 3px;
+    --indicator-top: 50%;
+    --indicator-left: none;
+    --indicator-bottom: 0;
+    --indicator-transform: translateY(-50%);
+
+    --indicator-width: 3px;
+    --indicator-height: 15px;
+  }
+
+  &.top {
+    --indicator-top: 3px;
+    --indicator-left: 50%;
+    --indicator-right: none;
+    --indicator-bottom: none;
+    --indicator-transform: translateX(-50%);
+
+    --indicator-width: 20px;
+    --indicator-height: 3px;
+  }
+
+  &.bottom {
+    --indicator-bottom: 3px;
+    --indicator-left: 50%;
+    --indicator-right: none;
+    --indicator-top: none;
+    --indicator-transform: translateX(-50%);
+
+    --indicator-width: 20px;
+    --indicator-height: 3px;
+  }
+
+  // Disabled styles
+  &.disabled {
+    --indicator-color: var(--color-secondary);
+
+    --indicator-drop-shadow: none;
+  }
+
+  &.success {
+    --indicator-color: var(--color-success);
+  }
+
+  &.warning {
+    --indicator-color: var(--color-warning);
+  }
+
+  &.danger {
+    --indicator-color: var(--color-danger);
+  }
+}

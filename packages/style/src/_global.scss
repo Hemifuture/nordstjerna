@@ -7,7 +7,7 @@
   @apply text-white  border-[var(--color-border-dark)];
 } */
 
-body {
+.body {
   // @apply text-gray-700 border-[var(--color-border)];
   color: var(--color-text);
   border-color: var(--color-border);
@@ -20,7 +20,7 @@ body {
     // @apply text-white  border-[var(--color-border-dark)];
     color: white;
     border-color: var(--color-border-dark);
-    background-color: rgb(24, 24, 27);
+    background-color: rgb(24, 24, 27) !important;
   }
 }
 
@@ -50,7 +50,7 @@ body {
   color: var(--color-primary);
 }
 
-footer {
+.footer {
   @apply backdrop-blur-sm border border-solid border-t-1 border-t-[var(--color-border)] border-l-0 border-r-0 border-b-0 bg-white bg-opacity-5;
   @apply dark:(bg-black bg-opacity-5 border-t-[var(--color-border-dark)]);
 

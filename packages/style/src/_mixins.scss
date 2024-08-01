@@ -41,3 +41,37 @@
     border-color: var(--color-border-dark);
   }
 }
+
+@mixin indicator($color, $is_icon: false) {
+  &::before {
+    content: " ";
+    position: absolute;
+    left: 50%;
+    right: 0;
+    bottom: 6px;
+    @if $is_icon {
+      width: 10px;
+    } @else {
+      width: 20px;
+    }
+    transform: translate(-50%, 50%);
+    height: 3px;
+    border-radius: 100px;
+    background-color: var(#{$color});
+
+    transition: filter 0.2s ease;
+  }
+
+  &:hover::before {
+    filter: drop-shadow(0 0 0.5rem var(#{$color}));
+  }
+
+  // Disabled styles
+  &.disabled::before {
+    background-color: var(--color-secondary);
+  }
+
+  &.disabled:hover::before {
+    filter: none;
+  }
+}

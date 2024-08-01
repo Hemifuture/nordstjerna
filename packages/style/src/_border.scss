@@ -1,0 +1,41 @@
+.ns-border {
+  --border-color: var(--color-border);
+  --border-shadow: inset 0 0 0 1px var(--hover-color);
+
+  [data-theme="dark"] & {
+    --border-color: var(--color-border-dark);
+  }
+
+  border: 1px solid var(--border-color);
+  --hover-color: var(--color-primary);
+  --hover-duration: 0.2s;
+
+  // @include border_hover(--hover-color);
+
+  transition: box-shadow var(--hover-duration) ease,
+    border-color var(--hover-duration) ease, filter var(--hover-duration) ease,
+    background-color var(--hover-duration) ease;
+
+  &:hover {
+    // border: 1px solid var(--hover-color);
+    border-color: var(--hover-color);
+    box-shadow: var(--border-shadow);
+  }
+
+  &.disabled {
+    --hover-color: var(--color-border);
+    --border-shadow: none;
+  }
+
+  &.success {
+    --hover-color: var(--color-success);
+  }
+
+  &.warning {
+    --hover-color: var(--color-warning);
+  }
+
+  &.danger {
+    --hover-color: var(--color-danger);
+  }
+}
