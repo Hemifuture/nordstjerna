@@ -8,7 +8,8 @@
   "exports": {
     ".": {
       "import": "./dist/ui.js",
-      "require": "./dist/ui.umd.cjs"
+      "require": "./dist/ui.umd.cjs",
+      "types": "./dist/index.d.ts"
     }
   },
   "homepage": "https://github.com/Hemifuture/nordstjerna",

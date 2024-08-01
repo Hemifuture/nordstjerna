@@ -1,5 +1,3 @@
-@import "./mixins";
-
 .ns-indicator {
   --indicator-color: var(--color-primary);
   --indicator-left: 50%;
@@ -26,7 +24,6 @@
 
     transform: var(--indicator-transform);
     height: var(--indicator-height);
-    // height: 3px;
     border-radius: 100px;
     background-color: var(--indicator-color);
 
@@ -81,7 +78,6 @@
     --indicator-height: 3px;
   }
 
-  // Disabled styles
   &.disabled {
     --indicator-color: var(--color-secondary);
 

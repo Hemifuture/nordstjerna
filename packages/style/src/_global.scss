@@ -8,16 +8,12 @@
 } */
 
 .body {
-  // @apply text-gray-700 border-[var(--color-border)];
   color: var(--color-text);
   border-color: var(--color-border);
-  // font-family: "RobotoMono", monospace;
   font-weight: 400;
 
-  @apply hscreen wfull;
 
   &[data-theme="dark"] {
-    // @apply text-white  border-[var(--color-border-dark)];
     color: white;
     border-color: var(--color-border-dark);
     background-color: rgb(24, 24, 27) !important;
@@ -25,7 +21,6 @@
 }
 
 .link {
-  // @apply transition-colors duration-300 ease-in-out;
   transition: color 300ms ease-in-out, text-decoration-line 300ms ease-in-out;
 
   &:hover {
@@ -33,10 +28,10 @@
     text-decoration: underline;
     cursor: pointer;
   }
-
+/* 
   // @apply hover:(text-[var(--color-primary)] underline cursor-pointer);
   // transition: color var(--transition-duration) ease,
-  //   text-decoration-line var(--transition-duration) ease;
+  //   text-decoration-line var(--transition-duration) ease; */
 }
 
 .content {

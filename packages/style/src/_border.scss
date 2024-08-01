@@ -10,14 +10,11 @@
   --hover-color: var(--color-primary);
   --hover-duration: 0.2s;
 
-  // @include border_hover(--hover-color);
-
   transition: box-shadow var(--hover-duration) ease,
     border-color var(--hover-duration) ease, filter var(--hover-duration) ease,
     background-color var(--hover-duration) ease;
 
   &:hover {
-    // border: 1px solid var(--hover-color);
     border-color: var(--hover-color);
     box-shadow: var(--border-shadow);
   }
