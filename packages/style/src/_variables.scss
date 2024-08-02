@@ -1,9 +1,12 @@
 :root {
   --color-primary: rgb(167 139 250);
   --color-secondary: rgb(136, 136, 136);
-  /* --color-primary: hsla(0, 82%, 30%, 0.5); */
 
   --color-text: rgb(55, 65, 81);
+  --color-text-dark: rgb(255, 255, 255);
+
+  --color-bg: rgb(255, 255, 255);
+  --color-bg-dark: rgb(24, 24, 27);
 
   --line: hsl(0 0% 5% / 0.25);
   --color-border: hsla(0, 0%, 67%, 0.5);
@@ -12,10 +15,6 @@
   --color-warning: rgb(255, 177, 89);
   --color-success: rgb(59, 179, 70);
   --color-danger: rgb(249, 57, 32);
-
-  --title-1-size: 2.5rem;
-  --title-2-size: 2rem;
-  --title-3-size: 1.75rem;
 
   --transition-duration: 0.2s;
 

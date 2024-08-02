@@ -1,22 +1,12 @@
-/* *:not(svg):not(svg *) {
-  @apply text-gray-700 border-[var(--color-border)];
-  font-family: "DMMono", monospace;
-}
-
-.dark *:not(svg):not(svg *) {
-  @apply text-white  border-[var(--color-border-dark)];
-} */
-
 .body {
   color: var(--color-text);
+  background-color: var(--color-bg);
   border-color: var(--color-border);
-  font-weight: 400;
-
 
   &[data-theme="dark"] {
-    color: white;
+    color: var(--color-text-dark);
+    background-color: var(--color-bg-dark);
     border-color: var(--color-border-dark);
-    background-color: rgb(24, 24, 27) !important;
   }
 }
 
@@ -28,45 +18,4 @@
     text-decoration: underline;
     cursor: pointer;
   }
-/* 
-  // @apply hover:(text-[var(--color-primary)] underline cursor-pointer);
-  // transition: color var(--transition-duration) ease,
-  //   text-decoration-line var(--transition-duration) ease; */
-}
-
-.content {
-  @apply container mx-auto mt-40;
-}
-
-#brand,
-.brand {
-  font-family: "Anta-Regular";
-  /* @apply text-6xl; */
-  color: var(--color-primary);
-}
-
-.footer {
-  @apply backdrop-blur-sm border border-solid border-t-1 border-t-[var(--color-border)] border-l-0 border-r-0 border-b-0 bg-white bg-opacity-5;
-  @apply dark:(bg-black bg-opacity-5 border-t-[var(--color-border-dark)]);
-
-  @apply text-[var(--secondary-color)] text-sm;
-  /* transition: border-color 0.2s ease, color 0.2s ease; */
-}
-
-.v-enter-active,
-.v-leave-active {
-  transition: opacity var(--transition-duration) ease-in-out,
-    filter var(--transition-duration) ease-in-out;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-  filter: blur(100px);
-}
-
-.v-enter-to,
-.v-leave-from {
-  opacity: 1;
-  filter: blur(0);
 }

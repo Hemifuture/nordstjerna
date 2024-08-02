@@ -6,7 +6,7 @@ import { NStarfieldBackground } from "../../../packages/ui/src";
 const RootLayout = (props: ParentProps) => {
   return (
     <>
-      {/* <NBackground /> */}
+      <NBackground />
       {/* <NStarfieldBackground /> */}
       <div class="flex flex-col wfull hfull">
         <TopNav />
