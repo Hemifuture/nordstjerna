@@ -1,6 +1,6 @@
 {
   "name": "@nordstjerna/style",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "main": "dist/style.css",
   "scripts": {
@@ -11,6 +11,27 @@
   "devDependencies": {
     "sass": "^1.77.8"
   },
-  "author": "",
-  "license": "ISC"
+  "author": {
+    "name": "Nordstjerna",
+    "email": "dyzdyz010@gmail.com",
+    "url": "https://github.com/Hemifuture/nordstjerna"
+  },
+  "contributors": [
+    {
+      "name": "dyzdyz010",
+      "email": "dyzdyz010@gmail.com",
+      "url": "https://duyizhuo.com"
+    },
+    {
+      "name": "阿菜Cai",
+      "email": "jimmyrss1102@gmail.com",
+      "url": "https://github.com/RSS1102"
+    },
+    {
+      "name": "☘️",
+      "email": "kogawananari@gmail.com",
+      "url": "https://github.com/nanarino"
+    }
+  ],
+  "license": "MIT"
 }
