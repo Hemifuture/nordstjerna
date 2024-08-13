@@ -1,6 +1,5 @@
 .ns-border {
   --border-color: var(--color-border);
-  --border-shadow: inset 0 0 0 1px var(--hover-color);
 
   [data-theme="dark"] & {
     --border-color: var(--color-border-dark);
@@ -15,8 +14,8 @@
     background-color var(--hover-duration) ease;
 
   &:hover {
+    --border-shadow: inset 0 0 0 1px var(--hover-color);
     border-color: var(--hover-color);
-    box-shadow: var(--border-shadow);
   }
 
   &.disabled {

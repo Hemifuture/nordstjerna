@@ -10,6 +10,8 @@
   --indicator-height: 3px;
   --indicator-drop-shadow: drop-shadow(0 0 0.5rem var(--indicator-color));
 
+  --indicator-radius: 100px;
+
   position: relative;
 
   &::before {
@@ -24,7 +26,7 @@
 
     transform: var(--indicator-transform);
     height: var(--indicator-height);
-    border-radius: 100px;
+    border-radius: var(--indicator-radius);
     background-color: var(--indicator-color);
 
     transition: filter 0.2s ease;

@@ -18,5 +18,7 @@
 
   --transition-duration: 0.2s;
 
+  --level-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  --border-shadow: inset 0 0 0 rgba(0, 0, 0, 0);
   /* @apply dark:(text-white  border-[var(--color-border-dark)]); */
 }
