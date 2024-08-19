@@ -3,6 +3,13 @@
   "version": "0.1.2",
   "description": "",
   "main": "dist/style.css",
+  "exports": {
+    ".": {
+      "types": "./dist/style.d.ts",
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
+    }
+  },
   "scripts": {
     "build": "sass src/style.scss dist/style.css --style compressed",
     "dev": "sass src/style.scss dist/style.css --watch"

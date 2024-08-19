@@ -6,7 +6,7 @@
     "build": "turbo build"
   },
   "devDependencies": {
-    "turbo": "latest"
+    "turbo": "2.0.14"
   },
   "packageManager": "pnpm@9.0.4",
   "engines": {
