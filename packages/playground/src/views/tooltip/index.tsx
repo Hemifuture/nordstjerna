@@ -1,4 +1,4 @@
-import { NTooltip } from "../../../../packages/ui/src";
+import { NTooltip } from "@nordstjerna/ui";
 
 const TooltipView = () => {
   return (

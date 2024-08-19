@@ -10,13 +10,24 @@
     "allowJs": true,
     "noEmit": true,
     "strict": true,
-    "types": ["vite/client"],
+    "types": [
+      "vite/client"
+    ],
     "isolatedModules": true,
+    "baseUrl": ".",
     "paths": {
-      "@nordstjerna/ui": ["../packages/ui"],
-      "@nordstjerna/style": ["../packages/style"],
-      "~/*": ["./src/*"]
+      "~/*": [
+        "./src/*"
+      ],
+      "@nordstjerna/ui": [
+        "../../packages/ui/src/index.tsx"
+      ],
     },
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.js"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.js"
+  ],
 }

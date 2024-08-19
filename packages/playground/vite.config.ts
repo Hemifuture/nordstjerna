@@ -22,9 +22,9 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@nordstjerna/ui": path.resolve(__dirname, "../packages/ui"),
-      "@nordstjerna/style": path.resolve(__dirname, "../packages/style"),
       "~": "/src",
+      "@nordstjerna/ui": path.resolve(__dirname, "../../packages/ui/src/index.tsx"),
     },
   },
 });
+

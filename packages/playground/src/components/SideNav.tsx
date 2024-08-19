@@ -1,5 +1,5 @@
 import { A } from "@solidjs/router";
-import { NSideNav, SideNavListItem } from "../../../packages/ui/src";
+import { NSideNav, SideNavListItem } from "@nordstjerna/ui";
 
 const SideNav = () => {
   const menu: SideNavListItem[] = [

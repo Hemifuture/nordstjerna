@@ -1,17 +1,22 @@
 {
   "name": "@nordstjerna/ui",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "description": "A glassmorphism style kit in CSS and JS.",
   "main": "src/index.tsx",
-  "module": "dist/ui.umd.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/ui.js",
-      "require": "./dist/ui.umd.cjs",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
     }
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "homepage": "https://github.com/Hemifuture/nordstjerna",
   "scripts": {
     "build": "vite build"
