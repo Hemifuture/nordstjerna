@@ -14,6 +14,7 @@ export default defineConfig({
     // devtools(),
     solidPlugin(),
   ],
+  base: "/nordstjerna/",
   server: {
     port: 3000,
   },

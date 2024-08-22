@@ -4,7 +4,8 @@
   "type": "module",
   "description": "",
   "scripts": {
-    "dev": "vite"
+    "dev": "vite",
+    "build": "vite build"
   },
   "license": "MIT",
   "devDependencies": {
