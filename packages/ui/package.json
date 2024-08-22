@@ -8,7 +8,7 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
+      "import": "./dist/index.js",
       "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
     }
@@ -35,7 +35,6 @@
     "@unocss/transformer-variant-group": "^0.59.4",
     "sass": "^1.75.0",
     "unocss": "^0.59.4",
-    "vite": "^5.1.4",
     "vite-plugin-dts": "^3.8.1",
     "vite-plugin-solid": "^2.10.2"
   },
