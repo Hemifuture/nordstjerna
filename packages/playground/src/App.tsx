@@ -1,6 +1,6 @@
-import { createEffect, onMount, type Component } from "solid-js";
+import { createEffect, lazy, onMount, type Component } from "solid-js";
 
-import { Route, Router } from "@solidjs/router";
+import { Route, RouteDefinition, Router } from "@solidjs/router";
 import Nav from "./components/TopNav";
 import HomeView from "./views/home";
 import RootLayout from "./layouts/Root";
@@ -21,20 +21,26 @@ const App: Component = () => {
     }
   });
 
-  return (
-    <>
-      <Router>
-        <Route path="/" component={RootLayout}>
-          <Route path="/" component={DemoLayout}>
-            <Route path="/" component={HomeView} />
-            <Route path="/about" component={AboutView} />
-            <Route path="/tooltip" component={TooltipView} />
-            <Route path="/style" component={StyleView} />
-          </Route>
-        </Route>
-      </Router>
-    </>
-  );
+  const routes: RouteDefinition[] = [
+    {
+      path: '/',
+      component: lazy(() => import('./layouts/Root')),
+      children: [
+        {
+          path: '/',
+          component: lazy(() => import('./layouts/Demo')),
+          children: [
+            { path: '/', component: lazy(() => import('./views/home')) },
+            { path: '/about', component: lazy(() => import('./views/about')) },
+            { path: '/tooltip', component: lazy(() => import('./views/tooltip')) },
+            { path: '/style', component: lazy(() => import('./views/style')) },
+          ],
+        },
+      ],
+    },
+  ];
+
+  return <Router>{routes}</Router>;
 };
 
 export default App;

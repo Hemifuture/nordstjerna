@@ -5,7 +5,6 @@ import path from "path";
 // import devtools from 'solid-devtools/vite';
 
 export default defineConfig({
-  base: "/nordstjerna/",
   plugins: [
     /* 
     Uncomment the following line to enable solid-devtools.

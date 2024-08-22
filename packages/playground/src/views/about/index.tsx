@@ -1,5 +1,4 @@
-import { NButton, ColorType, NToast } from "~/nordstjerna";
-import { onMount } from "solid-js";
+import { NButton, ColorType, NToast } from "@nordstjerna/ui";
 
 const AboutView = () => {
   const handleToast = (type: keyof typeof ColorType) => {

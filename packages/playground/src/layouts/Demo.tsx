@@ -1,4 +1,4 @@
-import { NCard, NFooter, NSideNav } from "~/nordstjerna";
+import { NCard, NFooter, NSideNav } from "@nordstjerna/ui";
 import { ParentProps } from "solid-js";
 import SideNav from "~/components/SideNav";
 
