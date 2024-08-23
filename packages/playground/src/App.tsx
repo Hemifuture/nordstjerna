@@ -23,24 +23,48 @@ const App: Component = () => {
 
   const routes: RouteDefinition[] = [
     {
-      path: '/nordstjerna',
-      component: lazy(() => import('./layouts/Root')),
+      path: "/",
+      component: lazy(() => import("./layouts/Root")),
       children: [
         {
-          path: '/',
-          component: lazy(() => import('./layouts/Demo')),
+          path: "/",
+          component: lazy(() => import("./layouts/Demo")),
           children: [
-            { path: '/', component: lazy(() => import('./views/home')) },
-            { path: '/about', component: lazy(() => import('./views/about')) },
-            { path: '/tooltip', component: lazy(() => import('./views/tooltip')) },
-            { path: '/style', component: lazy(() => import('./views/style')) },
+            { path: "/", component: lazy(() => import("./views/home")) },
+            { path: "/about", component: lazy(() => import("./views/about")) },
+            {
+              path: "/tooltip",
+              component: lazy(() => import("./views/tooltip")),
+            },
+            { path: "/style", component: lazy(() => import("./views/style")) },
           ],
         },
       ],
     },
   ];
 
-  return <Router>{routes}</Router>;
+  // return <Router>{routes}</Router>;
+  return (
+    <Router base="/nordstjerna">
+      <Route path="/" component={lazy(() => import("./layouts/Root"))}>
+        <Route path="/" component={lazy(() => import("./layouts/Demo"))}>
+          <Route path="/" component={lazy(() => import("./views/home"))} />
+          <Route
+            path="/about"
+            component={lazy(() => import("./views/about"))}
+          />
+          <Route
+            path="/tooltip"
+            component={lazy(() => import("./views/tooltip"))}
+          />
+          <Route
+            path="/style"
+            component={lazy(() => import("./views/style"))}
+          />
+        </Route>
+      </Route>
+    </Router>
+  );
 };
 
 export default App;

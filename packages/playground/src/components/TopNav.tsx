@@ -2,6 +2,7 @@ import { NButton, NTopNav, NavItem } from "@nordstjerna/ui";
 import { A } from "@solidjs/router";
 import { Theme, app } from "~/models/app";
 import { Match, Switch } from "solid-js";
+import logo from "/logo.jpeg";
 
 const TopNav = () => {
   const items: NavItem[] = [
@@ -61,7 +62,7 @@ const TopNav = () => {
       /> */}
       <NTopNav.Block
         level="low"
-        logo="/logo.jpeg"
+        logo={logo}
         items={items}
         itemsWrapper={(title, path, icon) => (
           <A class="link flex gap1 items-center" href={path}>

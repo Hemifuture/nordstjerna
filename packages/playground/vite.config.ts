@@ -14,10 +14,12 @@ export default defineConfig({
     // devtools(),
     solidPlugin(),
   ],
+  base: "/nordstjerna",
   server: {
     port: 3000,
   },
   build: {
+    outDir: "dist/nordstjerna",
     target: "esnext",
   },
   resolve: {
