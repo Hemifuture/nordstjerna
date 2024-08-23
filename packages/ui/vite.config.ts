@@ -6,6 +6,7 @@ import UnoCSS from "unocss/vite";
 import solidPlugin from "vite-plugin-solid";
 
 export default defineConfig({
+  base: "/nordstjerna/",
   plugins: [
     UnoCSS(),
     solidPlugin({
