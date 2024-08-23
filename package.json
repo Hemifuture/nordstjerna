@@ -3,9 +3,11 @@
   "private": true,
   "scripts": {
     "dev": "turbo dev",
-    "build": "turbo build"
+    "build": "turbo build --force",
+    "preview": "turbo build --force && turbo preview"
   },
   "devDependencies": {
+    "vite": "^5.4.2",
     "turbo": "2.0.14"
   },
   "packageManager": "pnpm@9.0.4",

@@ -1,7 +1,6 @@
-import { NBackground } from "~/nordstjerna";
+import { NBackground } from "@nordstjerna/ui";
 import { ParentProps } from "solid-js";
 import TopNav from "~/components/TopNav";
-import { NStarfieldBackground } from "../../../packages/ui/src";
 
 const RootLayout = (props: ParentProps) => {
   return (
