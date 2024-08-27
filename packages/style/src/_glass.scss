@@ -6,9 +6,9 @@
   backdrop-filter: var(--backdrop-blur);
   -webkit-backdrop-filter: var(--backdrop-blur);
 
-  [data-theme="dark"] & {
-    border-color: var(--color-border-dark);
-  }
+  // [data-theme="dark"] & {
+  //   border-color: var(--color-border-dark);
+  // }
 
   &.level-low {
     --shadow-color: rgb(0 0 0 / 0.05);

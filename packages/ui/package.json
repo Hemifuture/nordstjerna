@@ -29,8 +29,8 @@
     "@iconify-json/ion": "^1.1.17",
     "@types/node": "^20.12.5",
     "@types/node-sass": "^4.11.7",
-    "@unocss/preset-uno": "^0.59.4",
     "@unocss/preset-icons": "^0.59.4",
+    "@unocss/preset-uno": "^0.59.4",
     "@unocss/transformer-directives": "^0.59.4",
     "@unocss/transformer-variant-group": "^0.59.4",
     "sass": "^1.75.0",
@@ -43,6 +43,7 @@
     "solid-js": "^1.8.16"
   },
   "dependencies": {
+    "@kobalte/core": "^0.13.4",
     "@solidjs/router": "^0.13.2",
     "@unocss/reset": "^0.59.4",
     "solid-transition-group": "^0.2.3"

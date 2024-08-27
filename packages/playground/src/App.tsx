@@ -58,6 +58,10 @@ const App: Component = () => {
             component={lazy(() => import("./views/tooltip"))}
           />
           <Route
+            path={"/tabs"}
+            component={lazy(() => import("./views/tabs"))}
+          />
+          <Route
             path="/style"
             component={lazy(() => import("./views/style"))}
           />

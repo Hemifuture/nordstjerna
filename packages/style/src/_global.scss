@@ -3,11 +3,11 @@
   background-color: var(--color-bg);
   border-color: var(--color-border);
 
-  &[data-theme="dark"] {
-    color: var(--color-text-dark);
-    background-color: var(--color-bg-dark);
-    border-color: var(--color-border-dark);
-  }
+  // &[data-theme="dark"] {
+  //   color: var(--color-text-dark);
+  //   background-color: var(--color-bg-dark);
+  //   border-color: var(--color-border-dark);
+  // }
 
   & * {
     box-shadow: var(--border-shadow), var(--level-shadow);

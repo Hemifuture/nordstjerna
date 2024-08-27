@@ -1,9 +1,9 @@
 .ns-border {
   --border-color: var(--color-border);
 
-  [data-theme="dark"] & {
-    --border-color: var(--color-border-dark);
-  }
+  // [data-theme="dark"] & {
+  //   --border-color: var(--color-border);
+  // }
 
   border: 1px solid var(--border-color);
   --hover-color: var(--color-primary);

@@ -1,0 +1,25 @@
+.tabs {
+  &[data-orientation="vertical"] {
+    display: flex;
+  }
+}
+
+.trigger {
+  --indicator-color: var(--color-secondary);
+  --indicator-bottom: 4px;
+  --indicator-width: 16px;
+  --indicator-drop-shadow: drop-shadow(0 0 0.5rem var(--indicator-color));
+
+  &[data-selected] {
+    --indicator-color: var(--color-primary);
+    --shadow-color: var(--level-shadow-color-high);
+    --level-shadow: 0 0 var(--shadow-color), 0 0 var(--shadow-color),
+      0 10px 15px -3px var(--shadow-color), 0 4px 6px -4px var(--shadow-color);
+  }
+
+  /* &:focus-visible {
+    outline: none;
+    --border-shadow: inset 0 0 0 1px var(--color-primary);
+    @apply ring-2 ring-[var(--color-primary)] ring-ring ring-offset-2;
+  } */
+}

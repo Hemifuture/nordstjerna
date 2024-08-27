@@ -30,6 +30,10 @@ const SideNav = () => {
           key: "Tooltip",
           title: "Tooltip",
         },
+        {
+          key: "Tabs",
+          title: "Tabs",
+        },
       ],
     },
     {
@@ -99,6 +103,7 @@ const SideNav = () => {
             Button: "/",
             Toast: "/about",
             Tooltip: "/tooltip",
+            Tabs: "/tabs",
           };
           const route = routeMap[item.key] ? routeMap[item.key] : "/";
 
