@@ -8,18 +8,18 @@ const TopNav = () => {
   const items: NavItem[] = [
     {
       title: "Home",
-      path: "/",
+      path: import.meta.env.DEV ? "/nordstjerna/" : "/",
       icon: <div class="i-ion:home w4 h4"></div>,
     },
     {
       title: "About",
-      path: "/about",
+      path: import.meta.env.DEV ? "/nordstjerna/about" : "/about",
       icon: <div class="i-ion:information-circle w5 h5"></div>,
     },
-    {
-      title: "Contact",
-      path: "/contact",
-    },
+    // {
+    //   title: "Contact",
+    //   path: import.meta.env.DEV ? "/nordstjerna/contact" : "/contact",
+    // },
   ];
 
   const handleThemeChange = () => {

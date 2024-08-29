@@ -1,14 +1,6 @@
 import { createEffect, lazy, onMount, type Component } from "solid-js";
-
 import { Route, RouteDefinition, Router } from "@solidjs/router";
-import Nav from "./components/TopNav";
-import HomeView from "./views/home";
-import RootLayout from "./layouts/Root";
-import AboutView from "./views/about";
 import { Theme, app } from "./models/app";
-import DemoLayout from "./layouts/Demo";
-import TooltipView from "./views/tooltip";
-import StyleView from "./views/style";
 
 const App: Component = () => {
   createEffect(() => {
@@ -23,7 +15,7 @@ const App: Component = () => {
 
   const routes: RouteDefinition[] = [
     {
-      path: "/",
+      path: "/nordstjerna",
       component: lazy(() => import("./layouts/Root")),
       children: [
         {
@@ -32,10 +24,8 @@ const App: Component = () => {
           children: [
             { path: "/", component: lazy(() => import("./views/home")) },
             { path: "/about", component: lazy(() => import("./views/about")) },
-            {
-              path: "/tooltip",
-              component: lazy(() => import("./views/tooltip")),
-            },
+            { path: "/tooltip", component: lazy(() => import("./views/tooltip")) },
+            { path: "/tabs", component: lazy(() => import("./views/tabs")) },
             { path: "/style", component: lazy(() => import("./views/style")) },
           ],
         },
@@ -43,32 +33,7 @@ const App: Component = () => {
     },
   ];
 
-  // return <Router>{routes}</Router>;
-  return (
-    <Router base="/nordstjerna">
-      <Route path="/" component={lazy(() => import("./layouts/Root"))}>
-        <Route path="/" component={lazy(() => import("./layouts/Demo"))}>
-          <Route path="/" component={lazy(() => import("./views/home"))} />
-          <Route
-            path="/about"
-            component={lazy(() => import("./views/about"))}
-          />
-          <Route
-            path="/tooltip"
-            component={lazy(() => import("./views/tooltip"))}
-          />
-          <Route
-            path={"/tabs"}
-            component={lazy(() => import("./views/tabs"))}
-          />
-          <Route
-            path="/style"
-            component={lazy(() => import("./views/style"))}
-          />
-        </Route>
-      </Route>
-    </Router>
-  );
+  return <Router>{routes}</Router >;
 };
 
 export default App;

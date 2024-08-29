@@ -1,5 +1,6 @@
 import { A } from "@solidjs/router";
 import { NSideNav, SideNavListItem } from "@nordstjerna/ui";
+// import { base } from "vite.config";
 
 const SideNav = () => {
   const menu: SideNavListItem[] = [
@@ -37,24 +38,6 @@ const SideNav = () => {
       ],
     },
     {
-      key: "Dashboard",
-      title: "Dashboard",
-      icon: <div class="i-fa6-solid:house"></div>,
-      children: [
-        { key: "Home", title: "Home" },
-        { key: "Analytics", title: "Analytics" },
-      ],
-    },
-    {
-      key: "Projects",
-      title: "Projects",
-      icon: <div class="i-fa6-solid:house"></div>,
-      children: [
-        { key: "All Projects", title: "All Projects" },
-        { key: "Create Project", title: "Create Project" },
-      ],
-    },
-    {
       key: "Team",
       title: "Team",
       icon: <div class="i-fa6-solid:users"></div>,
@@ -68,7 +51,6 @@ const SideNav = () => {
             {
               key: "Invite Members",
               title: "Invite Members",
-              // icon: <div class="i-fa6-solid:users"></div>,
             },
             {
               key: "All Members",
@@ -76,14 +58,7 @@ const SideNav = () => {
             },
           ],
         },
-        { key: "Groups", title: "Groups" },
       ],
-    },
-    {
-      key: "Settings",
-      title: "Settings",
-      icon: <div class="i-fa6-solid:house"></div>,
-      //   items: ["Profile", "Preferences", "Notifications"],
     },
   ];
 
@@ -105,8 +80,10 @@ const SideNav = () => {
             Tooltip: "/tooltip",
             Tabs: "/tabs",
           };
-          const route = routeMap[item.key] ? routeMap[item.key] : "/";
 
+          const baseRoute = routeMap[item.key] || '/';
+          const route = import.meta.env.DEV ? `/nordstjerna${baseRoute}` : baseRoute;
+          
           if (item.children) {
             return ele;
           } else {
