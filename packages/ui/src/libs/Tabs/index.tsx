@@ -14,10 +14,7 @@ const Tabs = <T extends ValidComponent = "div">(
 ) => {
   const [local, others] = splitProps(props as TabsProps, ["class"]);
   return (
-    <TabsPrimitive.Root
-      class={`${style.tabs} ${local.class}`}
-      {...others}
-    />
+    <TabsPrimitive.Root class={`${style.tabs} ${local.class}`} {...others} />
   );
 };
 
@@ -32,7 +29,7 @@ const TabsList = <T extends ValidComponent = "div">(
   const [local, others] = splitProps(props as TabsListProps, ["class"]);
   return (
     <TabsPrimitive.List
-      class={`inline-flex gap-2 h-10 items-center justify-center rounded-md p-1 ${local.class}`}
+      class={`${style["tabs-list"]} gap-2 items-center rounded-md ${local.class}`}
       {...others}
     />
   );
@@ -68,7 +65,7 @@ const TabsContent = <T extends ValidComponent = "div">(
   return (
     <TabsPrimitive.Content
       as={Card}
-      class={`mt-2 p-4 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${local.class}`}
+      class={`p-4 flex-grow ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${local.class}`}
       {...others}
     />
   );

@@ -1,6 +1,15 @@
 .tabs {
   &[data-orientation="vertical"] {
     display: flex;
+    gap: 1rem;
+    /* justify-content: start; */
+  }
+}
+
+.tabs-list {
+  &[data-orientation="vertical"] {
+    display: flex;
+    flex-direction: column;
   }
 }
 
