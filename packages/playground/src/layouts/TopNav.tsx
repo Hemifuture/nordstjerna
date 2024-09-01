@@ -16,10 +16,6 @@ const TopNav = () => {
       path: import.meta.env.DEV ? "/nordstjerna/about" : "/about",
       icon: <div class="i-ion:information-circle w5 h5"></div>,
     },
-    // {
-    //   title: "Contact",
-    //   path: import.meta.env.DEV ? "/nordstjerna/contact" : "/contact",
-    // },
   ];
 
   const handleThemeChange = () => {

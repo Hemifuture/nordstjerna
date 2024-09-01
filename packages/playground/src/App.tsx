@@ -5,10 +5,8 @@ import { Theme, app } from "./models/app";
 const App: Component = () => {
   createEffect(() => {
     if (app.theme === Theme.Dark) {
-      // document.body.classList.add("dark");
       document.body.dataset.theme = "dark";
     } else {
-      // document.body.classList.remove("dark");
       document.body.dataset.theme = "light";
     }
   });
@@ -16,19 +14,22 @@ const App: Component = () => {
   const routes: RouteDefinition[] = [
     {
       path: "/nordstjerna",
-      component: lazy(() => import("./layouts/Root")),
+      component: lazy(() => import("./layouts/Home")),
       children: [
+        { path: "/", component: lazy(() => import("./view/home")) },
+        { path: "/about", component: lazy(() => import("./view/about")) },
+        { path: "/style", component: lazy(() => import("./view/style")) },
         {
-          path: "/",
-          component: lazy(() => import("./layouts/Demo")),
+          path: "/components",
           children: [
-            { path: "/", component: lazy(() => import("./views/home")) },
-            { path: "/about", component: lazy(() => import("./views/about")) },
-            { path: "/tooltip", component: lazy(() => import("./views/tooltip")) },
-            { path: "/tabs", component: lazy(() => import("./views/tabs")) },
-            { path: "/style", component: lazy(() => import("./views/style")) },
+            { path: "/button", component: lazy(() => import("./components/button")) },
+            { path: "/link", component: lazy(() => import("./components/link")) },
+            { path: "/tabs", component: lazy(() => import("./components/tabs")) },
+            { path: "/toast", component: lazy(() => import("./components/toast")) },
+            { path: "/tooltip", component: lazy(() => import("./components/tooltip")) },
           ],
         },
+        { path: "/tooltip", component: lazy(() => import("./components/tooltip")) },
       ],
     },
   ];

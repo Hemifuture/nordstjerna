@@ -1,6 +1,6 @@
 import { A } from "@solidjs/router";
 import { NSideNav, SideNavListItem } from "@nordstjerna/ui";
-// import { base } from "vite.config";
+import { children } from "solid-js/types/server/reactive.js";
 
 const SideNav = () => {
   const menu: SideNavListItem[] = [
@@ -72,22 +72,35 @@ const SideNav = () => {
         items={menu}
         onClick={handleClick}
         renderWrapper={(ele, item) => {
+          // const routerMap = [
+          //   { key: "Introduction", path: "/" },
+          //   { key: "Style", path: "/style" },
+          //   {
+          //     key: "Components", children: [
+          //       { key: "Button", path: "/button" },
+          //       { key: "Toast", path: "/toast" },
+          //       { key: "Tooltip", path: "/tooltip" },
+          //       { key: "Tabs", path: "/tabs" },
+          //       { key: "Link", path: "/link" },
+          //     ]
+          //   },
+          // ]
           const routeMap: { [key: string]: string } = {
             Introduction: "/",
             Style: "/style",
-            Button: "/",
-            Toast: "/about",
-            Tooltip: "/tooltip",
-            Tabs: "/tabs",
+            Button: "/components/button",
+            Toast: "/components/toast",
+            Tooltip: "/components/tooltip",
+            Tabs: "/components/tabs",
+            Link: "/components/link",
           };
+          const route = routeMap[item.key] || '/';
+          const baseRoute = `/nordstjerna`;
 
-          const baseRoute = routeMap[item.key] || '/';
-          const route = import.meta.env.DEV ? `/nordstjerna${baseRoute}` : baseRoute;
-          
           if (item.children) {
             return ele;
           } else {
-            return <A href={route}>{ele}</A>;
+            return <A href={baseRoute + route}>{ele}</A>;
           }
         }}
       />
