@@ -19,9 +19,9 @@
       "~/*": [
         "./src/*"
       ],
-      "@nordstjerna/ui": [
-        "../../packages/ui/src/index.tsx"
-      ],
+      // "@nordstjerna/ui": [
+      //   "../../packages/ui/src/index.tsx"
+      // ],
     },
   },
   "include": [
