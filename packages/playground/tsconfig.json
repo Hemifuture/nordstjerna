@@ -19,6 +19,9 @@
       "~/*": [
         "./src/*"
       ],
+      "@nordstjerna/ui": [
+        "../ui/src"
+      ]
     },
   },
   "include": [

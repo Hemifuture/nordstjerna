@@ -1,4 +1,3 @@
-import { A } from "@solidjs/router";
 import { NButton, NCard } from "@nordstjerna/ui";
 
 const HomeView = () => {

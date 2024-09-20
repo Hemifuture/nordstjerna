@@ -1,5 +1,4 @@
 import "@nordstjerna/style";
-import { NButton } from "@nordstjerna/ui";
 
 const StyleView = () => {
   return (

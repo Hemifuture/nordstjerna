@@ -1,6 +1,5 @@
 import { A } from "@solidjs/router";
 import { NSideNav, SideNavListItem } from "@nordstjerna/ui";
-import { children } from "solid-js/types/server/reactive.js";
 
 const SideNav = () => {
   const menu: SideNavListItem[] = [

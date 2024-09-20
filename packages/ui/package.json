@@ -3,8 +3,8 @@
   "version": "0.1.6",
   "type": "module",
   "description": "A glassmorphism style kit in CSS and JS.",
-  "main": "src/ui.tsx",
-  "module": "src/ui.tsx",
+  "main": "src/index.tsx",
+  "module": "src/index.tsx",
   "types": "dist/types/ui.d.ts",
   "style": "dist/esm/style.css",
   "exports": {

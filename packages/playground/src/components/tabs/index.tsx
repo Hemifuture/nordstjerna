@@ -3,7 +3,7 @@ import {
   NSTabsContent,
   NSTabsList,
   NSTabsTrigger,
-} from "../../../../ui/src";
+} from "@nordstjerna/ui";
 
 const TabsView = () => {
   return (
