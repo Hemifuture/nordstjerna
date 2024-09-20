@@ -12,7 +12,10 @@ export default defineConfig({
     solidPlugin({
       // hot: false,
     }),
-    dts(),
+    dts({
+      outDir: "dist/types",
+      insertTypesEntry: true,
+    }),
   ],
   //   compilation: {
   //     input: {
@@ -22,12 +25,19 @@ export default defineConfig({
 
   // ],
   build: {
-    // https://rollupjs.org/configuration-options/#watch
-    // watch: {
-    //   exclude: 'node_modules/**',
-    //   include: 'src/**',
-    // },
-    rollupOptions: {},
+    rollupOptions: {
+      output: [
+        {
+          format: 'esm',
+          dir: 'dist/esm',
+        },
+        {
+          format: 'cjs',
+          dir: 'dist/cjs',
+        },
+      ],
+      external: ["@nordstjerna/style"],
+    },
     lib: {
       entry: path.resolve(__dirname, "src/index.tsx"),
       name: "@nordstjerna/ui",

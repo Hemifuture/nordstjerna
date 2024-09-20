@@ -1,11 +1,11 @@
-import { NButton, NTopNav, NavItem } from "@nordstjerna/ui";
+import { NButton, NTopNav } from "@nordstjerna/ui";
 import { A } from "@solidjs/router";
 import { Theme, app } from "~/models/app";
 import { Match, Switch } from "solid-js";
 import logo from "/logo.jpeg";
 
 const TopNav = () => {
-  const items: NavItem[] = [
+  const items= [
     {
       title: "Home",
       path: import.meta.env.DEV ? "/nordstjerna/" : "/",
