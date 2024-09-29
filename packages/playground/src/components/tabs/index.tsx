@@ -24,7 +24,7 @@ const TabsView = () => {
         </div>
         <div class="flex flex-col p-4 gap-4 w-[700px]">
           <h2 class="text-[var(--color-primary)] font-bold text-2xl">Tabs</h2>
-          <NSTabs orientation="vertical">
+          <NSTabs orientation="horizontal">
             <NSTabsList class="flex flex-col gap-2">
               <NSTabsTrigger value="tab1">Tab 1</NSTabsTrigger>
               <NSTabsTrigger value="tab2">Tab 2</NSTabsTrigger>

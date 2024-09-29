@@ -4,12 +4,23 @@
     gap: 1rem;
     /* justify-content: start; */
   }
+
+  &[data-orientation="horizontal"] {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .tabs-list {
   &[data-orientation="vertical"] {
     display: flex;
     flex-direction: column;
+  }
+
+  &[data-orientation="horizontal"] {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
   }
 }
 
