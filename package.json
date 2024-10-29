@@ -1,15 +1,19 @@
 {
   "name": "nordstjerna",
   "version": "0.1.6",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo build --force",
+    "release":"node --experimental-strip-types ./scripts/release.ts",
     "preview": "turbo build --force && turbo preview"
   },
   "devDependencies": {
-    "vite": "^5.4.2",
-    "turbo": "2.0.14"
+    "@types/node": "^22.8.4",
+    "turbo": "2.0.14",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.2"
   },
   "packageManager": "pnpm@9.0.4",
   "engines": {
