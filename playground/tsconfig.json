@@ -20,8 +20,11 @@
         "./src/*"
       ],
       "@nordstjerna/ui": [
-        "../ui/src"
-      ]
+        "../packages/ui/src"
+      ],
+      "@nordstjerna/style": [
+        "../packages/style/src/style.scss"
+      ],
     },
   },
   "include": [

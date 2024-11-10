@@ -3,9 +3,9 @@
   "version": "0.1.6",
   "description": "",
   "main": "dist/style.css",
+  "module": "dist/style.css",
   "exports": {
     ".": {
-      "types": "./dist/style.d.ts",
       "import": "./dist/style.css",
       "require": "./dist/style.css"
     }
