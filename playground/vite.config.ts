@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import solidPlugin from "vite-plugin-solid";
 import UnoCSS from "unocss/vite";
-import path from "path";
+// import path from "path";
 // import devtools from 'solid-devtools/vite';
 
 export default defineConfig({
@@ -25,7 +25,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "~": "/src",
-      "@nordstjerna/ui": path.resolve(__dirname, "../packages/ui/src/index.tsx"),
+      // "@nordstjerna/ui": path.resolve(__dirname, "../packages/ui/src/index.tsx"),
     },
   },
 });

@@ -19,12 +19,12 @@
       "~/*": [
         "./src/*"
       ],
-      "@nordstjerna/ui": [
-        "../packages/ui/src"
-      ],
-      "@nordstjerna/style": [
-        "../packages/style/src/style.scss"
-      ],
+      // "@nordstjerna/ui": [
+      //   "../packages/ui/src"
+      // ],
+      // "@nordstjerna/style": [
+      //   "../packages/style/src/style.scss"
+      // ],
     },
   },
   "include": [

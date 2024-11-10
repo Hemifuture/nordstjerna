@@ -5,6 +5,10 @@
       "cache": false,
       "dependsOn": [
         "^build"
+      ],
+      "outputs": [
+        "dist/**",
+        "playground/dist/**"
       ]
     },
     "dev": {
