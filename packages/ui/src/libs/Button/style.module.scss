@@ -1,21 +1,23 @@
+$duration: 0.2s;
+
 @use "../../styles/mixins" as *;
 
 @function shadow_level($level) {
-  @if $level == "none" {
+  @if $level =="none" {
     @return none;
   }
 
-  @if $level == "low" {
+  @if $level =="low" {
     // @apply shadow-sm hover:(shadow-sm);
     @return 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   }
 
-  @if $level == "medium" {
+  @if $level =="medium" {
     // @apply shadow-md hover:(shadow-md);
     @return 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   }
 
-  @if $level == "high" {
+  @if $level =="high" {
     // @apply shadow-lg hover:(shadow-lg);
     @return 0 4px 8px 0 rgba(255, 255, 255, 0.1);
   }
@@ -26,28 +28,23 @@
 @mixin border_hover($color) {
   &:hover {
     border-color: var(#{$color});
-    box-shadow:
-      inset 0 0 0 1px var(#{$color}),
-      var(--un-shadow);
+    box-shadow: inset 0 0 0 1px var(#{$color}),
+    var(--un-shadow);
     // shadow_level("high");
   }
 
-  $duration: 0.2s;
-
-  transition:
-    box-shadow $duration ease,
-    border-color $duration ease,
-    filter $duration ease,
-    background-color $duration ease;
+  transition: box-shadow $duration ease,
+  border-color $duration ease,
+  filter $duration ease,
+  background-color $duration ease;
 }
 
 @mixin icon_hover($color) {
   &:hover {
     color: var(#{$color});
+    transition: color $duration ease;
   }
 
-  $duration: 0.2s;
-  transition: color $duration ease;
 }
 
 @mixin border_none() {
@@ -66,11 +63,15 @@
     left: 50%;
     right: 0;
     bottom: 6px;
+
     @if $is_icon {
       width: 10px;
-    } @else {
+    }
+
+    @else {
       width: 20px;
     }
+
     transform: translate(-50%, 50%);
     height: 3px;
     border-radius: 100px;

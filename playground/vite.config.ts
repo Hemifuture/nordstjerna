@@ -25,7 +25,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "~": "/src",
-      "@nordstjerna/ui": path.resolve(__dirname, "../../packages/ui/src/index.tsx"),
+      "@nordstjerna/ui": path.resolve(__dirname, "../packages/ui/src/index.tsx"),
     },
   },
 });

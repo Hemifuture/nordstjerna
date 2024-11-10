@@ -1,14 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es2017",
-    "module": "commonjs",
-    "resolveJsonModule": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "esnext",
+    "strict": true,
     "esModuleInterop": true,
-    "types": [
-      "node"
-    ]
-  },
-  "include": [
-    "scripts/*.ts"
-  ]
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  }
 }
