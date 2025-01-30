@@ -1,53 +1,54 @@
 {
   "name": "@nordstjerna/ui",
-  "version": "0.1.6",
+  "version": "0.0.0",
   "type": "module",
-  "description": "A glassmorphism style kit in CSS and JS.",
+  "description": "Nordstjerna UI",
   "main": "src/index.tsx",
-  "module": "src/index.tsx",
-  "types": "dist/types/ui.d.ts",
-  "style": "dist/esm/style.css",
+  "license": "Apache-2.0",
   "exports": {
     ".": {
       "import": "./dist/esm/ui.esm.js",
       "require": "./dist/cjs/ui.cjs.js",
       "types": "./dist/types/ui.d.ts"
-    },
-    "./style.css": "./dist/esm/style.css"
+    }
   },
-  "files": [
-    "dist",
-    "README.md"
-  ],
-  "homepage": "https://github.com/Hemifuture/nordstjerna",
   "scripts": {
     "build": "vite build"
   },
   "keywords": [
     "solid-js"
   ],
-  "license": "ISC",
   "devDependencies": {
-    "@iconify-json/ion": "^1.1.17",
-    "@types/node": "^20.12.5",
-    "@types/node-sass": "^4.11.7",
-    "@unocss/preset-icons": "^0.59.4",
-    "@unocss/preset-uno": "^0.59.4",
-    "@unocss/transformer-directives": "^0.59.4",
-    "@unocss/transformer-variant-group": "^0.59.4",
-    "sass": "^1.75.0",
-    "unocss": "^0.59.4",
-    "vite": "^5.1.4",
-    "vite-plugin-dts": "^3.8.1",
-    "vite-plugin-solid": "^2.10.2"
+    "vite-plugin-dts": "^4.5.0"
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "homepage": "https://github.com/Hemifuture/nordstjerna",
   "peerDependencies": {
     "solid-js": "^1.8.16"
   },
-  "dependencies": {
-    "@kobalte/core": "^0.13.4",
-    "@solidjs/router": "^0.13.2",
-    "@unocss/reset": "^0.59.4",
-    "solid-transition-group": "^0.2.3"
-  }
+  "author": {
+    "name": "Nordstjerna",
+    "email": "dyzdyz010@gmail.com",
+    "url": "https://github.com/Hemifuture/nordstjerna"
+  },
+  "contributors": [
+    {
+      "name": "dyzdyz010",
+      "email": "dyzdyz010@gmail.com",
+      "url": "https://duyizhuo.com"
+    },
+    {
+      "name": "阿菜Cai",
+      "email": "jimmyrss1102@gmail.com",
+      "url": "https://github.com/RSS1102"
+    },
+    {
+      "name": "☘️",
+      "email": "kogawananari@gmail.com",
+      "url": "https://github.com/nanarino"
+    }
+  ]
 }

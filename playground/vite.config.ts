@@ -1,32 +1,12 @@
-import { defineConfig } from "vite";
-import solidPlugin from "vite-plugin-solid";
-import UnoCSS from "unocss/vite";
-import path from "path";
-// import devtools from 'solid-devtools/vite';
+import path from 'path'
+import { defineConfig } from 'vite'
+import solid from 'vite-plugin-solid'
 
 export default defineConfig({
-  plugins: [
-    /* 
-    Uncomment the following line to enable solid-devtools.
-    For more info see https://github.com/thetarnav/solid-devtools/tree/main/packages/extension#readme
-    */
-    UnoCSS(),
-    // devtools(),
-    solidPlugin(),
-  ],
-  base: "/nordstjerna",
-  server: {
-    port: 3000,
-  },
-  build: {
-    outDir: "dist/nordstjerna",
-    target: "esnext",
-  },
+  plugins: [solid()],
   resolve: {
     alias: {
-      "~": "/src",
-      "@nordstjerna/ui": path.resolve(__dirname, "../packages/ui/src/index.tsx"),
+      '@nordstjerna/ui': path.resolve(__dirname, '../packages/ui/src'),
     },
   },
-});
-
+})

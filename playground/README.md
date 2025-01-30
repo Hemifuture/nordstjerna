@@ -1,4 +1,4 @@
-# @nordstjerna/ui
+# @nordstjerna/playground
 
 ![nordstjerna](https://assets.solidjs.com/banner?type=Nordstjerna&background=tiles&project=%20)
 

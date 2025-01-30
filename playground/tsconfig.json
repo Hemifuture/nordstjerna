@@ -1,36 +1,6 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "jsx": "preserve",
-    "jsxImportSource": "solid-js",
-    "allowJs": true,
-    "noEmit": true,
-    "strict": true,
-    "types": [
-      "vite/client"
-    ],
-    "isolatedModules": true,
-    "baseUrl": ".",
-    "paths": {
-      "~/*": [
-        "./src/*"
-      ],
-      // "@nordstjerna/ui": [
-      //   "../packages/ui/src"
-      // ],
-      // "@nordstjerna/style": [
-      //   "../packages/style/src/style.scss"
-      // ],
-    },
-  },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.js"
-  ],
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" }
+  ]
 }

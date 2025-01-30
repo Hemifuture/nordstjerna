@@ -1,7 +1,9 @@
 {
   "name": "@nordstjerna/style",
   "version": "0.1.6",
-  "description": "",
+  "type": "module",
+  "description": "Nordstjerna style",
+  "license": "Apache-2.0",
   "main": "dist/style.css",
   "module": "dist/style.css",
   "exports": {
@@ -39,6 +41,5 @@
       "email": "kogawananari@gmail.com",
       "url": "https://github.com/nanarino"
     }
-  ],
-  "license": "MIT"
+  ]
 }
