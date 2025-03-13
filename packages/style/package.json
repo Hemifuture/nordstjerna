@@ -1,11 +1,12 @@
 {
   "name": "@nordstjerna/style",
-  "version": "0.1.6",
-  "type": "module",
   "description": "Nordstjerna style",
   "license": "Apache-2.0",
-  "main": "dist/style.css",
-  "module": "dist/style.css",
+  "version": "0.1.7",
+  "type": "module",
+  "files": ["dist/style.css"],
+  "main": "./dist/style.css",
+  "module": "./dist/style.css",
   "exports": {
     ".": {
       "import": "./dist/style.css",
@@ -13,33 +14,12 @@
     }
   },
   "scripts": {
-    "build": "sass src/style.scss dist/style.css --style compressed",
-    "dev": "sass src/style.scss dist/style.css --watch"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
-  "keywords": [],
   "devDependencies": {
-    "sass": "^1.77.8"
-  },
-  "author": {
-    "name": "Nordstjerna",
-    "email": "dyzdyz010@gmail.com",
-    "url": "https://github.com/Hemifuture/nordstjerna"
-  },
-  "contributors": [
-    {
-      "name": "dyzdyz010",
-      "email": "dyzdyz010@gmail.com",
-      "url": "https://duyizhuo.com"
-    },
-    {
-      "name": "阿菜Cai",
-      "email": "jimmyrss1102@gmail.com",
-      "url": "https://github.com/RSS1102"
-    },
-    {
-      "name": "☘️",
-      "email": "kogawananari@gmail.com",
-      "url": "https://github.com/nanarino"
-    }
-  ]
+    "typescript": "~5.7.2",
+    "vite": "^6.2.0"
+  }
 }

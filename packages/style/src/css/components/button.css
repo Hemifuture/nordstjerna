@@ -1,0 +1,40 @@
+.button {
+  --color-border: var(--color-primary);
+
+  --color-border-hover: var(--color-primary);
+
+  --base-shadow: var(--shadow-low);
+  --hover-effect: inset 0 0 0 0px var(--color-border);
+  --box-shadow: var(--base-shadow), var(--hover-effect);
+
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: 8px 16px;
+  backdrop-filter: var(--blur-filter);
+  box-shadow: var(--box-shadow);
+}
+
+.button:hover {
+  --hover-effect: var(--border-hover);
+}
+
+.button:active {
+  --color-active: color-mix(in srgb, var(--color-border), black 20%);
+  --color-border: var(--color-warning);
+
+  --hover-effect: var(--border-hover);
+}
+
+.button.level-low {
+  --base-shadow: var(--shadow-low);
+}
+
+.button.level-medium {
+  --base-shadow: var(--shadow-medium);
+}
+
+.button.level-high {
+  --base-shadow: var(--shadow-high);
+}

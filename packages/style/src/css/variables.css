@@ -1,0 +1,30 @@
+:root {
+  --color-primary: rgb(167 139 250);
+  --color-secondary: rgb(136, 136, 136);
+
+  --color-warning: rgb(255, 177, 89);
+  --color-success: rgb(59, 179, 70);
+  --color-danger: rgb(249, 57, 32);
+  --color-disabled: rgb(229, 229, 229);
+
+  --color-border: var(--color-primary);
+
+  --color-bg: rgba(255, 255, 255, 0.05);
+  --blur-filter: blur(4px);
+
+  --color-shadow-low: rgb(0 0 0 / 0.05);
+  --color-shadow-medium: rgb(0 0 0 / 0.1);
+  --color-shadow-high: rgb(0 0 0 / 0.1);
+
+  --shadow-high: 0 0 rgb(0 0 0 / 1), 0 0 rgb(0 0 0 / 1),
+    0 10px 15px -3px var(--color-shadow-high),
+    0 4px 6px -4px var(--color-shadow-high);
+  --shadow-medium: 0 0 rgb(0 0 0 / 0), 0 0 rgb(0 0 0 / 0),
+    0 4px 6px -1px var(--color-shadow-medium),
+    0 2px 4px -1px var(--color-shadow-medium);
+  --shadow-low: 0 0 rgb(0 0 0 / 1), 0 0 rgb(0 0 0 / 1),
+    0 1px 2px 0 var(--color-shadow-low);
+
+  --border-radius: 6px;
+  --border-hover: inset 0 0 0 1px var(--color-border);
+}
