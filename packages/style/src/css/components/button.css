@@ -1,30 +1,20 @@
 .button {
-  --color-border: var(--color-primary);
+  --border-color: var(--color-primary);
+  --original-color: var(--color-primary);
 
   --color-border-hover: var(--color-primary);
 
-  --base-shadow: var(--shadow-low);
-  --hover-effect: inset 0 0 0 0px var(--color-border);
+  --base-shadow: 0 0 0 0px var(--border-color);
+  --hover-effect: inset 0 0 0 0px var(--border-color);
   --box-shadow: var(--base-shadow), var(--hover-effect);
 
   background-color: var(--color-bg);
   color: var(--color-text);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   padding: 8px 16px;
   backdrop-filter: var(--blur-filter);
   box-shadow: var(--box-shadow);
-}
-
-.button:hover {
-  --hover-effect: var(--border-hover);
-}
-
-.button:active {
-  --color-active: color-mix(in srgb, var(--color-border), black 20%);
-  --color-border: var(--color-warning);
-
-  --hover-effect: var(--border-hover);
 }
 
 .button.level-low {
@@ -37,4 +27,24 @@
 
 .button.level-high {
   --base-shadow: var(--shadow-high);
+}
+
+.button.success {
+  --border-color: var(--color-success);
+  --original-color: var(--color-success);
+}
+
+.button.warning {
+  --border-color: var(--color-warning);
+  --original-color: var(--color-warning);
+}
+
+.button:hover {
+  --hover-effect: inset 0 0 0 1px var(--border-color);
+}
+
+.button:active {
+  --border-color: color-mix(in oklab, var(--original-color) 85%, black 15%);
+  --hover-effect: inset 0 0 0 1px var(--border-color);
+  translate: all 0.1s;
 }
