@@ -7,6 +7,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@nordstjerna/ui': path.resolve(__dirname, '../packages/ui/src'),
+      '@nordstjerna/style': path.resolve(__dirname, '../packages/style'),
     },
   },
 })

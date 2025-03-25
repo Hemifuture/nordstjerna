@@ -34,12 +34,6 @@ importers:
         specifier: ^6.2.0
         version: 6.2.1(@types/node@22.12.0)(sass@1.83.4)
 
-  packages/style-bak:
-    devDependencies:
-      sass:
-        specifier: ^1.77.8
-        version: 1.83.4
-
   packages/ui:
     dependencies:
       solid-js:
@@ -52,6 +46,9 @@ importers:
 
   playground:
     dependencies:
+      '@nordstjerna/style':
+        specifier: workspace:*
+        version: link:../packages/style
       '@nordstjerna/ui':
         specifier: workspace:*
         version: link:../packages/ui
@@ -1893,6 +1890,7 @@ snapshots:
   chokidar@4.0.3:
     dependencies:
       readdirp: 4.1.1
+    optional: true
 
   compare-versions@6.1.1: {}
 
@@ -2011,7 +2009,8 @@ snapshots:
 
   html-entities@2.3.3: {}
 
-  immutable@5.0.3: {}
+  immutable@5.0.3:
+    optional: true
 
   import-lazy@4.0.0: {}
 
@@ -2142,7 +2141,8 @@ snapshots:
 
   punycode@2.3.1: {}
 
-  readdirp@4.1.1: {}
+  readdirp@4.1.1:
+    optional: true
 
   require-from-string@2.0.2: {}
 
@@ -2184,6 +2184,7 @@ snapshots:
       source-map-js: 1.2.1
     optionalDependencies:
       '@parcel/watcher': 2.5.1
+    optional: true
 
   semver@6.3.1: {}
 

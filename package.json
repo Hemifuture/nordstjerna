@@ -3,7 +3,7 @@
   "preview": true,
   "description": "",
   "scripts": {
-    "dev": "pnpm --filter @nordstjerna/playground dev"
+    "dev": "pnpm --filter @nordstjerna/style build && pnpm --filter @nordstjerna/playground dev"
   },
   "license": "ISC",
   "dependencies": {

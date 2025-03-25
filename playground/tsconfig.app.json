@@ -24,7 +24,8 @@
     "noUncheckedSideEffectImports": true,
     "baseUrl": ".",
     "paths": {
-      "@nordstjerna/ui": ["../packages/ui/src"]
+      "@nordstjerna/ui": ["../packages/ui/src"],
+      "@nordstjerna/style": ["../packages/style/dist"]
     }
   },
   "include": ["src"]
