@@ -6,8 +6,8 @@ export default defineConfig({
   plugins: [solid()],
   resolve: {
     alias: {
-      '@nordstjerna/ui': path.resolve(__dirname, '../packages/ui/src'),
-      '@nordstjerna/style': path.resolve(__dirname, '../packages/style'),
+      '@nordstjerna/ui': path.resolve(__dirname, '../packages/ui/src/index.tsx'),
+      '@nordstjerna/style': path.resolve(__dirname, '../packages/style/src/style.css'),
     },
   },
 })

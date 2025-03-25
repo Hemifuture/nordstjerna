@@ -5,8 +5,6 @@
   "version": "0.1.7",
   "type": "module",
   "files": ["dist/style.css"],
-  "main": "./dist/style.css",
-  "module": "./dist/style.css",
   "exports": {
     ".": {
       "import": "./dist/style.css",
