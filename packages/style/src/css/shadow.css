@@ -1,0 +1,11 @@
+.level-low {
+    --base-shadow: var(--shadow-low);
+  }
+  
+.level-medium {
+    --base-shadow: var(--shadow-medium);
+  }
+  
+.level-high {
+    --base-shadow: var(--shadow-high);
+  }

@@ -1,4 +1,4 @@
-.button {
+.input {
   --border-color: var(--color-primary);
   --original-color: var(--color-primary);
 
@@ -12,44 +12,39 @@
   color: var(--color-text);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
-  padding: 8px 16px;
+  padding: 8px;
   backdrop-filter: var(--blur-filter);
   box-shadow: var(--box-shadow);
 }
 
-/* .button.level-low {
-  --base-shadow: var(--shadow-low);
-}
-
-.button.level-medium {
-  --base-shadow: var(--shadow-medium);
-}
-
-.button.level-high {
-  --base-shadow: var(--shadow-high);
-} */
-
-.button.success {
+.input.success,
+.input.success:focus-visible {
   --border-color: var(--color-success);
   --original-color: var(--color-success);
 }
 
-.button.warning {
+.input.warning,
+.input.warning:focus-visible {
   --border-color: var(--color-warning);
   --original-color: var(--color-warning);
 }
 
-.button.danger {
+.input.danger,
+.input.danger:focus-visible {
   --border-color: var(--color-danger);
   --original-color: var(--color-danger);
 }
 
-.button:hover {
-  --hover-effect: inset 0 0 0 1px var(--border-color);
-}
-
-.button:active {
-  --border-color: color-mix(in oklab, var(--original-color) 85%, black 15%);
+.input:hover {
+  /* --border-color: color-mix(in oklab, var(--original-color) 85%, black 15%); */
   --hover-effect: inset 0 0 0 1px var(--border-color);
   translate: all 0.1s;
+}
+
+.input:focus-visible {
+  outline: none;
+  /* outline-color: var(--border-color); */
+  --border-color: var(--color-primary);
+  --original-color: var(--border-color);
+  --hover-effect: inset 0 0 0 1px var(--border-color);
 }

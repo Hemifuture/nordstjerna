@@ -2,15 +2,18 @@
   --color-bg: var(--color-bg);
   --color-border: var(--color-disabled);
   --color-text: var(--color-text);
+  --box-shadow: var(--base-shadow);
 
   position: relative;
   background-color: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
   padding: 16px;
+  box-shadow: var(--box-shadow);
 }
 
 .card::before {
+  z-index: -1;
   content: " ";
   position: absolute;
   top: 0;
