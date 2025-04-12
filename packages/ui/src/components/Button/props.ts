@@ -5,6 +5,10 @@ export interface ButtonProps {
   type?: 'default' | 'primary' | 'secondary' | 'danger';
   /** 按钮尺寸 */
   size?: 'small' | 'medium' | 'large';
+  /** 按钮层级 */
+  level?: string | number;
+  /** 按钮状态 */
+  status?: 'default' | 'success' | 'warning' | 'danger' | 'info';
   /** 是否禁用 */
   disabled?: boolean;
   /** 是否处于加载状态 */
@@ -15,7 +19,7 @@ export interface ButtonProps {
   style?: Record<string, any>;
   /** 自定义类名 */
   className?: string;
-  /**solidjs 子元素 */
+  /** 子元素 */
   children?: JSX.Element;
 }
 
@@ -23,6 +27,8 @@ export interface ButtonProps {
 export const defaultButtonProps: Partial<ButtonProps> = {
   type: 'default',
   size: 'medium',
+  level: undefined,
+  status: 'default',
   disabled: false,
   loading: false,
 };
