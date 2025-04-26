@@ -17,7 +17,7 @@
   box-shadow: var(--box-shadow);
 }
 
-/* .button.level-low {
+.button.level-low {
   --base-shadow: var(--shadow-low);
 }
 
@@ -27,7 +27,7 @@
 
 .button.level-high {
   --base-shadow: var(--shadow-high);
-} */
+}
 
 .button.success {
   --border-color: var(--color-success);

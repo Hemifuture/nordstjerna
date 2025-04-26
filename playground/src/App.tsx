@@ -14,7 +14,7 @@ function App() {
           <NButton status="success" level="low">
             Success
           </NButton>
-          <NButton status="warning" level="high">
+          <NButton status="warning" level="medium">
             Warning
           </NButton>
           <NButton status="danger" level="high">

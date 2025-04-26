@@ -14,7 +14,7 @@
 
   --color-shadow-low: rgb(0 0 0 / 0.05);
   --color-shadow-medium: rgb(0 0 0 / 0.1);
-  --color-shadow-high: rgb(0 0 0 / 0.1);
+  --color-shadow-high: rgb(0 0 0 / 0.15);
 
   --shadow-high: 0 0 rgb(0 0 0 / 1), 0 0 rgb(0 0 0 / 1),
     0 10px 15px -3px var(--color-shadow-high),
