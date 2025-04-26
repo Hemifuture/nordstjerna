@@ -3,13 +3,13 @@
   "version": "0.0.0",
   "type": "module",
   "description": "Nordstjerna UI",
+  "types": "./dist/types/ui.d.ts",
   "main": "src/index.tsx",
   "license": "Apache-2.0",
   "exports": {
     ".": {
       "import": "./dist/esm/ui.esm.js",
-      "require": "./dist/cjs/ui.cjs.js",
-      "types": "./dist/types/ui.d.ts"
+      "require": "./dist/cjs/ui.cjs.js"
     }
   },
   "scripts": {
