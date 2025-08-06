@@ -1,15 +1,13 @@
 import path from "path";
 import { defineConfig } from "vite";
-import solid from "vite-plugin-solid";
 
 export default defineConfig({
-  plugins: [solid()],
   base: "/nordstjerna/",
   resolve: {
     alias: {
       "@nordstjerna/ui": path.resolve(
         __dirname,
-        "../packages/ui/src/index.tsx"
+        "../packages/ui/src/index.ts"
       ),
       "@nordstjerna/style": path.resolve(
         __dirname,

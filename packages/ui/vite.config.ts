@@ -1,21 +1,22 @@
-import path from 'path'
-import { defineConfig } from 'vite'
-import solidPlugin from 'vite-plugin-solid'
+import { defineConfig } from 'vite';
 
 export default defineConfig({
-  plugins: [solidPlugin()],
   build: {
-    target: 'esnext',
-    outDir: 'dist',
     lib: {
-      entry: 'src/index.tsx',
+      entry: 'src/index.ts',
+      name: 'NordstjernaUI',
       formats: ['es', 'cjs'],
-      fileName: (format) => `ui.${format}.js`,
+      fileName: (format) => `ui.${format === 'es' ? 'esm' : format}.js`
     },
-  },
-  resolve: {
-    alias: {
-      '@nordstjerna/style': path.resolve(__dirname, '../style/src/style.css')
+    outDir: 'dist',
+    rollupOptions: {
+      external: ['lit', '@nordstjerna/style'],
+      output: {
+        globals: {
+          'lit': 'Lit',
+          '@nordstjerna/style': 'NordstjernaStyle'
+        }
+      }
     }
   }
-})
+});

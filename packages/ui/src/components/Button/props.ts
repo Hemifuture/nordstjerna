@@ -1,12 +1,10 @@
-import { JSX } from 'solid-js/jsx-runtime';
-
 export interface ButtonProps {
-  /** 按钮类型 */
-  type?: 'default' | 'primary' | 'secondary' | 'danger';
+  /** 按钮HTML类型 */
+  type?: 'button' | 'submit' | 'reset';
   /** 按钮尺寸 */
   size?: 'small' | 'medium' | 'large';
-  /** 按钮层级 */
-  level?: string | number;
+  /** 按钮层级（用于阴影效果） */
+  level?: 'low' | 'medium' | 'high';
   /** 按钮状态 */
   status?: 'default' | 'success' | 'warning' | 'danger' | 'info';
   /** 是否禁用 */
@@ -19,13 +17,11 @@ export interface ButtonProps {
   style?: Record<string, any>;
   /** 自定义类名 */
   className?: string;
-  /** 子元素 */
-  children?: JSX.Element;
 }
 
 // 默认 props 参数配置
 export const defaultButtonProps: Partial<ButtonProps> = {
-  type: 'default',
+  type: 'button',
   size: 'medium',
   level: undefined,
   status: 'default',
