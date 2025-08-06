@@ -1,15 +1,9 @@
 import "@nordstjerna/style";
+import './components/button';
 
 // 导出基础类
-export * from './base/index.js';
+export * from './base';
 
 // 导出所有组件
-export * from './components/index.js';
+export * from './components';
 
-// 确保组件被注册
-import "@nordstjerna/style";
-import './components/Button/n-button.js';
-
-export { NButton } from './components/Button/n-button.js';
-export { NordstjernaElement } from './base/nordstjerna-element.js';
-export type { ButtonProps } from './components/Button/props.js';

@@ -2,7 +2,24 @@ import { html, css } from 'lit';
 import type { TemplateResult } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { NordstjernaElement } from '../../base/nordstjerna-element.js';
-import type { ButtonProps } from './props.js';
+
+/**
+ * 按钮组件属性接口
+ */
+export interface ButtonProps {
+  /** 按钮HTML类型 */
+  type?: 'button' | 'submit' | 'reset';
+  /** 按钮尺寸 */
+  size?: 'small' | 'medium' | 'large';
+  /** 按钮层级（用于阴影效果） */
+  level?: 'low' | 'medium' | 'high';
+  /** 按钮状态 */
+  status?: 'default' | 'success' | 'warning' | 'danger' | 'info';
+  /** 是否禁用 */
+  disabled?: boolean;
+  /** 是否处于加载状态 */
+  loading?: boolean;
+}
 
 /**
  * Nordstjerna 按钮组件
