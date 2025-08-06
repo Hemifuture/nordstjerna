@@ -22,10 +22,10 @@ function createApp() {
     <div class="card level-low inputs">
       <h1>Inputs</h1>
       <div class="input-group">
-        <input class="input" placeholder="Default input" />
-        <input class="input success level-low" placeholder="Success input" />
-        <input class="input warning level-medium" placeholder="Warning input" />
-        <input class="input danger level-high" placeholder="Danger input" />
+        <n-input placeholder="Default input"></n-input>
+        <n-input status="success" level="low" placeholder="Success input"></n-input>
+        <n-input status="warning" level="medium" placeholder="Warning input"></n-input>
+        <n-input status="danger" level="high" placeholder="Danger input"></n-input>
       </div>
     </div>
   `;

@@ -12,9 +12,15 @@
   color: var(--color-text);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
-  padding: 8px;
+  padding: 8px 12px;
   backdrop-filter: var(--blur-filter);
   box-shadow: var(--box-shadow);
+  transition: all 0.2s ease;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .input.success,
@@ -35,16 +41,39 @@
   --original-color: var(--color-danger);
 }
 
-.input:hover {
-  /* --border-color: color-mix(in oklab, var(--original-color) 85%, black 15%); */
-  --hover-effect: inset 0 0 0 1px var(--border-color);
-  translate: all 0.1s;
+.input.level-low {
+  --box-shadow: var(--shadow-low), var(--hover-effect);
 }
 
+.input.level-medium {
+  --box-shadow: var(--shadow-medium), var(--hover-effect);
+}
+
+.input.level-high {
+  --box-shadow: var(--shadow-high), var(--hover-effect);
+}
+
+.input:hover:not(:disabled) {
+  /* --border-color: color-mix(in oklab, var(--original-color) 85%, black 15%); */
+  --hover-effect: inset 0 0 0 1px var(--border-color);
+}
+
+.input:focus,
 .input:focus-visible {
   outline: none;
   /* outline-color: var(--border-color); */
-  --border-color: var(--color-primary);
-  --original-color: var(--border-color);
+  --border-color: var(--original-color);
   --hover-effect: inset 0 0 0 1px var(--border-color);
+}
+
+.input::placeholder {
+  color: var(--color-text-secondary, rgba(0, 0, 0, 0.5));
+  opacity: 0.7;
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  background-color: var(--color-bg-disabled, rgba(0, 0, 0, 0.05));
+  color: var(--color-text-disabled, rgba(0, 0, 0, 0.4));
 }
