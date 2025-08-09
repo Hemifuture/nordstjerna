@@ -9,28 +9,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "lts/*"
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: latest
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build playground
-        run: pnpm build
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ././playground/.output/public
-          publish_branch: gh-pages
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "lts/*" }
+      - uses: pnpm/action-setup@v4
+        with: { version: latest }
+      - run: pnpm install
+      - name: Check CI environment
+        run: |
+          echo "CI=$CI"
+          echo "NODE_ENV=$NODE_ENV"
+          echo "GitHub Actions sets CI automatically: $CI"
+      - run: pnpm build
+      - name: Deploy
+        id: deploy
+        env:
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+        run: |
+          export DEPLOY_DOMAIN="https://nordstjerna.surge.sh"
+ 
+          npx surge --project ./playground/.output/public --domain "$DEPLOY_DOMAIN"
+          echo "url=$DEPLOY_DOMAIN" >> $GITHUB_OUTPUT
