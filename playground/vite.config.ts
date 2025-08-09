@@ -9,10 +9,6 @@ export default defineConfig({
         __dirname,
         "../packages/ui/src/index.ts"
       ),
-      "@nordstjerna/style": path.resolve(
-        __dirname,
-        "../packages/style/src/style.css"
-      ),
     },
   },
 });

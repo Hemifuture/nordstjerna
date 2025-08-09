@@ -4,11 +4,19 @@
   "license": "Apache-2.0",
   "version": "0.1.7",
   "type": "module",
-  "files": ["dist/style.css"],
+  "files": [
+    "dist",
+    "src/style.css",
+    "src/css/components",
+    "src/components-css.ts"
+  ],
   "exports": {
     ".": {
-      "import": "./dist/style.css",
-      "require": "./dist/style.css"
+      "import": "./src/style.css"
+    },
+    "./components/*": "./src/css/components/*.css",
+    "./components-css": {
+      "import": "./src/components-css.ts"
     }
   },
   "scripts": {
