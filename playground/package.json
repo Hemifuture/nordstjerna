@@ -14,12 +14,12 @@
   "dependencies": {
     "@nordstjerna/ui": "workspace:*",
     "@nordstjerna/style": "workspace:*",
-    "@nuxt/devtools": "latest",
     "nuxt": "^4.0.3",
     "vue": "latest"
   },
   "devDependencies": {
     "@nuxt/typescript-build": "^3.0.0",
+    "@nuxt/devtools": "latest",
     "vue-tsc": "^3.0.5"
   }
 }
