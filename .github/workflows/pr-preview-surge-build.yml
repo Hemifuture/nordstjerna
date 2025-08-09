@@ -9,10 +9,8 @@ permissions:
   issues: write
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    outputs:
-      pr_id: ${{ github.event.number }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -26,53 +24,32 @@ jobs:
           echo "NODE_ENV=$NODE_ENV"
           echo "GitHub Actions sets CI automatically: $CI"
       - run: pnpm build
-      - name: Upload dist
-        uses: actions/upload-artifact@v4
-        with:
-          name: playground
-          path: playground/dist
-          retention-days: 10
-
-  publish:
-    needs: build
-    runs-on: ubuntu-latest
-    if: needs.build.result == 'success'
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: playground
-          path: playground/dist
       - name: Deploy
         id: deploy
         env:
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         run: |
-          export DEPLOY_DOMAIN="https://preview-pr-${{ needs.build.outputs.pr_id }}-nordstjerna.surge.sh"
-          # playground/dist 下是构建结果
-          npx surge --project ./playground/dist --domain "$DEPLOY_DOMAIN"
+          export DEPLOY_DOMAIN="https://preview-pr-${{ github.event.number }}-nordstjerna.surge.sh"
+          # playground/.output/public 下是构建结果
+          npx surge --project ./playground/.output/public --domain "$DEPLOY_DOMAIN"
           echo "url=$DEPLOY_DOMAIN" >> $GITHUB_OUTPUT
-      - name: Comment
+      - name: Comment success
+        if: success()
         uses: actions-cool/maintain-one-comment@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          number: ${{ needs.build.outputs.pr_id }}
+          number: ${{ github.event.number }}
           body-include: "<!-- AUTO_PREVIEW_HOOK -->"
           body: |
             ### [【预览链接】](${{ steps.deploy.outputs.url }}/index.html)
 
             <!-- AUTO_PREVIEW_HOOK -->
-
-  publish-failed:
-    needs: build
-    runs-on: ubuntu-latest
-    if: needs.build.result != 'success'
-    steps:
       - name: Comment failure
+        if: failure()
         uses: actions-cool/maintain-one-comment@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          number: ${{ needs.build.outputs.pr_id }}
+          number: ${{ github.event.number }}
           body-include: "<!-- AUTO_PREVIEW_HOOK -->"
           body: |
             预览编译失败
