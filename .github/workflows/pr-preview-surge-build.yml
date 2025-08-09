@@ -1,43 +1,75 @@
-name: PREVIEW_BUILD
-
+name: Preview Build & Publish
 on:
   pull_request:
     branches: [dev, main]
-    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
 
 jobs:
-  preview-build:
+  build:
     runs-on: ubuntu-latest
-
+    outputs:
+      pr_id: ${{ github.event.number }}
     steps:
-      - run: echo ${{ github.event.number }} > pr-id.txt
-      - uses: actions/upload-artifact@v4
-        with:
-          name: pr-id
-          path: pr-id.txt
-          retention-days: 10
-
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "lts/*"
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: latest
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Build playground
-        run: pnpm build
-
-      - uses: actions/upload-artifact@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "lts/*" }
+      - uses: pnpm/action-setup@v4
+        with: { version: latest }
+      - run: pnpm install
+      - run: pnpm build
+      - name: Upload dist
+        uses: actions/upload-artifact@v4
         with:
           name: playground
           path: playground/dist
           retention-days: 10
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    if: needs.build.result == 'success'
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: playground
+          path: dist
+      - name: Deploy
+        id: deploy
+        env:
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+        run: |
+          export DEPLOY_DOMAIN="https://preview-pr-${{ needs.build.outputs.pr_id }}-cherry-markdown.surge.sh"
+            # dist 下是构建结果；如果项目顶层需要 index 就保持一致
+          npx surge --project ./dist --domain "$DEPLOY_DOMAIN"
+          echo "url=$DEPLOY_DOMAIN" >> $GITHUB_OUTPUT
+      - name: Comment
+        uses: actions-cool/maintain-one-comment@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ needs.build.outputs.pr_id }}
+          body-include: "<!-- AUTO_PREVIEW_HOOK -->"
+          body: |
+            ### 【预览链接】
+            * [full model](${{ steps.deploy.outputs.url }}/index.html)
+
+            <!-- AUTO_PREVIEW_HOOK -->
+
+  publish-failed:
+    needs: build
+    runs-on: ubuntu-latest
+    if: needs.build.result != 'success'
+    steps:
+      - name: Comment failure
+        uses: actions-cool/maintain-one-comment@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ needs.build.outputs.pr_id }}
+          body-include: "<!-- AUTO_PREVIEW_HOOK -->"
+          body: |
+            预览编译失败
+            <!-- AUTO_PREVIEW_HOOK -->

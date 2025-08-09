@@ -4,10 +4,10 @@ on:
   workflow_run:
     workflows:
       - "PREVIEW_BUILD"
-    types:
-      - completed
+    types: [completed]
 
 permissions:
+  actions: read
   contents: read
   pull-requests: write
   issues: write
@@ -16,17 +16,15 @@ jobs:
   preview-publish:
     if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
-    outputs:
-      pr_id: ${{ steps.pr.outputs.id }}
     steps:
-      - name: download pr id
+      - name: Download pr id
         uses: dawidd6/action-download-artifact@v8
         with:
           workflow: ${{ github.event.workflow_run.workflow_id }}
           run_id: ${{ github.event.workflow_run.id }}
           name: pr-id
 
-      - name: output pr id
+      - name: Read pr id
         id: pr
         run: echo "id=$(<pr-id.txt)" >> $GITHUB_OUTPUT
 
@@ -42,45 +40,46 @@ jobs:
         env:
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         run: |
-          export DEPLOY_DOMAIN=https://preview-pr-${{ steps.pr.outputs.id }}-cherry-markdown.surge.sh
-          npx surge --project ./ --domain $DEPLOY_DOMAIN
+          export DEPLOY_DOMAIN="https://preview-pr-${{ steps.pr.outputs.id }}-cherry-markdown.surge.sh"
+          npx surge --project ./ --domain "$DEPLOY_DOMAIN"
           echo "url=$DEPLOY_DOMAIN" >> $GITHUB_OUTPUT
 
-      - uses: actions-cool/maintain-one-comment@v3
+      - name: Comment preview URL
+        uses: actions-cool/maintain-one-comment@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ steps.pr.outputs.id }}
+          body-include: "<!-- AUTO_PREVIEW_HOOK -->"
           body: |
             ### 【预览链接】
-            * [full model](${{steps.deploy.outputs.url}}/index.html)
-            
-            <!-- [工作流地址](${{github.server_url}}/${{github.repository}}/actions/runs/${{github.run_id}}) -->
+            * [full model](${{ steps.deploy.outputs.url }}/index.html)
+
             <!-- AUTO_PREVIEW_HOOK -->
-          number: ${{ steps.pr.outputs.id }}
-          body-include: '<!-- AUTO_PREVIEW_HOOK -->'
 
   preview-failed:
-    runs-on: ubuntu-latest
     if: github.event.workflow_run.conclusion == 'failure'
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      issues: write
     steps:
-      - name: download pr id
+      - name: Download pr id
         uses: dawidd6/action-download-artifact@v8
         with:
           workflow: ${{ github.event.workflow_run.workflow_id }}
           run_id: ${{ github.event.workflow_run.id }}
           name: pr-id
 
-      - name: output pr id
+      - name: Read pr id
         id: pr
         run: echo "id=$(<pr-id.txt)" >> $GITHUB_OUTPUT
 
-      - name: The job failed
+      - name: Comment failure
         uses: actions-cool/maintain-one-comment@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          number: ${{ steps.pr.outputs.id }}
+          body-include: "<!-- AUTO_PREVIEW_HOOK -->"
           body: |
             预览编译失败
-            
-            <!-- [工作流地址](${{github.server_url}}/${{github.repository}}/actions/runs/${{github.run_id}}) -->
             <!-- AUTO_PREVIEW_HOOK -->
-          number: ${{ steps.pr.outputs.id }}
-          body-include: '<!-- AUTO_PREVIEW_HOOK -->'
