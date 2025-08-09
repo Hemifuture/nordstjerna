@@ -37,15 +37,15 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: playground
-          path: dist
+          path: playground/dist
       - name: Deploy
         id: deploy
         env:
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         run: |
-          export DEPLOY_DOMAIN="https://preview-pr-${{ needs.build.outputs.pr_id }}-cherry-markdown.surge.sh"
-            # dist 下是构建结果；如果项目顶层需要 index 就保持一致
-          npx surge --project ./dist --domain "$DEPLOY_DOMAIN"
+          export DEPLOY_DOMAIN="https://preview-pr-${{ needs.build.outputs.pr_id }}-nordstjerna.surge.sh"
+          # playground/dist 下是构建结果
+          npx surge --project ./playground/dist --domain "$DEPLOY_DOMAIN"
           echo "url=$DEPLOY_DOMAIN" >> $GITHUB_OUTPUT
       - name: Comment
         uses: actions-cool/maintain-one-comment@v3
@@ -54,8 +54,7 @@ jobs:
           number: ${{ needs.build.outputs.pr_id }}
           body-include: "<!-- AUTO_PREVIEW_HOOK -->"
           body: |
-            ### 【预览链接】
-            * [full model](${{ steps.deploy.outputs.url }}/index.html)
+            ### [【预览链接】](${{ steps.deploy.outputs.url }}/index.html)
 
             <!-- AUTO_PREVIEW_HOOK -->
 
