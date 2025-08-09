@@ -39,7 +39,11 @@ jobs:
       - id: deploy
         run: |
           export DEPLOY_DOMAIN=https://preview-pr-${{ steps.pr.outputs.id }}-cherry-markdown.surge.sh
-          npx surge --project ./ --domain $DEPLOY_DOMAIN --token ${{ secrets.SURGE_TOKEN }}
+        env:
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+        run: |
+          export DEPLOY_DOMAIN=https://preview-pr-${{ steps.pr.outputs.id }}-cherry-markdown.surge.sh
+          npx surge --project ./ --domain $DEPLOY_DOMAIN
           echo "url=$DEPLOY_DOMAIN" >> $GITHUB_OUTPUT
 
       - uses: actions-cool/maintain-one-comment@v3
