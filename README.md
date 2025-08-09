@@ -4,20 +4,11 @@
 [![Web Components](https://img.shields.io/badge/Web%20Components-Standard-blue?style=for-the-badge&logo=webcomponents.org)](https://www.webcomponents.org/)
 [![Lit](https://img.shields.io/badge/Built%20with-Lit-324fff?style=for-the-badge&logo=lit)](https://lit.dev/)
 
-🌟 一个现代化的 Glassmorphism 风格 Web Components 组件库，采用 Lit 构建，提供优雅的毛玻璃效果设计。
-
-## ✨ 项目特色
-
-- 🎨 **Glassmorphism 设计**: 精美的毛玻璃效果和现代化视觉设计
-- 🔧 **Web Components**: 基于标准的 Web Components，框架无关
-- ⚡ **高性能**: 使用 Lit 框架，提供高效的渲染和更新机制
-- 🎯 **TypeScript**: 完整的类型支持，提供出色的开发体验
-- 🎨 **灵活样式系统**: 支持多层级阴影和状态主题
-- 📦 **模块化架构**: 样式与组件分离，便于定制和扩展
+🌟 一个现代化的 Glassmorphism 风格 Web Components 组件库，采用 Lit 构建。
 
 ## 🏗️ 项目结构
 
-```
+```bash
 nordstjerna/
 ├── packages/
 │   ├── style/                    # 样式包 - Glassmorphism 设计系统
@@ -27,36 +18,53 @@ nordstjerna/
 │   │   │   │   ├── border.css         # 边框样式
 │   │   │   │   ├── shadow.css         # 阴影效果
 │   │   │   │   └── components/        # 组件样式
-│   │   │   │       ├── button.css     # 按钮样式
-│   │   │   │       ├── card.css       # 卡片样式
-│   │   │   │       └── input.css      # 输入框样式
-│   │   │   └── style.css             # 样式入口文件
+│   │   │   ├── components-css.ts      # 组件样式导出
+│   │   │   ├── main.ts               # 样式包入口
+│   │   │   ├── style.css             # 样式入口文件
+│   │   │   └── vite-env.d.ts         # Vite 类型定义
+│   │   ├── dist/                     # 构建输出目录
+│   │   ├── tsconfig.json             # TypeScript 配置
+│   │   ├── vite.config.ts            # Vite 构建配置
 │   │   └── package.json
 │   │
 │   └── ui/                       # UI组件包 - Web Components
 │       ├── src/
 │       │   ├── base/
-│       │   │   └── nordstjerna-element.ts  # 基础组件类
-│       │   ├── components/
-│       │   │   └── Button/
-│       │   │       ├── n-button.ts        # 按钮组件
-│       │   │       ├── props.ts           # 类型定义
-│       │   │       └── index.ts           # 导出文件
-│       │   └── index.ts                   # 组件库入口
-│       ├── vite.config.ts                 # 构建配置
+│       │   │   ├── index.ts              # 基础模块导出
+│       │   │   └── nordstjerna-element.ts # 基础组件类
+│       │   ├── components/            # Web Components 组件
+│       │   ├── styles/                # 组件样式
+│       │   ├── global.d.ts               # 全局类型定义
+│       │   └── index.ts                  # 组件库入口
+│       ├── dist/                         # 构建输出目录
+│       ├── tsconfig.json                 # TypeScript 配置
+│       ├── vite.config.ts                # Vite 构建配置
+│       ├── LICENSE                       # 许可证文件
 │       └── package.json
 │
-├── playground/                   # 组件展示和测试
-│   ├── src/
-│   │   ├── App.ts               # 示例应用
-│   │   ├── index.ts             # 入口文件
-│   │   └── index.css            # 样式文件
-│   ├── index.html               # HTML 模板
-│   ├── vite.config.ts           # 开发服务器配置
+├── playground/                   # Nuxt 3 展示应用
+│   ├── assets/
+│   │   └── css/
+│   │       └── main.css             # 主样式文件
+│   ├── pages/
+│   │   └── index.vue               # 首页组件
+│   ├── plugins/
+│   │   └── nordstjerna.client.ts   # Nordstjerna 客户端插件
+│   ├── public/
+│   │   └── vite.svg                # 静态资源
+│   ├── .nuxt/                      # Nuxt 生成文件
+│   ├── .output/                    # Nuxt 构建输出
+│   ├── app.vue                     # 根组件
+│   ├── nuxt.config.ts              # Nuxt 配置
+│   ├── tsconfig.json               # TypeScript 配置
+│   ├── vite.config.ts              # Vite 配置
 │   └── package.json
 │
+├── .github/                      # GitHub 工作流配置
+├── .vscode/                      # VS Code 配置
 ├── pnpm-workspace.yaml          # pnpm 工作空间配置
 ├── pnpm-lock.yaml              # 依赖锁定文件
+├── package.json                # 根项目配置
 └── README.md                   # 项目说明
 ```
 
@@ -76,52 +84,45 @@ pnpm install
 ### 启动开发
 
 ```bash
-# 启动 playground 开发服务器
+# 启动 Nuxt 3 playground 开发服务器
 cd playground
 pnpm dev
 
-# 访问 http://localhost:5173/nordstjerna/
-```
-
-### 构建组件库
-
-```bash
-# 构建样式包
-cd packages/style
-pnpm build
-
-# 构建 UI 组件包
-cd packages/ui
-pnpm build
+# 访问 http://localhost:3000
 ```
 
 ## 📦 使用方式
 
-### 在 HTML 中使用
+### CSS 样式包 (@nordstjerna/style)
 
-```html
-<!DOCTYPE html>
-<html>
-<head>
-  <!-- 引入样式 -->
-  <link rel="stylesheet" href="@nordstjerna/style">
-</head>
-<body>
-  <!-- 使用组件 -->
-  <n-button>默认按钮</n-button>
-  <n-button status="success" level="high">成功按钮</n-button>
-  <n-button loading>加载中</n-button>
-  
-  <!-- 引入组件库 -->
-  <script type="module" src="@nordstjerna/ui"></script>
-</body>
-</html>
+提供 Glassmorphism 风格的 CSS 样式系统，可以独立使用或配合 UI 组件包使用。
+
+```bash
+# 安装样式包
+npm install @nordstjerna/style
 ```
 
-### 在项目中使用
+```html
+<style>
+@import '@nordstjerna/style';
+</style>
+```
 
 ```javascript
-// 导入组件库
+// 在 JavaScript 项目中导入
+import "@nordstjerna/style";
+```
+
+### UI 组件包 (@nordstjerna/ui)
+
+基于 Lit 构建的 Web Components 组件库，提供开箱即用的交互组件。
+
+```bash
+# 安装 UI 组件包
+npm install @nordstjerna/ui
+```
+
+```javascript
 import "@nordstjerna/ui";
 import "@nordstjerna/style";
 
@@ -132,15 +133,6 @@ button.status = 'primary';
 button.level = 'high';
 document.body.appendChild(button);
 ```
-
-### 样式系统
-
-- 🎨 CSS 变量驱动的主题系统
-- 🌊 流畅的毛玻璃背景效果
-- ✨ 精细的阴影层级系统
-- 🎯 语义化的状态颜色
-- 📱 响应式设计适配
-
 ## 🤝 贡献指南
 
 我们欢迎任何形式的贡献！请查看我们的贡献指南：
