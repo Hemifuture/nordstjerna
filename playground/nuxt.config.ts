@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   typescript: {
     typeCheck: false
   },
-  ssr: false, // 由于使用 Web Components，建议使用 SPA 模式
+  ssr: true,
   vite: {
     resolve: {
       alias: {
