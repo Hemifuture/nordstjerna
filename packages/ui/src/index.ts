@@ -1,6 +1,5 @@
 // 自动注入基础变量 (仍允许用户单独引入 @nordstjerna/style 覆盖)
 import './styles/global-styles.js';
-import './components/button/index.js';
 
 // 导出基础类
 export * from './base/index.js';
