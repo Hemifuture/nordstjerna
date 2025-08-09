@@ -20,6 +20,11 @@ jobs:
       - uses: pnpm/action-setup@v4
         with: { version: latest }
       - run: pnpm install
+      - name: Check CI environment
+        run: |
+          echo "CI=$CI"
+          echo "NODE_ENV=$NODE_ENV"
+          echo "GitHub Actions sets CI automatically: $CI"
       - run: pnpm build
       - name: Upload dist
         uses: actions/upload-artifact@v4
