@@ -4,10 +4,10 @@
   "description": "",
   "scripts": {
     "dev": "pnpm --filter @nordstjerna/playground dev",
-    "build": "pnpm run build:style && pnpm run build:ui && pnpm run build:docs",
+    "build": "pnpm run build:style && pnpm run build:ui && pnpm run build:playground",
     "build:style": "pnpm --filter @nordstjerna/style build",
     "build:ui": "pnpm --filter @nordstjerna/ui build",
-    "build:docs": "pnpm --filter @nordstjerna/playground build"
+    "build:playground": "pnpm --filter @nordstjerna/playground generate"
   },
   "license": "ISC",
   "dependencies": {
