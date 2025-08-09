@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   typescript: {
     typeCheck: false
   },
-  ssr: true,
+  ssr: process.env.ENABLE_SSR === 'true', 
   vite: {
     resolve: {
       alias: {
