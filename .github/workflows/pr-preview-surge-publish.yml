@@ -1,0 +1,72 @@
+name: Preview Publish
+
+on:
+  workflow_run:
+    workflows:
+      - Preview Build
+    types:
+      - completed
+
+jobs:
+  preview-publish:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    outputs:
+      pr_id: ${{ steps.pr.outputs.id }}
+    steps:
+      - name: download pr id
+        uses: dawidd6/action-download-artifact@v8
+        with:
+          workflow: ${{ github.event.workflow_run.workflow_id }}
+          run_id: ${{ github.event.workflow_run.id }}
+          name: pr-id
+
+      - name: output pr id
+        id: pr
+        run: echo "id=$(<pr-id.txt)" >> $GITHUB_OUTPUT
+
+      - name: Download playground
+        uses: dawidd6/action-download-artifact@v8
+        with:
+          workflow: ${{ github.event.workflow_run.workflow_id }}
+          run_id: ${{ github.event.workflow_run.id }}
+          name: playground
+
+      - id: deploy
+        run: |
+          export DEPLOY_DOMAIN=https://preview-pr-${{ steps.pr.outputs.id }}-cherry-markdown.surge.sh
+          npx surge --project ./ --domain $DEPLOY_DOMAIN --token ${{ secrets.SURGE_TOKEN }}
+          echo "url=$DEPLOY_DOMAIN" >> $GITHUB_OUTPUT
+
+      - uses: actions-cool/maintain-one-comment@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: |
+            ### 【预览链接】
+            * [full model](${{steps.deploy.outputs.url}}/index.html)
+          number: ${{ steps.pr.outputs.id }}
+          body-include: '<!-- [工作流地址](${{github.server_url}}/${{github.repository}}/actions/runs/${{github.run_id}}) -->'
+
+  preview-failed:
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'failure'
+    steps:
+      - name: download pr id
+        uses: dawidd6/action-download-artifact@v6
+        with:
+          workflow: ${{ github.event.workflow_run.workflow_id }}
+          run_id: ${{ github.event.workflow_run.id }}
+          name: pr-id
+
+      - name: output pr id
+        id: pr
+        run: echo "id=$(<pr-id.txt)" >> $GITHUB_OUTPUT
+
+      - name: The job failed
+        uses: actions-cool/maintain-one-comment@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: |
+            预览编译失败
+          number: ${{ steps.pr.outputs.id }}
+          body-include: '<!-- [工作流地址](${{github.server_url}}/${{github.repository}}/actions/runs/${{github.run_id}}) -->'

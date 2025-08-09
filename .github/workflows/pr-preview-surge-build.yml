@@ -1,14 +1,22 @@
-name: Build & Deploy
+name: Preview Build
 on:
-  push:
+  pull_request:
     branches:
       - main
+      - dev
 
 jobs:
-  build-deploy:
+  preview-build:
     runs-on: ubuntu-latest
 
     steps:
+      - run: echo ${{ github.event.number }} > pr-id.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr-id
+          path: pr-id.txt
+          retention-days: 10
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -24,9 +32,8 @@ jobs:
       - name: Build playground
         run: pnpm build
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - uses: actions/upload-artifact@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ././playground/dist
-          publish_branch: gh-pages
+          name: playground
+          path: playground/dist
+          retention-days: 10
