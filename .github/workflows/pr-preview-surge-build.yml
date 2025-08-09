@@ -1,9 +1,9 @@
-name: Preview Build
+name: PREVIEW_BUILD
+
 on:
   pull_request:
-    branches:
-      - main
-      - dev
+    branches: [dev, main]
+    types: [opened, synchronize, reopened]
 
 jobs:
   preview-build:

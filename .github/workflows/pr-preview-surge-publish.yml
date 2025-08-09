@@ -3,7 +3,7 @@ name: Preview Publish
 on:
   workflow_run:
     workflows:
-      - Preview Build
+      - PREVIEW_BUILD
     types:
       - completed
 
