@@ -36,9 +36,8 @@ jobs:
           run_id: ${{ github.event.workflow_run.id }}
           name: playground
 
-      - id: deploy
-        run: |
-          export DEPLOY_DOMAIN=https://preview-pr-${{ steps.pr.outputs.id }}-cherry-markdown.surge.sh
+      - name: Deploy to Surge
+        id: deploy
         env:
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         run: |
