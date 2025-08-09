@@ -84,11 +84,7 @@ pnpm install
 ### 启动开发
 
 ```bash
-# 启动 Nuxt 3 playground 开发服务器
-cd playground
 pnpm dev
-
-# 访问 http://localhost:3000
 ```
 
 ## 📦 使用方式
@@ -133,6 +129,7 @@ button.status = 'primary';
 button.level = 'high';
 document.body.appendChild(button);
 ```
+
 ## 🤝 贡献指南
 
 我们欢迎任何形式的贡献！请查看我们的贡献指南：
