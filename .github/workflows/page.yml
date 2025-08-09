@@ -26,7 +26,7 @@ jobs:
         env:
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         run: |
-          export DEPLOY_DOMAIN="https://preview-pr-nordstjerna.surge.sh"
-          # playground/.output/public 下是构建结果
+          export DEPLOY_DOMAIN="https://nordstjerna.surge.sh"
+ 
           npx surge --project ./playground/.output/public --domain "$DEPLOY_DOMAIN"
           echo "url=$DEPLOY_DOMAIN" >> $GITHUB_OUTPUT
