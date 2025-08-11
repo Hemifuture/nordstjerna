@@ -39,7 +39,6 @@ export abstract class NordstjernaElement extends LitElement {
       box-sizing: border-box;
     }
 
-    /* disabled: 保留光标反馈以显示禁止状态，不再使用 pointer-events:none 以便光标样式生效 */
     :host([disabled]) {
       opacity: 0.6;
       cursor: not-allowed;  
