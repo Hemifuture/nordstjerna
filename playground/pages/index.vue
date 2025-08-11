@@ -2,39 +2,38 @@
   <div class="container">
     <h1>Nordstjerna Playground</h1>
     <p>正在加载 Web Components...</p>
-    
-    <div class="card buttons-section">
-      <h2>Buttons</h2>
+
+    <div class="demo-panel buttons-section">
+      <h2>Buttons (5 主题 + Level)</h2>
       <div class="button-group">
-        <n-button>你好</n-button>
-        <n-button>No Level</n-button>
-        <n-button level="low">Low Level</n-button>
-        <n-button level="medium">Medium Level</n-button>
-        <n-button level="high">High Level</n-button>
-        <n-button status="success" level="low">Success</n-button>
-        <n-button status="warning" level="medium">Warning</n-button>
-        <n-button status="danger" level="high">Danger</n-button>
-        <n-button disabled>Disabled</n-button>
-        <n-button loading>Loading</n-button>
+  <n-button theme="primary" level="low">Primary / Low</n-button>
+  <n-button theme="primary" level="medium">Primary / Medium</n-button>
+  <n-button theme="primary" level="high">Primary / High</n-button>
+  <n-button theme="lilac" level="low">Lilac</n-button>
+  <n-button theme="success" level="medium">Success</n-button>
+  <n-button theme="warning" level="high">Warning</n-button>
+  <n-button theme="danger" level="high">Danger</n-button>
+  <n-button loading theme="lilac">Loading</n-button>
+  <n-button disabled theme="primary">Disabled</n-button>
       </div>
     </div>
-    
-    <div class="card inputs-section">
-      <h2>Inputs</h2>
+
+    <div class="demo-panel inputs-section">
+      <h2>Inputs (5 主题)</h2>
       <div class="input-group">
-        <n-input placeholder="Default input"></n-input>
-        <n-input status="success" level="low" placeholder="Success input"></n-input>
-        <n-input status="warning" level="medium" placeholder="Warning input"></n-input>
-        <n-input status="danger" level="high" placeholder="Danger input"></n-input>
+  <n-input theme="primary" level="low" placeholder="Primary input" />
+  <n-input theme="lilac" level="medium" placeholder="Lilac input" />
+  <n-input theme="success" level="low" placeholder="Success input" />
+  <n-input theme="warning" level="medium" placeholder="Warning input" />
+  <n-input theme="danger" level="high" placeholder="Danger input" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-// 在客户端加载时导入 Web Components
 onMounted(async () => {
-  if (process.client) {
+  if (import.meta.client) {
     try {
       await import('@nordstjerna/ui')
       console.log('Nordstjerna UI components loaded successfully')
@@ -53,12 +52,14 @@ onMounted(async () => {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-.card {
-  background: #f8f9fa;
-  border: 1px solid #e9ecef;
-  border-radius: 8px;
-  padding: 2rem;
-  margin-bottom: 2rem;
+/* demo panel wrapper (避免覆盖真实玻璃 .card 样式) */
+.demo-panel {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 1.75rem 2rem 2.25rem;
+  margin-bottom: 2.5rem;
+  backdrop-filter: blur(12px) saturate(150%);
 }
 
 .button-group {
@@ -88,4 +89,5 @@ h1 {
 h2 {
   margin-bottom: 1rem;
 }
+
 </style>

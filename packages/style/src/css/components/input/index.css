@@ -1,0 +1,140 @@
+/* Moved from components/input.css */
+/* Input component styles extracted for shadow DOM usage */
+
+:host { display: inline-block; width: 100%; max-width: 300px; }
+
+.input-wrapper { 
+  position: relative; 
+  width: 100%; 
+  overflow: hidden; /* clip sheen */
+  isolation: isolate; /* contain blend modes */
+  --glass-highlight-opacity: var(--nordstjerna-glass-highlight-opacity, 0.45);
+  /* align sheen variables with button */
+  --sheen-start: -50%;
+  --sheen-end: 260%;
+  --sheen-duration: 0.9s;
+}
+
+.input {
+  width: 100%;
+  height: 40px;
+  border: none;
+  background: none;
+  padding: 0 12px;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  outline: none;
+  box-sizing: border-box;
+  /* pseudo elements moved to wrapper (native input can't render ::before/::after) */
+  --border-color: var(--nordstjerna-border-color, var(--color-primary));
+  --original-color: var(--nordstjerna-original-color, var(--color-primary));
+  --color-border-hover: var(--nordstjerna-border-color, var(--color-primary));
+  --hover-effect: inset 0 0 0 0px var(--border-color);
+  /* glass variables (aligned with button) */
+  --glass-blur: var(--nordstjerna-glass-blur, 14px);
+  --glass-saturation: var(--nordstjerna-glass-saturation, 160%);
+  --glass-contrast: var(--nordstjerna-glass-contrast, 1.05);
+  --glass-opacity: var(--nordstjerna-glass-opacity, 0.18);
+  --glass-highlight-opacity: var(--nordstjerna-glass-highlight-opacity, 0.45);
+  --glass-bg-accent: color-mix(in oklab, var(--original-color) 10%, transparent);
+  --glass-bg-accent-soft: color-mix(in oklab, var(--original-color) 3%, transparent);
+  --box-shadow: var(--nordstjerna-base-shadow, var(--shadow-low)), var(--hover-effect), inset 0 1px 0 0 rgba(255,255,255,0.25), inset 0 0 0 1px rgba(255,255,255,0.06);
+  background:
+    linear-gradient(150deg, rgba(255,255,255,0.35), rgba(255,255,255,0.05) 60%),
+    linear-gradient(215deg, var(--glass-bg-accent), var(--glass-bg-accent-soft));
+  background-clip: padding-box;
+  color: var(--color-text);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  backdrop-filter: var(--blur-filter, blur(var(--glass-blur)) saturate(var(--glass-saturation)) contrast(var(--glass-contrast)));
+  box-shadow: var(--box-shadow);
+  transition: all 0.2s ease;
+}
+
+:host([level="low"]) .input { --box-shadow: var(--shadow-low), var(--hover-effect); }
+:host([level="medium"]) .input { --box-shadow: var(--shadow-medium), var(--hover-effect); }
+:host([level="high"]) .input { --box-shadow: var(--shadow-high), var(--hover-effect); }
+
+/* theme color variants mapping */
+:host([theme="primary"]) .input { --border-color: var(--color-primary-border, var(--color-border)); --original-color: var(--color-primary); }
+:host([theme="lilac"]) .input { --border-color: var(--color-lilac); --original-color: var(--color-lilac); }
+:host([theme="success"]) .input { --border-color: var(--color-success); --original-color: var(--color-success); }
+:host([theme="warning"]) .input { --border-color: var(--color-warning); --original-color: var(--color-warning); }
+:host([theme="danger"]) .input { --border-color: var(--color-danger); --original-color: var(--color-danger); }
+
+.input:hover:not(:disabled) { --hover-effect: inset 0 0 0 1px var(--border-color); }
+.input:focus { outline: none; --border-color: var(--original-color); --hover-effect: inset 0 0 0 1px var(--border-color); }
+
+/* glossy highlight */
+/* glossy highlight on wrapper */
+.input-wrapper::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  inset: 0;
+  border-radius: var(--border-radius);
+  background:
+    radial-gradient(circle at 30% 15%, rgba(255,255,255,0.55), transparent 60%),
+    linear-gradient(to bottom, rgba(255,255,255,0.65), rgba(255,255,255,0) 55%);
+  mix-blend-mode: overlay;
+  opacity: var(--glass-highlight-opacity);
+  transition: opacity .3s ease;
+  z-index: 0;
+}
+
+/* moving sheen (mirrors button) */
+.input-wrapper::after {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -40%;
+  width: 50%;
+  height: 220%;
+  transform: translateX(var(--sheen-start)) rotate(25deg);
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.85) 45%, rgba(255,255,255,0) 75%);
+  opacity: 0;
+  filter: blur(2px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  transition: transform var(--sheen-duration) cubic-bezier(.25,.8,.25,1), opacity .5s ease;
+  z-index: 1;
+}
+
+.input-wrapper:hover::after { opacity: .55; transform: translateX(var(--sheen-end)) rotate(25deg); }
+.input-wrapper:active::after { transition-duration: .4s; }
+
+/* intensify highlight on hover/focus */
+.input-wrapper:hover::before,
+.input-wrapper:hover::before { opacity: calc(var(--glass-highlight-opacity) + 0.15); }
+
+.input-wrapper:hover .input:not(:disabled),
+.input-wrapper:focus-within .input:not(:disabled) { --hover-effect: inset 0 0 0 1px var(--border-color); }
+
+:host([size="small"]) .input { height: 32px; padding: 0 8px; font-size: 0.875rem; }
+:host([size="medium"]) .input { height: 40px; padding: 0 12px; font-size: 1rem; }
+:host([size="large"]) .input { height: 48px; padding: 0 16px; font-size: 1.125rem; }
+
+.input::placeholder { color: var(--color-text-secondary); opacity: 0.7; }
+
+:host([disabled]) .input { cursor: not-allowed; background-color: var(--color-bg-disabled, rgba(0, 0, 0, 0.05)); color: var(--color-text-disabled, rgba(0, 0, 0, 0.4)); }
+:host([readonly]) .input { cursor: default; background-color: var(--color-bg-readonly, rgba(0, 0, 0, 0.02)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .input, .input-wrapper::after { transition: none; animation: none; }
+}
+
+/* optional continuous loop */
+@keyframes sheen-move { from { transform: translateX(var(--sheen-start)) rotate(25deg); } to { transform: translateX(var(--sheen-end)) rotate(25deg); } }
+:host([sheen-loop]) .input-wrapper::after {
+  opacity: .55;
+  animation: sheen-move calc(var(--sheen-duration) * 2) linear infinite;
+  transition: none;
+}
+
+/* auto loop if loading attribute present (for future parity with button) */
+:host([loading]) .input-wrapper::after {
+  opacity: .55;
+  animation: sheen-move calc(var(--sheen-duration) * 1.6) linear infinite;
+  transition: none;
+}

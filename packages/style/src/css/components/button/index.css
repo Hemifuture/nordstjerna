@@ -1,0 +1,161 @@
+/* Moved from components/button.css */
+/* Button component styles extracted for shadow DOM usage */
+
+:host {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: inherit;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+
+  /* variable indirection from host custom properties */
+  --border-color: var(--nordstjerna-border-color, var(--color-primary));
+  --original-color: var(--nordstjerna-original-color, var(--color-primary));
+  --color-border-hover: var(--nordstjerna-border-color, var(--color-primary));
+  /* glass effect variables */
+  --hover-effect: inset 0 0 0 0px var(--border-color);
+  --glass-blur: var(--nordstjerna-glass-blur, 14px);
+  --glass-saturation: var(--nordstjerna-glass-saturation, 160%);
+  --glass-contrast: var(--nordstjerna-glass-contrast, 1.05);
+  --glass-opacity: var(--nordstjerna-glass-opacity, 0.18);
+  --glass-highlight-opacity: var(--nordstjerna-glass-highlight-opacity, 0.55);
+  --glass-inner: inset 0 1px 0 0 rgba(255,255,255,0.35), inset 0 0 0 1px rgba(255,255,255,0.08);
+  --ambient-shadow: var(--nordstjerna-base-shadow, var(--shadow-low));
+  --box-shadow: var(--ambient-shadow), var(--hover-effect), var(--glass-inner);
+  --glass-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation)) contrast(var(--glass-contrast));
+  --glass-bg-accent: color-mix(in oklab, var(--original-color) 12%, transparent);
+  --glass-bg-accent-soft: color-mix(in oklab, var(--original-color) 5%, transparent);
+  /* sheen movement variables */
+  --sheen-start: -50%;
+  --sheen-end: 260%;
+  --sheen-duration: 0.9s;
+
+  /* multi-layer translucent background for liquid glass */
+  background:
+    linear-gradient(150deg, rgba(255,255,255,0.40), rgba(255,255,255,0.05) 60%) ,
+    linear-gradient(215deg, var(--glass-bg-accent), var(--glass-bg-accent-soft));
+  background-clip: padding-box;
+  color: var(--color-text);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 8px 16px;
+  backdrop-filter: var(--blur-filter, var(--glass-filter));
+  -webkit-backdrop-filter: var(--blur-filter, var(--glass-filter));
+  box-shadow: var(--box-shadow);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate; /* ensure mix-blend stays contained */
+}
+
+/* elevation presets adapt only the ambient shadow */
+:host([level="low"]) .button { --ambient-shadow: var(--shadow-low); }
+:host([level="medium"]) .button { --ambient-shadow: var(--shadow-medium); }
+:host([level="high"]) .button { --ambient-shadow: var(--shadow-high); }
+
+/* theme color variants mapping */
+:host([theme="primary"]) .button { --border-color: var(--color-primary-border, var(--color-border)); --original-color: var(--color-primary); }
+:host([theme="lilac"]) .button { --border-color: var(--color-lilac); --original-color: var(--color-lilac); }
+:host([theme="success"]) .button { --border-color: var(--color-success); --original-color: var(--color-success); }
+:host([theme="warning"]) .button { --border-color: var(--color-warning); --original-color: var(--color-warning); }
+:host([theme="danger"]) .button { --border-color: var(--color-danger); --original-color: var(--color-danger); }
+
+:host(:hover:not([disabled])) .button { --hover-effect: inset 0 0 0 1px var(--border-color); }
+:host(:active:not([disabled])) .button {
+  --border-color: color-mix(in oklab, var(--original-color) 85%, black 15%);
+  --hover-effect: inset 0 0 0 1px var(--border-color);
+  transition: all 0.1s;
+  transform: translateY(1px) scale(.985);
+}
+
+:host([loading]) { pointer-events: none; }
+
+/* focus ring enhancement */
+:host(:focus-visible) .button,
+:host(.focus-visible) .button { box-shadow: var(--box-shadow), 0 0 0 2px rgba(255,255,255,0.25), 0 0 0 4px color-mix(in oklab, var(--original-color) 55%, transparent); }
+
+/* glossy top highlight */
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 30% 15%, rgba(255,255,255,0.55), transparent 60%),
+    linear-gradient(to bottom, rgba(255,255,255,0.65), rgba(255,255,255,0) 55%);
+  mix-blend-mode: overlay;
+  opacity: var(--glass-highlight-opacity);
+  pointer-events: none;
+  transition: opacity .3s ease;
+  z-index: 0;
+}
+
+/* moving sheen */
+.button::after {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -40%;
+  width: 50%;
+  height: 220%;
+  transform: translateX(var(--sheen-start)) rotate(25deg);
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.85) 45%, rgba(255,255,255,0) 75%);
+  opacity: 0;
+  filter: blur(2px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  transition: transform var(--sheen-duration) cubic-bezier(.25,.8,.25,1), opacity .5s ease;
+  z-index: 1;
+}
+
+:host(:hover:not([disabled])) .button::after { opacity: .55; transform: translateX(var(--sheen-end)) rotate(25deg); }
+:host(:active:not([disabled])) .button::after { transition-duration: .4s; }
+
+/* optional continuous loop */
+@keyframes sheen-move { from { transform: translateX(var(--sheen-start)) rotate(25deg); } to { transform: translateX(var(--sheen-end)) rotate(25deg); } }
+:host([sheen-loop]) .button::after {
+  opacity: .55;
+  animation: sheen-move calc(var(--sheen-duration) * 2) linear infinite;
+  transition: none;
+}
+
+/* auto loop while loading */
+:host([loading]) .button::after {
+  opacity: .55;
+  animation: sheen-move calc(var(--sheen-duration) * 1.6) linear infinite;
+  transition: none;
+}
+
+/* reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .button, .button::after { transition: none; animation: none; }
+}
+
+.loading-spinner {
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }

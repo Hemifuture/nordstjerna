@@ -1,0 +1,68 @@
+/* Common liquid glass (frosted / glossy) design tokens & helpers */
+
+:root {
+  /* Frosted glass baseline tokens (can be overridden per theme) */
+  --glass-blur: 14px;
+  --glass-saturation: 160%;
+  --glass-contrast: 1.05;
+  --glass-opacity: 0.18; /* reserved if a unified rgba() layer is needed */
+  --glass-highlight-opacity: 0.55;
+  --glass-inner-light: 0 1px 0 0 rgba(255,255,255,0.35);
+  --glass-inner-outline: 0 0 0 1px rgba(255,255,255,0.08);
+  --glass-inner: inset var(--glass-inner-light), inset var(--glass-inner-outline);
+  --glass-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation)) contrast(var(--glass-contrast));
+}
+
+/* Utility class for any element needing the liquid glass surface */
+.glass-surface {
+  position: relative;
+  background:
+    linear-gradient(150deg, rgba(255,255,255,0.40), rgba(255,255,255,0.05) 60%),
+    linear-gradient(215deg, color-mix(in oklab, var(--color-primary) 12%, transparent), color-mix(in oklab, var(--color-primary) 5%, transparent));
+  background-clip: padding-box;
+  backdrop-filter: var(--blur-filter, var(--glass-filter));
+  -webkit-backdrop-filter: var(--blur-filter, var(--glass-filter));
+  box-shadow: var(--base-shadow, var(--shadow-low)), var(--glass-inner);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Optional glossy overlay & sheen (opt-in via .glass-sheen to avoid cost when unused) */
+.glass-sheen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 30% 15%, rgba(255,255,255,0.55), transparent 60%),
+    linear-gradient(to bottom, rgba(255,255,255,0.65), rgba(255,255,255,0) 55%);
+  mix-blend-mode: overlay;
+  opacity: var(--glass-highlight-opacity);
+  pointer-events: none;
+  transition: opacity .3s ease;
+  z-index: 0;
+}
+
+.glass-sheen::after {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -40%;
+  width: 50%;
+  height: 220%;
+  transform: translateX(-50%) rotate(25deg);
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.85) 45%, rgba(255,255,255,0) 75%);
+  opacity: 0;
+  filter: blur(2px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  transition: transform 0.9s cubic-bezier(.25,.8,.25,1), opacity .5s ease;
+  z-index: 1;
+}
+
+.glass-sheen:hover::after { opacity: .55; transform: translateX(260%) rotate(25deg); }
+.glass-sheen:active::after { transition-duration: .4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-sheen::after { transition: none; animation: none; }
+}

@@ -1,0 +1,65 @@
+/* Moved from components/card.css */
+.card {
+  position: relative;
+  display: block;
+  /* base vars */
+  --border-color: var(--nordstjerna-border-color, var(--color-primary));
+  --original-color: var(--nordstjerna-original-color, var(--color-primary));
+  --ambient-shadow: var(--nordstjerna-base-shadow, var(--shadow-low));
+  /* glass */
+  --glass-blur: var(--nordstjerna-glass-blur, 18px);
+  --glass-saturation: var(--nordstjerna-glass-saturation, 160%);
+  --glass-contrast: var(--nordstjerna-glass-contrast, 1.06);
+  --glass-opacity: var(--nordstjerna-glass-opacity, 0.20);
+  --glass-highlight-opacity: var(--nordstjerna-glass-highlight-opacity, 0.55);
+  --glass-bg-accent: color-mix(in oklab, var(--original-color) 10%, transparent);
+  --glass-bg-accent-soft: color-mix(in oklab, var(--original-color) 4%, transparent);
+  --box-shadow: var(--ambient-shadow), inset 0 1px 0 0 rgba(255,255,255,0.30), inset 0 0 0 1px rgba(255,255,255,0.05);
+
+  background:
+    linear-gradient(150deg, rgba(255,255,255,0.38), rgba(255,255,255,0.05) 60%),
+    linear-gradient(215deg, var(--glass-bg-accent), var(--glass-bg-accent-soft));
+  background-clip: padding-box;
+  color: var(--color-text);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 16px;
+  backdrop-filter: var(--blur-filter, blur(var(--glass-blur)) saturate(var(--glass-saturation)) contrast(var(--glass-contrast)));
+  -webkit-backdrop-filter: var(--blur-filter, blur(var(--glass-blur)) saturate(var(--glass-saturation)) contrast(var(--glass-contrast)));
+  box-shadow: var(--box-shadow);
+  transition: border-color .25s ease, box-shadow .25s ease;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* elevation levels */
+.card[level="low"] { --ambient-shadow: var(--shadow-low); }
+.card[level="medium"] { --ambient-shadow: var(--shadow-medium); }
+.card[level="high"] { --ambient-shadow: var(--shadow-high); }
+
+/* theme variants (5 themes) */
+.card[theme="primary"] { --border-color: var(--color-primary); --original-color: var(--color-primary); }
+.card[theme="lilac"] { --border-color: var(--color-lilac); --original-color: var(--color-lilac); }
+.card[theme="success"] { --border-color: var(--color-success); --original-color: var(--color-success); }
+.card[theme="warning"] { --border-color: var(--color-warning); --original-color: var(--color-warning); }
+.card[theme="danger"] { --border-color: var(--color-danger); --original-color: var(--color-danger); }
+
+.card:hover { box-shadow: var(--box-shadow), 0 0 0 1px var(--border-color); }
+.card:focus-within { outline: none; box-shadow: var(--box-shadow), 0 0 0 2px color-mix(in oklab, var(--original-color) 55%, transparent); }
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 35% 18%, rgba(255,255,255,0.55), transparent 65%),
+    linear-gradient(to bottom, rgba(255,255,255,0.55), rgba(255,255,255,0) 55%);
+  mix-blend-mode: overlay;
+  opacity: var(--glass-highlight-opacity);
+  pointer-events: none;
+  transition: opacity .3s ease;
+  z-index: 0;
+}
+
+.card:hover::before { opacity: calc(var(--glass-highlight-opacity) + 0.1); }

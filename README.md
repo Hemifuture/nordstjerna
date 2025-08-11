@@ -125,7 +125,7 @@ import "@nordstjerna/style";
 // 动态创建组件
 const button = document.createElement('n-button');
 button.textContent = '点击我';
-button.status = 'primary';
+button.theme = 'primary';
 button.level = 'high';
 document.body.appendChild(button);
 ```
