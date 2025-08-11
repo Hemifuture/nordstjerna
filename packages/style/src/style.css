@@ -1,5 +1,5 @@
 @import "./css/variables.css";
 @import "./css/shadow.css";
-@import "./css/components/button.css";
-@import "./css/components/card.css";
-@import "./css/components/input.css";
+@import "./css/components/button/index.css";
+@import "./css/components/card/index.css";
+@import "./css/components/input/index.css";

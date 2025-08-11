@@ -28,6 +28,8 @@ export interface InputProps {
   pattern?: string;
   /** 自动完成 */
   autocomplete?: string;
+  /** 输入框主题 */
+  theme?: 'default' | 'primary' | 'lilac' | 'success' | 'warning' | 'danger';
 }
 
 /**
@@ -36,9 +38,9 @@ export interface InputProps {
  * @example
  * ```html
  * <n-input placeholder="请输入内容"></n-input>
- * <n-input status="success" level="low" placeholder="成功状态"></n-input>
- * <n-input status="warning" level="medium" placeholder="警告状态"></n-input>
- * <n-input status="danger" level="high" placeholder="危险状态"></n-input>
+ * <n-input theme="success" level="low" placeholder="成功主题"></n-input>
+ * <n-input theme="warning" level="medium" placeholder="警告主题"></n-input>
+ * <n-input theme="danger" level="high" placeholder="危险主题"></n-input>
  * ```
  */
 @customElement('n-input')
@@ -72,6 +74,9 @@ export class NInput extends NordstjernaElement implements InputProps {
 
   @property({ reflect: true })
   autocomplete?: string;
+
+  @property({ reflect: true })
+  theme: 'default' | 'primary' | 'lilac' | 'success' | 'warning' | 'danger' = 'default';
 
   static styles = css`
     ${NordstjernaElement.styles}

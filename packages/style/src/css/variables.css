@@ -1,10 +1,12 @@
 :root {
-  --color-primary: rgb(167 139 250);
-  --color-secondary: rgb(136, 136, 136);
-
+  --color-primary: rgb(255, 255, 255);
+  /* 独立的 primary 主题边框色（保持 primary 本身为白，用于背景/混合；边框单独用黑色）*/
+  --color-primary-border: rgb(70, 70, 70);
+  --color-lilac: rgb(167 139 250);
   --color-warning: rgb(255, 177, 89);
   --color-success: rgb(59, 179, 70);
   --color-danger: rgb(249, 57, 32);
+   
   --color-disabled: rgb(229, 229, 229);
 
   --color-border: var(--color-primary);

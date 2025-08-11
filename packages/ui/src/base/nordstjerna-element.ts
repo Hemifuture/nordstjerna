@@ -19,10 +19,10 @@ export abstract class NordstjernaElement extends LitElement {
   disabled = false;
 
   /**
-   * 组件状态
+   * 组件主题
    */
   @property({ reflect: true })
-  status: 'default' | 'success' | 'warning' | 'danger' | 'info' = 'default';
+  theme: 'default' | 'primary' | 'lilac' | 'success' | 'warning' | 'danger' = 'default';
 
   /**
    * 组件层级（用于阴影效果）
@@ -39,9 +39,10 @@ export abstract class NordstjernaElement extends LitElement {
       box-sizing: border-box;
     }
 
+    /* disabled: 保留光标反馈以显示禁止状态，不再使用 pointer-events:none 以便光标样式生效 */
     :host([disabled]) {
       opacity: 0.6;
-      pointer-events: none;
+      cursor: not-allowed;  
       cursor: not-allowed;
     }
 
@@ -57,30 +58,35 @@ export abstract class NordstjernaElement extends LitElement {
       --nordstjerna-size: var(--nordstjerna-size-large, 1.125rem);
     }
 
-    /* 状态颜色 */
-    :host([status="default"]) {
-      --nordstjerna-border-color: var(--color-primary);
+  /* 这里边框要单独设置黑色 */
+  :host([theme="default"]) {
+      --nordstjerna-border-color: var(--color-border, var(--color-primary));
       --nordstjerna-original-color: var(--color-primary);
     }
 
-    :host([status="success"]) {
+  :host([theme="primary"]) {
+        --nordstjerna-border-color: var(--color-border, var(--color-primary));
+      --nordstjerna-original-color: var(--color-primary);
+    }
+
+  :host([theme="lilac"]) {
+      --nordstjerna-border-color: var(--color-lilac);
+      --nordstjerna-original-color: var(--color-lilac);
+    }
+
+  :host([theme="success"]) {
       --nordstjerna-border-color: var(--color-success);
       --nordstjerna-original-color: var(--color-success);
     }
 
-    :host([status="warning"]) {
+  :host([theme="warning"]) {
       --nordstjerna-border-color: var(--color-warning);
       --nordstjerna-original-color: var(--color-warning);
     }
 
-    :host([status="danger"]) {
+  :host([theme="danger"]) {
       --nordstjerna-border-color: var(--color-danger);
       --nordstjerna-original-color: var(--color-danger);
-    }
-
-    :host([status="info"]) {
-      --nordstjerna-border-color: var(--color-secondary);
-      --nordstjerna-original-color: var(--color-secondary);
     }
 
     /* 层级阴影 */
@@ -104,7 +110,7 @@ export abstract class NordstjernaElement extends LitElement {
     const classes = [
       'nordstjerna-element',
       `nordstjerna-element--${this.size}`,
-      `nordstjerna-element--${this.status}`,
+  `nordstjerna-element--${this.theme}`,
     ];
 
     if (this.level) {

@@ -14,8 +14,8 @@ export interface ButtonProps {
   size?: 'small' | 'medium' | 'large';
   /** 按钮层级（用于阴影效果） */
   level?: 'low' | 'medium' | 'high';
-  /** 按钮状态 */
-  status?: 'default' | 'success' | 'warning' | 'danger' | 'info';
+  /** 按钮主题 */
+  theme?: 'default' | 'primary' | 'lilac' | 'success' | 'warning' | 'danger';
   /** 是否禁用 */
   disabled?: boolean;
   /** 是否处于加载状态 */
@@ -28,7 +28,7 @@ export interface ButtonProps {
  * @example
  * ```html
  * <n-button>Click me</n-button>
- * <n-button status="success" level="high">Success Button</n-button>
+ * <n-button theme="success" level="high">Success Button</n-button>
  * <n-button disabled>Disabled Button</n-button>
  * ```
  */
@@ -39,6 +39,9 @@ export class NButton extends NordstjernaElement implements ButtonProps {
 
   @property({ type: Boolean, reflect: true })
   loading = false;
+
+  @property({ reflect: true })
+  theme: 'default' | 'primary' | 'lilac' | 'success' | 'warning' | 'danger' = 'default';
 
   static styles = css`
     ${NordstjernaElement.styles}

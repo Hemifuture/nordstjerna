@@ -14,7 +14,7 @@
     ".": {
       "import": "./src/style.css"
     },
-    "./components/*": "./src/css/components/*.css",
+  "./components/*": "./src/css/components/*/index.css",
     "./components-css": {
       "import": "./src/components-css.ts"
     }
