@@ -106,7 +106,6 @@
 
 /* intensify highlight on hover/focus */
 .input-wrapper:hover::before,
-.input:focus + .input-wrapper::before, /* (fallback if structure changes) */
 .input:focus-visible + .input-wrapper::before { opacity: calc(var(--glass-highlight-opacity) + 0.15); }
 
 .input-wrapper:hover .input:not(:disabled),
