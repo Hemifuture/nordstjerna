@@ -106,7 +106,7 @@
 
 /* intensify highlight on hover/focus */
 .input-wrapper:hover::before,
-.input:focus-visible + .input-wrapper::before { opacity: calc(var(--glass-highlight-opacity) + 0.15); }
+.input-wrapper:hover::before { opacity: calc(var(--glass-highlight-opacity) + 0.15); }
 
 .input-wrapper:hover .input:not(:disabled),
 .input-wrapper:focus-within .input:not(:disabled) { --hover-effect: inset 0 0 0 1px var(--border-color); }
