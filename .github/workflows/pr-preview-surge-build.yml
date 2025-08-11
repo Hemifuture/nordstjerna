@@ -9,7 +9,8 @@ permissions:
   issues: write
 
 jobs:
-  build-and-deploy:
+  build:
+    name: Build & Upload Artifact
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,21 +18,39 @@ jobs:
         with: { node-version: "lts/*" }
       - uses: pnpm/action-setup@v4
         with: { version: latest }
-      - run: pnpm install
-      - name: Check CI environment
-        run: |
-          echo "CI=$CI"
-          echo "NODE_ENV=$NODE_ENV"
-          echo "GitHub Actions sets CI automatically: $CI"
-      - run: pnpm build
+      - name: Install deps
+        run: pnpm install
+      - name: Build
+        run: pnpm build
+      - name: Upload build artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playground-public
+          path: playground/.output/public
+          if-no-files-found: error
+          retention-days: 3
+
+  deploy:
+    name: Deploy to Surge
+    needs: build
+    if: needs.build.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: playground-public
+          path: playground-public
       - name: Deploy
         id: deploy
         env:
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         run: |
           export DEPLOY_DOMAIN="https://preview-pr-${{ github.event.number }}-nordstjerna.surge.sh"
-          # playground/.output/public 下是构建结果
-          npx surge --project ./playground/.output/public --domain "$DEPLOY_DOMAIN"
+          # 下载后的构建产物目录在 ./playground-public
+          npx surge --project ./playground-public --domain "$DEPLOY_DOMAIN"
           echo "url=$DEPLOY_DOMAIN" >> $GITHUB_OUTPUT
       - name: Comment success
         if: success()
@@ -44,13 +63,19 @@ jobs:
             ### [【预览链接】](${{ steps.deploy.outputs.url }}/index.html)
 
             <!-- AUTO_PREVIEW_HOOK -->
+
+  build-failure-comment:
+    name: Comment on Build Failure
+    needs: build
+    if: needs.build.result == 'failure'
+    runs-on: ubuntu-latest
+    steps:
       - name: Comment failure
-        if: failure()
         uses: actions-cool/maintain-one-comment@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           number: ${{ github.event.number }}
           body-include: "<!-- AUTO_PREVIEW_HOOK -->"
           body: |
-            预览编译失败
+            预览编译失败（构建阶段）
             <!-- AUTO_PREVIEW_HOOK -->
