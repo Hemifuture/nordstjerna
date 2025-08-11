@@ -43,7 +43,6 @@ export abstract class NordstjernaElement extends LitElement {
     :host([disabled]) {
       opacity: 0.6;
       cursor: not-allowed;  
-      cursor: not-allowed;
     }
 
     :host([size="small"]) {
