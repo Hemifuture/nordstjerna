@@ -1,3 +1,5 @@
+import path from 'path';
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-08-09',
   devtools: { enabled: true },
@@ -13,7 +15,7 @@ export default defineNuxtConfig({
   vite: {
     resolve: {
       alias: {
-        '@nordstjerna/ui': '../packages/ui/src/index.ts'
+        '@nordstjerna/ui': path.resolve(__dirname, '../packages/ui/src/index.ts')
       }
     }
   },
