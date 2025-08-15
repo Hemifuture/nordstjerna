@@ -54,7 +54,7 @@
     linear-gradient(215deg, var(--glass-bg-accent), var(--glass-bg-accent-soft));
   background-clip: padding-box;
   color: var(--color-text);
-  border: 1px solid var(--border-color);
+  border: 2px solid var(--border-color);
   border-radius: var(--border-radius);
   padding: 8px 16px;
   backdrop-filter: var(--blur-filter, var(--glass-filter));
