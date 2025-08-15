@@ -4,6 +4,11 @@ export default defineNuxtConfig({
   typescript: {
     typeCheck: false
   },
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag: string) => tag.startsWith('n-')
+    }
+  },
   ssr: process.env.ENABLE_SSR === 'true', 
   vite: {
     resolve: {
