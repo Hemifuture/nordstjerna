@@ -1,0 +1,87 @@
+/* menu 组件样式，参考 button/card/input 的风格 */
+.menu {
+  display: flex;
+  flex-direction: column;
+  background: var(--ns-bg, var(--color-bg, #fff));
+  border-radius: var(--ns-radius, 8px);
+  box-shadow: var(--ns-shadow, 0 2px 8px rgba(0,0,0,0.08));
+  padding: 8px 0;
+  min-width: 160px;
+  
+  --ns-primary: var(--color-primary, #0078d4);
+  --ns-bg: color-mix(in oklab, var(--color-primary) 8%, #fff 92%);
+  --ns-hover: color-mix(in oklab, var(--color-primary) 16%, #fff 84%);
+  --ns-active: color-mix(in oklab, var(--color-primary) 28%, #fff 72%);
+  --ns-text: #222;
+  --ns-active-text: #222;
+}
+
+.menu[theme="primary"] {
+  --ns-primary: var(--color-primary, #0078d4);
+  --ns-bg: color-mix(in oklab, var(--color-primary) 8%, #fff 92%);
+  --ns-hover: color-mix(in oklab, var(--color-primary) 16%, #fff 84%);
+  --ns-active: color-mix(in oklab, var(--color-primary-border) 28%, #fff 72%);
+  --ns-text: #222;
+  --ns-active-text: #222;
+}
+.menu[theme="lilac"] {
+  --ns-primary: var(--color-lilac, #a78bfa);
+  --ns-bg: color-mix(in oklab, var(--color-lilac) 8%, #fff 92%);
+  --ns-hover: color-mix(in oklab, var(--color-lilac) 16%, #fff 84%);
+  --ns-active: color-mix(in oklab, var(--color-lilac) 28%, #fff 72%);
+  --ns-text: color-mix(in oklab, var(--color-lilac) 60%, #6c4bb6 40%);
+  --ns-active-text: var(--color-lilac, #a78bfa);
+}
+.menu[theme="success"] {
+  --ns-primary: var(--color-success, #22c55e);
+  --ns-bg: color-mix(in oklab, var(--color-success) 8%, #fff 92%);
+  --ns-hover: color-mix(in oklab, var(--color-success) 16%, #fff 84%);
+  --ns-active: color-mix(in oklab, var(--color-success) 28%, #fff 72%);
+  --ns-text: color-mix(in oklab, var(--color-success) 60%, #178a4a 40%);
+  --ns-active-text: var(--color-success, #22c55e);
+}
+.menu[theme="warning"] {
+  --ns-primary: var(--color-warning, #f59e42);
+  --ns-bg: color-mix(in oklab, var(--color-warning) 8%, #fff 92%);
+  --ns-hover: color-mix(in oklab, var(--color-warning) 16%, #fff 84%);
+  --ns-active: color-mix(in oklab, var(--color-warning) 28%, #fff 72%);
+  --ns-text: color-mix(in oklab, var(--color-warning) 60%, #a06a15 40%);
+  --ns-active-text: var(--color-warning, #f59e42);
+}
+.menu[theme="danger"] {
+  --ns-primary: var(--color-danger, #ef4444);
+  --ns-bg: color-mix(in oklab, var(--color-danger) 8%, #fff 92%);
+  --ns-hover: color-mix(in oklab, var(--color-danger) 16%, #fff 84%);
+  --ns-active: color-mix(in oklab, var(--color-danger) 28%, #fff 72%);
+  --ns-text: color-mix(in oklab, var(--color-danger) 60%, #a01515 40%);
+  --ns-active-text: var(--color-danger, #ef4444);
+}
+
+.menu.menu-horizontal {
+  flex-direction: row;
+  padding: 0 8px;
+  min-width: unset;
+}
+.menu.menu-horizontal .menu-item {
+  padding: 8px 20px;
+  border-radius: 8px;
+}
+.menu-item {
+  padding: 8px 16px;
+  cursor: pointer;
+  color: var(--ns-text, #222);
+  transition: background 0.2s, color 0.2s;
+}
+.menu-item:hover {
+  background: var(--ns-hover, #f5f5f5);
+}
+.menu-item.active {
+  background: var(--ns-active, #e0e0e0);
+  color: var(--ns-active-text, var(--ns-primary, #0078d4));
+  font-weight: bold;
+}
+
+.menu[theme="primary"] .menu-item.active {
+  border: 2px solid var(--ns-primary, #0078d4);
+  border-radius: 8px;
+}

@@ -5,6 +5,7 @@
 [![Lit](https://img.shields.io/badge/Built%20with-Lit-324fff?style=for-the-badge&logo=lit)](https://lit.dev/)
 
 🌟 一个现代化的 Glassmorphism 风格 Web Components 组件库，采用 Lit 构建。
+🌟 计划: 支持服务端渲染。
 
 ## 🏗️ 项目结构
 

@@ -16,6 +16,7 @@ declare module '@nordstjerna-style-css/*.css?raw' {
 declare module '@nordstjerna/style/components-css' {
   export const buttonCss: string;
   export const inputCss: string;
+  export const menuCss: string;
   export const cardCss: string;
   export const variablesCss: string;
   export const shadowCss: string;

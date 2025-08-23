@@ -1,2 +1,0 @@
-@import '@nordstjerna/style/dist/style.css';
-/* 仅占位：组件 button 使用的选择器在 style 包内已经定义 (:host/.button)，此文件确保构建依赖存在。 */
