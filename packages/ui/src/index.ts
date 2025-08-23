@@ -6,3 +6,4 @@ export * from './base/index.js';
 
 // 导出所有组件
 export * from './components/index.js';
+export * from './components/menu/index.js';

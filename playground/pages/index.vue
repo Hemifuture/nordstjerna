@@ -28,6 +28,31 @@
   <n-input theme="danger" level="high" placeholder="Danger input" />
       </div>
     </div>
+      <div class="demo-panel menu-section">
+        <h2>Menu 演示</h2>
+        <n-menu
+          :items="menuItems"
+          :value="menuValue"
+          @select="onMenuSelect"
+        />
+        <div style="margin-top:12px;">当前选中：{{ menuValue }}</div>
+          <h2 style="margin-top:2rem;">Menu 横向演示</h2>
+          <n-menu
+            :items="menuItems"
+            :value="menuValue"
+            direction="horizontal"
+            @select="onMenuSelect"
+          />
+          <div style="margin-top:12px;">当前选中：{{ menuValue }}</div>
+          <h2 style="margin-top:2rem;">Menu 主题演示</h2>
+          <div style="display:flex;gap:2rem;flex-wrap:wrap;">
+            <n-menu :items="menuItems" :value="menuValue" theme="primary" @select="onMenuSelect" />
+            <n-menu :items="menuItems" :value="menuValue" theme="lilac" @select="onMenuSelect" />
+            <n-menu :items="menuItems" :value="menuValue" theme="success" @select="onMenuSelect" />
+            <n-menu :items="menuItems" :value="menuValue" theme="warning" @select="onMenuSelect" />
+            <n-menu :items="menuItems" :value="menuValue" theme="danger" @select="onMenuSelect" />
+          </div>
+      </div>
   </div>
 </template>
 
@@ -42,6 +67,18 @@ onMounted(async () => {
     }
   }
 })
+
+import { ref } from 'vue';
+const menuItems = [
+  { label: '首页', value: 'home' },
+  { label: '文档', value: 'docs' },
+  { label: '组件', value: 'components' },
+  { label: '关于', value: 'about' }
+];
+const menuValue = ref('home');
+function onMenuSelect(e: CustomEvent) {
+  menuValue.value = e.detail.value;
+}
 </script>
 
 <style scoped>
